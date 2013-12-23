@@ -1,0 +1,24 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Conditions</div></div>
+<div class="ocaml_content"><div class="info">Condition variables to synchronize between threads.</div>
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre><div class="info">Condition variable type. The type parameter denotes the type of
+value propagated from notifier to waiter.</div>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt_condition.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">create ()</code> creates a new condition variable.</div>
+<pre class="odoccode"><span class="VALwait"><span class="keyword">val</span> wait</span> : <code class="type">?mutex:<a href="http://mirage.github.io/lwt/#Lwt_mutex.t">Lwt_mutex.t</a> -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt_condition.t" class="ocaml_internal">t</a> -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">wait mutex condvar</code> will cause the current thread to block,
+awaiting notification for a condition variable, <code class="code">condvar</code>. If
+provided, the <code class="code">mutex</code> must have been previously locked (within
+the scope of <code class="code">Lwt_mutex.with_lock</code>, for example) and is
+temporarily unlocked until the condition is notified. Upon
+notification, <code class="code">mutex</code> is re-locked before <code class="code">wait</code> returns and
+the thread's activity is resumed. When the awaited condition
+is notified, the value parameter passed to <code class="code">notify</code> is
+returned.</div>
+<pre class="odoccode"><span class="VALsignal"><span class="keyword">val</span> signal</span> : <code class="type">'a <a href="http://mirage.github.io/lwt/#Lwt_condition.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; unit</code></pre><div class="info"><code class="code">signal condvar value</code> notifies that a condition is ready. A
+single waiting thread will be awoken and will receive the
+notification value which will be returned from <code class="code">wait</code>. Note
+that condition notification is not &quot;sticky&quot;, i.e. if there is
+no waiter when <code class="code">notify</code> is called, the notification will be
+missed and the value discarded.</div>
+<pre class="odoccode"><span class="VALbroadcast"><span class="keyword">val</span> broadcast</span> : <code class="type">'a <a href="http://mirage.github.io/lwt/#Lwt_condition.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; unit</code></pre><div class="info"><code class="code">broadcast condvar value</code> notifies all waiting threads. Each
+will be awoken in turn and will receive the same notification
+value.</div>
+</div></div>

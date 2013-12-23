@@ -1,0 +1,9 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre><div class="info">A &quot;force_once&quot; is a thunk that can only be forced once. Subsequent forces
+will raise an exception.</div>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">(unit -&gt; 'a) -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Force_once.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">create f</code> creates a new force_once</div>
+<pre class="odoccode"><span class="VALforce"><span class="keyword">val</span> force</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Force_once.t" class="ocaml_internal">t</a> -&gt; 'a</code></pre><div class="info"><code class="code">force t</code> runs the thunk if it hadn't already been forced, else it raises an
+exception.</div>
+<pre class="odoccode"><span class="VALignore"><span class="keyword">val</span> ignore</span> : <code class="type">unit -&gt; unit <a href="http://mirage.github.io/core_kernel/#Force_once.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">ignore ()</code> = create (fun () -&gt; ())</div>
+<pre class="odoccode"><span class="VALsexp_of_t"><span class="keyword">val</span> sexp_of_t</span> : <code class="type">('a -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a>) -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Force_once.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a></code></pre>
+</div></div>

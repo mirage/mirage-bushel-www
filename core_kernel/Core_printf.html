@@ -1,0 +1,16 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALfprintf"><span class="keyword">val</span> fprintf</span> : <code class="type">out_channel -&gt; ('r, out_channel, unit) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALprintf"><span class="keyword">val</span> printf</span> : <code class="type">('r, out_channel, unit) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALeprintf"><span class="keyword">val</span> eprintf</span> : <code class="type">('r, out_channel, unit) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALifprintf"><span class="keyword">val</span> ifprintf</span> : <code class="type">'a -&gt; ('r, 'a, unit) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALsprintf"><span class="keyword">val</span> sprintf</span> : <code class="type">('r, unit, string) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALbprintf"><span class="keyword">val</span> bprintf</span> : <code class="type">Buffer.t -&gt; ('r, Buffer.t, unit) format -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALkfprintf"><span class="keyword">val</span> kfprintf</span> : <code class="type">(out_channel -&gt; 'a) -&gt;
+out_channel -&gt; ('r, out_channel, unit, 'a) format4 -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALksprintf"><span class="keyword">val</span> ksprintf</span> : <code class="type">(string -&gt; 'a) -&gt; ('r, unit, string, 'a) format4 -&gt; 'r</code></pre>
+<pre class="odoccode"><span class="VALkbprintf"><span class="keyword">val</span> kbprintf</span> : <code class="type">(Buffer.t -&gt; 'a) -&gt; Buffer.t -&gt; ('r, Buffer.t, unit, 'a) format4 -&gt; 'r</code></pre>
+<div class="info"><h6 id="6_TITLE">Formatting error and exit functions</h6></div>
+<pre class="odoccode"><span class="VALfailwithf"><span class="keyword">val</span> failwithf</span> : <code class="type">('r, unit, string, unit -&gt; 'a) format4 -&gt; 'r</code></pre><div class="info">raises Failure</div>
+<pre class="odoccode"><span class="VALinvalid_argf"><span class="keyword">val</span> invalid_argf</span> : <code class="type">('r, unit, string, unit -&gt; 'a) format4 -&gt; 'r</code></pre><div class="info">raises Invalid_arg</div>
+<pre class="odoccode"><span class="VALexitf"><span class="keyword">val</span> exitf</span> : <code class="type">('r, unit, string, unit -&gt; 'a) format4 -&gt; 'r</code></pre><div class="info">print to stderr; exit 1</div>
+</div></div>

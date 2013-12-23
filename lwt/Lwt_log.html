@@ -1,0 +1,68 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Logging facility</div></div>
+<div class="ocaml_content"><div class="info">This module provides functions to deal with logging.
+It extends Lwt_log_core with Unix features.
+It adds:<ul><li>logging to the syslog daemon</li><li>logging to a channel (stderr, stdout, ...)</li><li>logging to a file</li></ul></div>
+<div class="ocaml_include" path="http://mirage.github.io/lwt/#Lwt_log_core" items="[&quot;Section&quot;]" types="[&quot;template&quot;,&quot;section&quot;,&quot;logger&quot;,&quot;level&quot;]"><pre class="ocaml_include_handle"><span class="keyword">include</span> <code class="type">module type of <code class="code"><a href="http://mirage.github.io/lwt/#Lwt_log_core">Lwt_log_core</a></code> with module Section = <a href="http://mirage.github.io/lwt/#Lwt_log_core.Section">Lwt_log_core.Section</a> and type template = <a href="http://mirage.github.io/lwt/#Lwt_log_core.template">Lwt_log_core.template</a> and type section = <a href="http://mirage.github.io/lwt/#Lwt_log_core.section">Lwt_log_core.section</a> and type logger = <a href="http://mirage.github.io/lwt/#Lwt_log_core.logger">Lwt_log_core.logger</a> and type level = <a href="http://mirage.github.io/lwt/#Lwt_log_core.level">Lwt_log_core.level</a></code></pre><div class="ocaml_summary"/></div>
+<div class="info"><h2 id="2_TITLE">Types</h2></div>
+<div class="info"><h3 id="3_TITLE">logger</h3></div>
+<div class="info">See Lwt_log_core.logger.<p>Lwt provides loggers sending log messages to a file, syslog,
+... but you can also create you own logger.</p></div>
+<div class="info"><h3 id="3_TITLE">section</h3></div>
+<div class="info">See Lwt_log_core.section.<p>Each logging message has a section. Sections can be used to
+structure your logs. For example you can choose different
+loggers according to the section.</p><p>Each section carries a level, and messages with a lower log
+level than than the section level will be dropped.</p><p>Section levels are initialised using <code class="code">Lwt_log_core.load_rules</code> with
+the content of <code class="code">LWT_LOG</code> environment
+variable if set.</p><p>If <code class="code">LWT_LOG</code> is not defined then the rule <code class="code">&quot;* -&gt; notice&quot;</code> is
+used instead.</p></div>
+<div class="info"><h2 id="2_TITLE">Log templates</h2></div>
+<div class="info"><h3 id="3_TITLE">template</h3></div>
+<div class="info">See Lwt_log_core.template.<p>A template is for generating log messages.</p><p>It is a string which may contains variables of the form
+<code class="code">$(var)</code>, where <code class="code">var</code> is one of:</p><ul><li><code class="code">date</code> which will be replaced with the current date</li><li><code class="code">milliseconds</code> which will be replaced by the fractionnal part
+of the current unix time</li><li><code class="code">name</code> which will be replaced by the program name</li><li><code class="code">pid</code> which will be replaced by the pid of the program</li><li><code class="code">message</code> which will be replaced by the message emited</li><li><code class="code">level</code> which will be replaced by a string representation of
+the level</li><li><code class="code">section</code> which will be replaced by the name of the
+message's section</li><li><code class="code">loc-file</code> which will be replaced by the file name of the
+calling logging function</li><li><code class="code">loc-line</code> which will be replaced by the line number of the
+calling logging function</li><li><code class="code">loc-column</code> which will be replaced by the column number of
+the calling logging function</li></ul>For example:<ul><li><code class="code">&quot;$(name): $(message)&quot;</code></li><li><code class="code">&quot;$(date) $(name)[$(pid)]: $(message)&quot;</code></li><li><code class="code">&quot;$(date).$(milliseconds) $(name)[$(pid)]: $(message)&quot;</code></li><li><code class="code">&quot;$(date): $(loc-file): $(loc-line): $(loc-column): $(message)&quot;</code></li></ul></div>
+<div class="info"><h2 id="2_TITLE">Predefined loggers</h2></div>
+<pre class="odoccode"><span class="TYPEsyslog_facility"><span class="keyword">type</span> syslog_facility</span> = <code class="type">[ `Auth
+| `Authpriv
+| `Console
+| `Cron
+| `Daemon
+| `FTP
+| `Kernel
+| `LPR
+| `Local0
+| `Local1
+| `Local2
+| `Local3
+| `Local4
+| `Local5
+| `Local6
+| `Local7
+| `Mail
+| `NTP
+| `News
+| `Security
+| `Syslog
+| `UUCP
+| `User ]</code></pre><div class="info">Syslog facility. Look at the SYSLOG(3) man page for a description
+of syslog facilities</div>
+<pre class="odoccode"><span class="VALsyslog"><span class="keyword">val</span> syslog</span> : <code class="type">?template:<a href="http://mirage.github.io/lwt/#Lwt_log.template" class="ocaml_internal">template</a> -&gt;
+?paths:string list -&gt; facility:<a href="http://mirage.github.io/lwt/#Lwt_log.syslog_facility" class="ocaml_internal">syslog_facility</a> -&gt; unit -&gt; <a href="http://mirage.github.io/lwt/#Lwt_log.logger" class="ocaml_internal">logger</a></code></pre><div class="info"><code class="code">syslog ?template ?paths ~facility ()</code> creates an logger
+which send message to the system logger.<div class="parameters"><div class="param_info"><code class="code">paths</code> : is a list of path to try for the syslogd socket. It
+default to <code class="code">[&quot;/dev/log&quot;; &quot;/var/run/log&quot;]</code>.</div><div class="param_info"><code class="code">template</code> : defaults to <code class="code">&quot;$(date) $(name)[$(pid)]: $(section): $(message)&quot;</code></div></div></div>
+<pre class="odoccode"><span class="VALfile"><span class="keyword">val</span> file</span> : <code class="type">?template:<a href="http://mirage.github.io/lwt/#Lwt_log.template" class="ocaml_internal">template</a> -&gt;
+?mode:[ `Append | `Truncate ] -&gt;
+?perm:Unix.file_perm -&gt; file_name:string -&gt; unit -&gt; <a href="http://mirage.github.io/lwt/#Lwt_log.logger" class="ocaml_internal">logger</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">desf_file ?template ?mode ?perm ~file_name ()</code> creates an
+logger which will write messages to <code class="code">file_name</code>.<ul><li>if <code class="code">mode = `Truncate</code> then the file is truncated and previous
+contents will be lost.</li></ul><ul><li>if <code class="code">mode = `Append</code>, new messages will be appended at the end
+of the file</li></ul><div class="parameters"><div class="param_info"><code class="code">mode</code> : defaults to <code class="code">`Append</code></div><div class="param_info"><code class="code">template</code> : defaults to <code class="code">&quot;$(date): $(section): $(message)&quot;</code></div></div></div>
+<pre class="odoccode"><span class="VALchannel"><span class="keyword">val</span> channel</span> : <code class="type">?template:<a href="http://mirage.github.io/lwt/#Lwt_log.template" class="ocaml_internal">template</a> -&gt;
+close_mode:[ `Close | `Keep ] -&gt;
+channel:<a href="http://mirage.github.io/lwt/#Lwt_io.output_channel">Lwt_io.output_channel</a> -&gt; unit -&gt; <a href="http://mirage.github.io/lwt/#Lwt_log.logger" class="ocaml_internal">logger</a></code></pre><div class="info"><code class="code">channel ?template ~close_mode ~channel ()</code> creates a logger
+from a channel.<p>If <code class="code">close_mode = `Close</code> then <code class="code">channel</code> is closed when the
+logger is closed, otherwise it is left open.</p><div class="parameters"><div class="param_info"><code class="code">template</code> : defaults to <code class="code">&quot;$(name): $(section): $(message)&quot;</code></div></div></div>
+</div></div>

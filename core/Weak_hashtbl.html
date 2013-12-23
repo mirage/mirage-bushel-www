@@ -1,0 +1,38 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">A hashtable that keeps a weak pointer to each key's data and uses a finalizer to
+detect when the data is no longer referenced (by any non-weak pointers).<p>Once a key's data is finalized, the table will effectively behave as if the key is not
+in the table, e.g. <code class="code">find</code> will return <code class="code">None</code>. However, one must call
+<code class="code">reclaim_space_for_keys_with_unused_data</code> to actually reclaim the space used by the
+table for such keys.</p><p>Unlike (OCaml's) <code class="code">Weak.Make</code>, which also describes itself as a &quot;weak hashtable,&quot;
+<code class="code">Weak_hashtbl</code> gives a dictionary style structure. In fact, OCaml's <code class="code">Weak.Make</code> may
+better be described as a weak set.</p><p>There's a tricky type of bug one can write with this module, e.g.:</p><pre class="code"><code>      type t =
+        { foo : string
+        ; bar : float Incr.t
+        }
+
+      let tbl = Weak_hashtbl.create ()
+      let x1 =
+        let t = Weak_hashtbl.find_or_add tbl key ~default:(fun () -&gt;
+          (... some function that computes a t...))
+        in
+        t.bar</code></pre><p>At this point, the data associated with <code class="code">key</code> is unreachable (since all we did with it
+was project out field bar), so it may disappear from the table at any time.</p></div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">('a, 'b) </code>t</span></pre>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">'a <a href="http://mirage.github.io/core/#Std_internal.Hashtbl.Hashable.t">Std_internal.Hashtbl.Hashable.t</a> -&gt; ('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a></code></pre>
+<pre class="odoccode"><span class="VALmem"><span class="keyword">val</span> mem</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; bool</code></pre>
+<pre class="odoccode"><span class="VALfind"><span class="keyword">val</span> find</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; 'b <a href="http://mirage.github.io/core/#Heap_block.t">Heap_block.t</a> option</code></pre>
+<pre class="odoccode"><span class="VALfind_or_add"><span class="keyword">val</span> find_or_add</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; default:(unit -&gt; 'b <a href="http://mirage.github.io/core/#Heap_block.t">Heap_block.t</a>) -&gt; 'b <a href="http://mirage.github.io/core/#Heap_block.t">Heap_block.t</a></code></pre>
+<pre class="odoccode"><span class="VALremove"><span class="keyword">val</span> remove</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALreplace"><span class="keyword">val</span> replace</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; key:'a -&gt; data:'b <a href="http://mirage.github.io/core/#Heap_block.t">Heap_block.t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALkey_is_using_space"><span class="keyword">val</span> key_is_using_space</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; bool</code></pre><div class="info"><code class="code">key_is_using_space t key</code> returns <code class="code">true</code> if <code class="code">key</code> is using some space in <code class="code">t</code>. <code class="code">mem t
+    key</code> implies <code class="code">key_is_using_space t key</code>, but it is also possible that that
+<code class="code">key_is_using_space t key &amp;&amp; not (mem t key)</code>.</div>
+<pre class="odoccode"><span class="VALreclaim_space_for_keys_with_unused_data"><span class="keyword">val</span> reclaim_space_for_keys_with_unused_data</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; unit</code></pre><div class="info"><code class="code">reclaim_space_for_keys_with_unused_data t</code> reclaims space for all keys in <code class="code">t</code> whose
+data has been detected (by a finalizer) to be unused. Only <code class="code">key</code>s such that
+<code class="code">key_is_using_space t key &amp;&amp; not (mem t key)</code> will be reclaimed.</div>
+<pre class="odoccode"><span class="VALset_run_when_unused_data"><span class="keyword">val</span> set_run_when_unused_data</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/core/#Weak_hashtbl.t" class="ocaml_internal">t</a> -&gt; thread_safe_f:(unit -&gt; unit) -&gt; unit</code></pre><div class="info"><code class="code">set_run_when_unused_data t ~thread_safe_f</code> calls <code class="code">thread_safe_f</code> in the finalizer
+attached to each <code class="code">data</code> in <code class="code">t</code>, after ensuring the entry being finalized will be
+handled in the next call to <code class="code">reclaim_space_for_keys_with_unused_data</code>. This can be
+used to arrange to call <code class="code">reclaim_space_for_keys_with_unused_data</code> at a convenient time
+in the future. <code class="code">thread_safe_f</code> must be thread safe -- it is *not* safe for it to call
+any <code class="code">Weak_hashtbl</code> functions.</div>
+</div></div>

@@ -1,0 +1,19 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Mailbox variables</div></div>
+<div class="ocaml_content"><div class="info">&quot;Mailbox&quot; variables implement a synchronising variable, used for
+communication between concurrent threads.<p>This code adapted from
+ <a href="http://eigenclass.org/hiki.rb?cmd=view&amp;p=lightweight-threads-with-lwt">Comparing lightweight threads (eigenclass.org)</a></p></div>
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre><div class="info">The type of a mailbox variable. Mailbox variables are used to
+communicate values between threads in a synchronous way. The
+type parameter specifies the type of the value propagated from
+<code class="code">put</code> to <code class="code">take</code>.</div>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">'a -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt_mvar.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">create v</code> creates a new mailbox variable containing value <code class="code">v</code>.</div>
+<pre class="odoccode"><span class="VALcreate_empty"><span class="keyword">val</span> create_empty</span> : <code class="type">unit -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt_mvar.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">create ()</code> creates a new empty mailbox variable.</div>
+<pre class="odoccode"><span class="VALput"><span class="keyword">val</span> put</span> : <code class="type">'a <a href="http://mirage.github.io/lwt/#Lwt_mvar.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">put mvar value</code> puts a value into a mailbox variable. This
+value will remain in the mailbox until <code class="code">take</code> is called to
+remove it. If the mailbox is not empty, the current thread will
+block until it is emptied.</div>
+<pre class="odoccode"><span class="VALtake"><span class="keyword">val</span> take</span> : <code class="type">'a <a href="http://mirage.github.io/lwt/#Lwt_mvar.t" class="ocaml_internal">t</a> -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">take mvar</code> will take any currently available value from the
+mailbox variable. If no value is currently available, the
+current thread will block, awaiting a value to be <code class="code">put</code> by
+another thread.</div>
+</div></div>

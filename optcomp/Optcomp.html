@@ -1,0 +1,16 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><code><span class="TYPEmode"><span class="keyword">type</span> mode</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTmode.O"><span class="constructor">O</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTmode.R"><span class="constructor">R</span></span></code></td></tr></table>
+<pre class="odoccode"><span class="VALfilter"><span class="keyword">val</span> filter</span> : <code class="type">'a Camlp4.PreCast.Gram.not_filtered -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALlexer"><span class="keyword">val</span> lexer</span> : <code class="type">string -&gt;
+in_channel -&gt;
+(Camlp4.PreCast.Gram.Token.t * Camlp4.PreCast.Gram.Loc.t) Stream.t</code></pre>
+<div class="ocaml_module" name="File_map"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/optcomp/#Optcomp.File_map" class="ocaml_internal">File_map</a> : <code class="type"><code class="code">Map.Make</code>(<code class="code">String</code>)</code></pre><div class="ocaml_summary"/></div>
+<pre class="odoccode"><span class="VALprint"><span class="keyword">val</span> print</span> : <code class="type"><a href="http://mirage.github.io/optcomp/#Optcomp.mode" class="ocaml_internal">mode</a> -&gt;
+string -&gt;
+int -&gt;
+int -&gt;
+in_channel <a href="http://mirage.github.io/optcomp/#Optcomp.File_map.t" class="ocaml_internal">File_map.t</a> -&gt;
+(Camlp4.Sig.camlp4_token * Camlp4.PreCast.Loc.t) Stream.t -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALmain"><span class="keyword">val</span> main</span> : <code class="type"><a href="http://mirage.github.io/optcomp/#Optcomp.mode" class="ocaml_internal">mode</a> -&gt; unit</code></pre>
+</div></div>

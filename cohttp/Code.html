@@ -1,0 +1,223 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEversion"><span class="keyword">type</span> version</span> = <code class="type">[ `HTTP_1_0 | `HTTP_1_1 ]</code></pre>
+<pre class="odoccode"><span class="TYPEmeth"><span class="keyword">type</span> meth</span> = <code class="type">[ `DELETE | `GET | `HEAD | `OPTIONS | `PATCH | `POST | `PUT ]</code></pre>
+<pre class="odoccode"><span class="TYPEinformational_status"><span class="keyword">type</span> informational_status</span> = <code class="type">[ `Checkpoint | `Continue | `Processing | `Switching_protocols ]</code></pre><div class="info">Informational</div>
+<pre class="odoccode"><span class="TYPEsuccess_status"><span class="keyword">type</span> success_status</span> = <code class="type">[ `Accepted
+| `Already_reported
+| `Created
+| `Im_used
+| `Multi_status
+| `No_content
+| `Non_authoritative_information
+| `OK
+| `Partial_content
+| `Reset_content ]</code></pre><div class="info">Success</div>
+<pre class="odoccode"><span class="TYPEredirection_status"><span class="keyword">type</span> redirection_status</span> = <code class="type">[ `Found
+| `Moved_permanently
+| `Multiple_choices
+| `Not_modified
+| `Resume_incomplete
+| `See_other
+| `Switch_proxy
+| `Temporary_redirect
+| `Use_proxy ]</code></pre><div class="info">Redirection</div>
+<pre class="odoccode"><span class="TYPEclient_error_status"><span class="keyword">type</span> client_error_status</span> = <code class="type">[ `Bad_request
+| `Blocked_by_windows_parental_controls
+| `Client_closed_request
+| `Conflict
+| `Enhance_your_calm
+| `Expectation_failed
+| `Failed_dependency
+| `Forbidden
+| `Gone
+| `I_m_a_teapot
+| `Length_required
+| `Locked
+| `Method_not_allowed
+| `No_response
+| `Not_acceptable
+| `Not_found
+| `Payment_required
+| `Precondition_failed
+| `Precondition_required
+| `Proxy_authentication_required
+| `Request_entity_too_large
+| `Request_header_fields_too_large
+| `Request_timeout
+| `Request_uri_too_long
+| `Requested_range_not_satisfiable
+| `Retry_with
+| `Too_many_requests
+| `Unauthorized
+| `Unprocessable_entity
+| `Unsupported_media_type
+| `Upgrade_required
+| `Wrong_exchange_server ]</code></pre><div class="info">Client_error</div>
+<pre class="odoccode"><span class="TYPEserver_error_status"><span class="keyword">type</span> server_error_status</span> = <code class="type">[ `Bad_gateway
+| `Bandwidth_limit_exceeded
+| `Gateway_timeout
+| `Http_version_not_supported
+| `Insufficient_storage
+| `Internal_server_error
+| `Loop_detected
+| `Network_authentication_required
+| `Network_connect_timeout_error
+| `Network_read_timeout_error
+| `Not_extended
+| `Not_implemented
+| `Service_unavailable
+| `Variant_also_negotiates ]</code></pre><div class="info">Server_error</div>
+<pre class="odoccode"><span class="TYPEstatus"><span class="keyword">type</span> status</span> = <code class="type">[ `Accepted
+| `Already_reported
+| `Bad_gateway
+| `Bad_request
+| `Bandwidth_limit_exceeded
+| `Blocked_by_windows_parental_controls
+| `Checkpoint
+| `Client_closed_request
+| `Conflict
+| `Continue
+| `Created
+| `Enhance_your_calm
+| `Expectation_failed
+| `Failed_dependency
+| `Forbidden
+| `Found
+| `Gateway_timeout
+| `Gone
+| `Http_version_not_supported
+| `I_m_a_teapot
+| `Im_used
+| `Insufficient_storage
+| `Internal_server_error
+| `Length_required
+| `Locked
+| `Loop_detected
+| `Method_not_allowed
+| `Moved_permanently
+| `Multi_status
+| `Multiple_choices
+| `Network_authentication_required
+| `Network_connect_timeout_error
+| `Network_read_timeout_error
+| `No_content
+| `No_response
+| `Non_authoritative_information
+| `Not_acceptable
+| `Not_extended
+| `Not_found
+| `Not_implemented
+| `Not_modified
+| `OK
+| `Partial_content
+| `Payment_required
+| `Precondition_failed
+| `Precondition_required
+| `Processing
+| `Proxy_authentication_required
+| `Request_entity_too_large
+| `Request_header_fields_too_large
+| `Request_timeout
+| `Request_uri_too_long
+| `Requested_range_not_satisfiable
+| `Reset_content
+| `Resume_incomplete
+| `Retry_with
+| `See_other
+| `Service_unavailable
+| `Switch_proxy
+| `Switching_protocols
+| `Temporary_redirect
+| `Too_many_requests
+| `Unauthorized
+| `Unprocessable_entity
+| `Unsupported_media_type
+| `Upgrade_required
+| `Use_proxy
+| `Variant_also_negotiates
+| `Wrong_exchange_server ]</code></pre>
+<pre class="odoccode"><span class="TYPEstatus_code"><span class="keyword">type</span> status_code</span> = <code class="type">[ `Accepted
+| `Already_reported
+| `Bad_gateway
+| `Bad_request
+| `Bandwidth_limit_exceeded
+| `Blocked_by_windows_parental_controls
+| `Checkpoint
+| `Client_closed_request
+| `Code of int
+| `Conflict
+| `Continue
+| `Created
+| `Enhance_your_calm
+| `Expectation_failed
+| `Failed_dependency
+| `Forbidden
+| `Found
+| `Gateway_timeout
+| `Gone
+| `Http_version_not_supported
+| `I_m_a_teapot
+| `Im_used
+| `Insufficient_storage
+| `Internal_server_error
+| `Length_required
+| `Locked
+| `Loop_detected
+| `Method_not_allowed
+| `Moved_permanently
+| `Multi_status
+| `Multiple_choices
+| `Network_authentication_required
+| `Network_connect_timeout_error
+| `Network_read_timeout_error
+| `No_content
+| `No_response
+| `Non_authoritative_information
+| `Not_acceptable
+| `Not_extended
+| `Not_found
+| `Not_implemented
+| `Not_modified
+| `OK
+| `Partial_content
+| `Payment_required
+| `Precondition_failed
+| `Precondition_required
+| `Processing
+| `Proxy_authentication_required
+| `Request_entity_too_large
+| `Request_header_fields_too_large
+| `Request_timeout
+| `Request_uri_too_long
+| `Requested_range_not_satisfiable
+| `Reset_content
+| `Resume_incomplete
+| `Retry_with
+| `See_other
+| `Service_unavailable
+| `Switch_proxy
+| `Switching_protocols
+| `Temporary_redirect
+| `Too_many_requests
+| `Unauthorized
+| `Unprocessable_entity
+| `Unsupported_media_type
+| `Upgrade_required
+| `Use_proxy
+| `Variant_also_negotiates
+| `Wrong_exchange_server ]</code></pre>
+<pre class="odoccode"><span class="VALstring_of_version"><span class="keyword">val</span> string_of_version</span> : <code class="type"><a href="http://mirage.github.io/cohttp/#Code.version" class="ocaml_internal">version</a> -&gt; string</code></pre><div class="info">Convert a version to a string.</div>
+<pre class="odoccode"><span class="VALversion_of_string"><span class="keyword">val</span> version_of_string</span> : <code class="type">string -&gt; <a href="http://mirage.github.io/cohttp/#Code.version" class="ocaml_internal">version</a> option</code></pre><div class="info">Convert a string to a version. Return <code class="code">None</code> if the conversion fails.</div>
+<pre class="odoccode"><span class="VALstring_of_method"><span class="keyword">val</span> string_of_method</span> : <code class="type"><a href="http://mirage.github.io/cohttp/#Code.meth" class="ocaml_internal">meth</a> -&gt; string</code></pre><div class="info">Convert a method to a string.</div>
+<pre class="odoccode"><span class="VALmethod_of_string"><span class="keyword">val</span> method_of_string</span> : <code class="type">string -&gt; <a href="http://mirage.github.io/cohttp/#Code.meth" class="ocaml_internal">meth</a> option</code></pre><div class="info">Convert a string to a method. Return <code class="code">None</code> if the conversion fails.</div>
+<pre class="odoccode"><span class="VALstatus_of_code"><span class="keyword">val</span> status_of_code</span> : <code class="type">int -&gt; <a href="http://mirage.github.io/cohttp/#Code.status_code" class="ocaml_internal">status_code</a></code></pre><div class="info">Generate status values from int codes.</div>
+<pre class="odoccode"><span class="VALcode_of_status"><span class="keyword">val</span> code_of_status</span> : <code class="type"><a href="http://mirage.github.io/cohttp/#Code.status_code" class="ocaml_internal">status_code</a> -&gt; int</code></pre><div class="info">Generate an int code from a status value.</div>
+<pre class="odoccode"><span class="VALstring_of_status"><span class="keyword">val</span> string_of_status</span> : <code class="type"><a href="http://mirage.github.io/cohttp/#Code.status_code" class="ocaml_internal">status_code</a> -&gt; string</code></pre><div class="info">Give a description of the given status value.</div>
+<pre class="odoccode"><span class="VALreason_phrase_of_code"><span class="keyword">val</span> reason_phrase_of_code</span> : <code class="type">int -&gt; string</code></pre><div class="info">Give a description of the given int code.</div>
+<pre class="odoccode"><span class="VALis_informational"><span class="keyword">val</span> is_informational</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Is the given int code belong to the class of &quot;informational&quot; return code ?</div>
+<pre class="odoccode"><span class="VALis_success"><span class="keyword">val</span> is_success</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Is the given int code belong to the class of &quot;success&quot; return code ?</div>
+<pre class="odoccode"><span class="VALis_redirection"><span class="keyword">val</span> is_redirection</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Is the given int code belong to the class of &quot;redirection&quot; return code ?</div>
+<pre class="odoccode"><span class="VALis_client_error"><span class="keyword">val</span> is_client_error</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Is the given int code belong to the class of &quot;client_error&quot; return code ?</div>
+<pre class="odoccode"><span class="VALis_server_error"><span class="keyword">val</span> is_server_error</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Is the given int code belong to the class of &quot;server_error&quot; return code ?</div>
+<pre class="odoccode"><span class="VALis_error"><span class="keyword">val</span> is_error</span> : <code class="type">int -&gt; bool</code></pre><div class="info">Return true for client and server error status codes.</div>
+</div></div>

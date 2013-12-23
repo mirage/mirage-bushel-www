@@ -1,0 +1,11 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content">
+
+<div class="ocaml_include" items="[&quot;Utils&quot;,&quot;Std&quot;,&quot;Binable&quot;,&quot;Type_class&quot;,&quot;Write&quot;,&quot;Size&quot;,&quot;Read&quot;,&quot;Nat0&quot;,&quot;Common&quot;]" types="[]"><pre class="ocaml_include_handle"><span class="keyword">include</span> <code class="type"><code class="code">Bin_prot</code></code></pre><div class="ocaml_summary"/></div>
+<div class="ocaml_module" name="Writer"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/core_kernel/#Core_bin_prot.Writer" class="ocaml_internal">Writer</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span> = <code class="type">'a <a href="http://mirage.github.io/bin_prot/#Type_class.writer">Bin_prot.Type_class.writer</a></code> = {</pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.size">size</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_bin_prot.Size.sizer" class="ocaml_internal">Size.sizer</a></code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.write">write</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_bin_prot.Write.writer" class="ocaml_internal">Write.writer</a></code>;</code></td></tr><tr><td>}</td></tr></table>
+<pre class="odoccode"><span class="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_bin_prot.Writer.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; string</code></pre></div></div>
+
+
+</div></div>

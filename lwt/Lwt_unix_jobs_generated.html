@@ -1,0 +1,32 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><div class="ocaml_modtype" name="Job"><pre class="odoccode"><span class="keyword">module type</span> <a href="http://mirage.github.io/lwt/#Lwt_unix_jobs_generated:Job" class="ocaml_internal">Job</a> = <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre></div></div>
+<div class="ocaml_module" name="Make"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/lwt/#Lwt_unix_jobs_generated.Make" class="ocaml_internal">Make</a> : <code class="type"><div class="sig_block"><code class="code">functor (</code><code class="code">Job</code><code class="code"> : </code><code class="code"><a href="http://mirage.github.io/lwt/#Lwt_unix_jobs_generated:Job" class="ocaml_internal">Job</a></code><code class="code">) -&gt; </code><code class="code">sig</code> .. <code class="code">end</code></div></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="VALaccess_job"><span class="keyword">val</span> access_job</span> : <code class="type">string -&gt; Unix.access_permission list -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALchdir_job"><span class="keyword">val</span> chdir_job</span> : <code class="type">string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALchmod_job"><span class="keyword">val</span> chmod_job</span> : <code class="type">string -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALchown_job"><span class="keyword">val</span> chown_job</span> : <code class="type">string -&gt; int -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALchroot_job"><span class="keyword">val</span> chroot_job</span> : <code class="type">string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALclose_job"><span class="keyword">val</span> close_job</span> : <code class="type">Unix.file_descr -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALfchmod_job"><span class="keyword">val</span> fchmod_job</span> : <code class="type">Unix.file_descr -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALfchown_job"><span class="keyword">val</span> fchown_job</span> : <code class="type">Unix.file_descr -&gt; int -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALfdatasync_job"><span class="keyword">val</span> fdatasync_job</span> : <code class="type">Unix.file_descr -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALfsync_job"><span class="keyword">val</span> fsync_job</span> : <code class="type">Unix.file_descr -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALftruncate_job"><span class="keyword">val</span> ftruncate_job</span> : <code class="type">Unix.file_descr -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALftruncate_64_job"><span class="keyword">val</span> ftruncate_64_job</span> : <code class="type">Unix.file_descr -&gt; int64 -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALlink_job"><span class="keyword">val</span> link_job</span> : <code class="type">string -&gt; string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALlseek_job"><span class="keyword">val</span> lseek_job</span> : <code class="type">Unix.file_descr -&gt; int -&gt; Unix.seek_command -&gt; int Job.t</code></pre>
+<pre class="odoccode"><span class="VALlseek_64_job"><span class="keyword">val</span> lseek_64_job</span> : <code class="type">Unix.file_descr -&gt; int64 -&gt; Unix.seek_command -&gt; int64 Job.t</code></pre>
+<pre class="odoccode"><span class="VALmkdir_job"><span class="keyword">val</span> mkdir_job</span> : <code class="type">string -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALmkfifo_job"><span class="keyword">val</span> mkfifo_job</span> : <code class="type">string -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALrename_job"><span class="keyword">val</span> rename_job</span> : <code class="type">string -&gt; string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALrmdir_job"><span class="keyword">val</span> rmdir_job</span> : <code class="type">string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALsymlink_job"><span class="keyword">val</span> symlink_job</span> : <code class="type">string -&gt; string -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtcdrain_job"><span class="keyword">val</span> tcdrain_job</span> : <code class="type">Unix.file_descr -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtcflow_job"><span class="keyword">val</span> tcflow_job</span> : <code class="type">Unix.file_descr -&gt; Unix.flow_action -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtcflush_job"><span class="keyword">val</span> tcflush_job</span> : <code class="type">Unix.file_descr -&gt; Unix.flush_queue -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtcsendbreak_job"><span class="keyword">val</span> tcsendbreak_job</span> : <code class="type">Unix.file_descr -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtruncate_job"><span class="keyword">val</span> truncate_job</span> : <code class="type">string -&gt; int -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALtruncate_64_job"><span class="keyword">val</span> truncate_64_job</span> : <code class="type">string -&gt; int64 -&gt; unit Job.t</code></pre>
+<pre class="odoccode"><span class="VALunlink_job"><span class="keyword">val</span> unlink_job</span> : <code class="type">string -&gt; unit Job.t</code></pre></div></div>
+</div></div>

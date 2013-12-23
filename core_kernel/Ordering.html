@@ -1,0 +1,30 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info"><code class="code">Ordering</code> is intended to make code that matches on the result of a comparison
+more concise and easier to read. For example, one would write:<pre class="code"><code>      match Ordering.of_int (compare x y) with
+      | Less -&gt; ...
+      | Equal -&gt; ...
+      | Greater -&gt; ...</code></pre><p>rather than:</p><pre class="code"><code>      let r = compare x y in
+      if r &lt; 0 then
+        ...
+      else if r = 0 then
+        ...
+      else
+        ...</code></pre></div></div>
+<div class="ocaml_content"><pre class="odoccode"><code><span class="TYPEt"><span class="keyword">type</span> t</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTt.Less"><span class="constructor">Less</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTt.Equal"><span class="constructor">Equal</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTt.Greater"><span class="constructor">Greater</span></span></code></td></tr></table>
+<pre class="odoccode"><span class="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -&gt; <a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">of_int n</code> is:<pre class="verbatim">      Less     if n &lt; 0
+      Equal    if n = 0
+      Greater  if n &gt; 0</pre></div>
+<div class="ocaml_module" name="Export"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/core_kernel/#Ordering.Export" class="ocaml_internal">Export</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPE_ordering"><span class="keyword">type</span> _ordering</span> = <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a></code> = </pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELT_ordering.Less"><span class="constructor">Less</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELT_ordering.Equal"><span class="constructor">Equal</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELT_ordering.Greater"><span class="constructor">Greater</span></span></code></td></tr></table></div></div>
+<pre class="odoccode"><span class="VALt_of_sexp"><span class="keyword">val</span> t_of_sexp</span> : <code class="type"><a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a></code></pre>
+<pre class="odoccode"><span class="VALsexp_of_t"><span class="keyword">val</span> sexp_of_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a></code></pre>
+<pre class="odoccode"><span class="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALbin_t"><span class="keyword">val</span> bin_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.t">Bin_prot.Type_class.t</a></code></pre>
+<pre class="odoccode"><span class="VALbin_read_t"><span class="keyword">val</span> bin_read_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Read.reader">Bin_prot.Read.reader</a></code></pre>
+<pre class="odoccode"><span class="VAL__bin_read_t__"><span class="keyword">val</span> __bin_read_t__</span> : <code class="type">(int -&gt; <a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a>) <a href="http://mirage.github.io/bin_prot/#Read.reader">Bin_prot.Read.reader</a></code></pre>
+<pre class="odoccode"><span class="VALbin_reader_t"><span class="keyword">val</span> bin_reader_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.reader">Bin_prot.Type_class.reader</a></code></pre>
+<pre class="odoccode"><span class="VALbin_size_t"><span class="keyword">val</span> bin_size_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Size.sizer">Bin_prot.Size.sizer</a></code></pre>
+<pre class="odoccode"><span class="VALbin_write_t"><span class="keyword">val</span> bin_write_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Write.writer">Bin_prot.Write.writer</a></code></pre>
+<pre class="odoccode"><span class="VALbin_writer_t"><span class="keyword">val</span> bin_writer_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Ordering.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.writer">Bin_prot.Type_class.writer</a></code></pre>
+</div></div>

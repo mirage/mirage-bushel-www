@@ -1,0 +1,381 @@
+.footer {
+	color: #555555;
+	border-top: 1px solid #eeeeee;
+	font-size: 0.8rem;
+	font-style: italic;
+	padding-top: 0.4rem;
+	margin-top: 1rem;
+
+}
+table.typetable {
+	background: none;
+	border: none;
+
+}
+table.typetable thead, table.typetable tfoot {
+	background: none;
+	font-weight: bold;
+
+}
+table.typetable thead tr th, table.typetable thead tr td, table.typetable tfoot tr th, table.typetable tfoot tr td {
+	font-size: 0.875rem;
+	color: #222222;
+	text-align: left;
+
+}
+table.typetable tr th, table.typetable tr td {
+	padding: 0px;
+	font-size: 0.875rem;
+	color: #222222;
+
+}
+table.typetable tr.even, table.typetable tr.alt, table.typetable tr:nth-of-type(even) {
+	background: none;
+
+}
+table.typetable thead tr th, table.typetable tfoot tr th, table.typetable tbody tr td, table.typetable tr td, table.typetable tfoot tr td {
+	display: table-cell;
+
+}
+table.indextable {
+	background: white;
+	border: none;
+
+}
+table.indextable thead, table.indextable tfoot {
+	background: white;
+	font-weight: bold;
+
+}
+table.indextable thead tr th, table.indextable thead tr td, table.indextable tfoot tr th, table.indextable tfoot tr td {
+	font-size: 0.875rem;
+	color: #222222;
+	text-align: left;
+
+}
+table.indextable tr th, table.indextable tr td {
+	padding: 0.2625rem 0.225rem;
+	font-size: 1rem;
+	color: black;
+
+}
+table.indextable tr.even, table.indextable tr.alt, table.indextable tr:nth-of-type(even) {
+	background: whitegrey;
+
+}
+table.indextable thead tr th, table.indextable tfoot tr th, table.indextable tbody tr td, table.indextable tr td, table.indextable tfoot tr td {
+	display: table-cell;
+
+}
+#opamdocroot .panel.callout {
+	padding: 0.5rem;
+	background: #fdfdfd;
+	border: none;
+
+}
+p {
+	line-height: 1.1rem;
+	margin-bottom: 0.8rem;
+
+}
+body {
+	font-family: "Source Sans Pro", sans-serif;
+	color: black;
+
+}
+#opamdocroot h1 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.6rem;
+
+}
+#opamdocroot h2 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.4rem;
+
+}
+#opamdocroot h3 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.2rem;
+
+}
+#opamdocroot h4 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.2em;
+
+}
+#opamdocroot h5 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.2rem;
+
+}
+#opamdocroot h6 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.2rem;
+
+}
+pre.odoccode {
+	background: #eeeeee;
+	border-top: 1px solid #cccccc;
+	padding: 5px;
+	margin-top: 10px;
+
+}
+.top-bar input {
+	height: 2.1em;
+
+}
+.keyword {
+	color: #f47421;
+	font-weight: bold;
+
+}
+.keywordsign {
+	color: #f47421;
+
+}
+.superscript {
+	font-size: 4;
+
+}
+.subscript {
+	font-size: 4;
+
+}
+.comment {
+	color: #747474;
+	font-style: italic;
+
+}
+.constructor {
+	color: #15c17a;
+
+}
+.type {
+	color: #c746cc;
+
+}
+.string {
+	color: #09a7e2;
+
+}
+.warning {
+	color: Red;
+	font-weight: bold;
+
+}
+.param_info {
+	margin-top: 4px;
+	margin-left: 3em;
+	margin-right: 3em;
+
+}
+.code {
+	color: #465F91;
+
+}
+.typetable {
+	border-style: hidden;
+
+}
+.paramstable {
+	border-style: hidden;
+	padding: 5pt 5pt;
+
+}
+td.typefieldcomment {
+	font-size: smaller;
+
+}
+div.sig_block {
+	margin-left: 2em;
+
+}
+*:target {
+	background: yellow;
+
+}
+pre {
+	font-family: monospace;
+	margin-bottom: 0.8rem;
+
+}
+#opamdocroot pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	font-weight: normal;
+	color: #333333;
+	font-family: monospace;
+
+}
+#opamdocroot code {
+	font-weight: normal;
+	color: #333333;
+	font-family: monospace;
+
+}
+.deprecated {
+	color: #888;
+	font-style: italic;
+
+}
+ul.indexlist {
+	margin-left: 0;
+	padding-left: 0;
+
+}
+ul.indexlist li {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+
+}
+.ocaml_expanded_include_0 {
+	background-color: #FFF0F0;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E5E0E0;
+
+}
+.ocaml_expanded_include_1 {
+	background-color: #F0F0FF;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E0E0E5;
+
+}
+.ocaml_expanded_include_2 {
+	background-color: #F0FFF0;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E0E5E0;
+
+}
+.ocaml_expanded_include_3 {
+	background-color: #FFF0FF;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E5E0E5;
+
+}
+.ocaml_expanded_include_4 {
+	background-color: #FFFFF0;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E5E5E0;
+
+}
+.ocaml_expanded_include_5 {
+	background-color: #F0FFFF;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E0E5E5;
+
+}
+.ocaml_expanded_include_6 {
+	background-color: #F0F5F0;
+	border-width: thin;
+	border-style: solid;
+	border-color: #E5E0E0;
+
+}
+pre.ocaml_include_handle {
+	display: inline;
+
+}
+.ocaml_expander_plus {
+	position: relative;
+	float: left;
+	width: 7px;
+	height: 7px;
+	background: silver;
+	border-style: solid;
+	border-width: 1px;
+	margin: 3px;
+
+}
+.ocaml_expander_plus::before {
+	content: "";
+	position: absolute;
+	left: 3px;
+	top: 1px;
+	width: 1px;
+	height: 5px;
+	background: black;
+
+}
+.ocaml_expander_plus::after {
+	content: "";
+	position: absolute;
+	left: 1px;
+	top: 3px;
+	width: 5px;
+	height: 1px;
+	background: black;
+
+}
+.ocaml_expander_minus {
+	position: relative;
+	float: left;
+	width: 7px;
+	height: 7px;
+	background: silver;
+	border-style: solid;
+	border-width: 1px;
+	margin: 3px;
+
+}
+.ocaml_expander_minus:hover {
+	background: grey;
+
+}
+.ocaml_expander_minus::after {
+	content: "";
+	position: absolute;
+	left: 1px;
+	top: 3px;
+	width: 5px;
+	height: 1px;
+	background: black;
+
+}
+.ocaml_expander_disabled {
+	position: relative;
+	float: left;
+	width: 7px;
+	height: 7px;
+	background: silver;
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+	margin: 3px;
+
+}
+.ocaml_expander_disabled::before {
+	content: "";
+	position: absolute;
+	left: 3px;
+	top: 1px;
+	width: 1px;
+	height: 5px;
+	background: grey;
+
+}
+.ocaml_expander_disabled::after {
+	content: "";
+	position: absolute;
+	left: 1px;
+	top: 3px;
+	width: 5px;
+	height: 1px;
+	background: grey;
+
+}

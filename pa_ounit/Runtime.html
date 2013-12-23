@@ -1,0 +1,17 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEdescr"><span class="keyword">type</span> descr</span> = <code class="type">string</code></pre>
+<pre class="odoccode"><span class="TYPEfilename"><span class="keyword">type</span> filename</span> = <code class="type">string</code></pre>
+<pre class="odoccode"><span class="TYPEline_number"><span class="keyword">type</span> line_number</span> = <code class="type">int</code></pre>
+<pre class="odoccode"><span class="TYPEstart_pos"><span class="keyword">type</span> start_pos</span> = <code class="type">int</code></pre>
+<pre class="odoccode"><span class="TYPEend_pos"><span class="keyword">type</span> end_pos</span> = <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALset_lib"><span class="keyword">val</span> set_lib</span> : <code class="type">string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALunset_lib"><span class="keyword">val</span> unset_lib</span> : <code class="type">string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest"><span class="keyword">val</span> test</span> : <code class="type"><a href="http://mirage.github.io/pa_ounit/#Runtime.descr" class="ocaml_internal">descr</a> -&gt;
+<a href="http://mirage.github.io/pa_ounit/#Runtime.filename" class="ocaml_internal">filename</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.line_number" class="ocaml_internal">line_number</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.start_pos" class="ocaml_internal">start_pos</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.end_pos" class="ocaml_internal">end_pos</a> -&gt; (unit -&gt; bool) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest_unit"><span class="keyword">val</span> test_unit</span> : <code class="type"><a href="http://mirage.github.io/pa_ounit/#Runtime.descr" class="ocaml_internal">descr</a> -&gt;
+<a href="http://mirage.github.io/pa_ounit/#Runtime.filename" class="ocaml_internal">filename</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.line_number" class="ocaml_internal">line_number</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.start_pos" class="ocaml_internal">start_pos</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.end_pos" class="ocaml_internal">end_pos</a> -&gt; (unit -&gt; unit) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest_module"><span class="keyword">val</span> test_module</span> : <code class="type"><a href="http://mirage.github.io/pa_ounit/#Runtime.descr" class="ocaml_internal">descr</a> -&gt;
+<a href="http://mirage.github.io/pa_ounit/#Runtime.filename" class="ocaml_internal">filename</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.line_number" class="ocaml_internal">line_number</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.start_pos" class="ocaml_internal">start_pos</a> -&gt; <a href="http://mirage.github.io/pa_ounit/#Runtime.end_pos" class="ocaml_internal">end_pos</a> -&gt; (unit -&gt; unit) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALsummarize"><span class="keyword">val</span> summarize</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALcollect"><span class="keyword">val</span> collect</span> : <code class="type">(unit -&gt; unit) -&gt; <a href="http://mirage.github.io/ounit/#OUnit.test">OUnit.test</a></code></pre>
+</div></div>

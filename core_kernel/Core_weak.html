@@ -1,0 +1,11 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info"><code class="code">Weak</code> is like the OCaml standard library module of the same name, except that it
+requires that the values in the weak set are heap blocks.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">len:int -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a></code></pre>
+<pre class="odoccode"><span class="VALlength"><span class="keyword">val</span> length</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALset"><span class="keyword">val</span> set</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; int -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Heap_block.t">Heap_block.t</a> option -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; int -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Heap_block.t">Heap_block.t</a> option</code></pre>
+<pre class="odoccode"><span class="VALis_some"><span class="keyword">val</span> is_some</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; int -&gt; bool</code></pre>
+<pre class="odoccode"><span class="VALis_none"><span class="keyword">val</span> is_none</span> : <code class="type">'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; int -&gt; bool</code></pre>
+<pre class="odoccode"><span class="VALsexp_of_t"><span class="keyword">val</span> sexp_of_t</span> : <code class="type">('a -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a>) -&gt; 'a <a href="http://mirage.github.io/core_kernel/#Core_weak.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a></code></pre>
+</div></div>

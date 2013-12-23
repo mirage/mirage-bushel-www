@@ -1,0 +1,54 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content">
+
+<div class="ocaml_module" name="Sexp" path="http://mirage.github.io/sexplib/#Sexp"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/core_kernel/#Source_code_position0.Sexp" class="ocaml_internal">Sexp</a> : <code class="type"><code class="code"><a href="http://mirage.github.io/sexplib/#Sexp">Sexplib.Sexp</a></code></code></pre><div class="ocaml_summary"/></div>
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span> = <code class="type">Lexing.position</code> = {</pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.pos_fname">pos_fname</span> : <code class="type">string</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.pos_lnum">pos_lnum</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.pos_bol">pos_bol</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.pos_cnum">pos_cnum</span> : <code class="type">int</code>;</code></td></tr><tr><td>}</td></tr></table>
+
+<pre class="odoccode"><span class="VAL__t_of_sexp__"><span class="keyword">val</span> __t_of_sexp__</span> : <code class="type"><a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a></code></pre>
+
+<pre class="odoccode"><span class="VALt_of_sexp"><span class="keyword">val</span> t_of_sexp</span> : <code class="type"><a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a></code></pre>
+
+<pre class="odoccode"><span class="VALsexp_of_t"><span class="keyword">val</span> sexp_of_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/sexplib/#Sexp.t">Sexplib.Sexp.t</a></code></pre>
+
+<pre class="odoccode"><span class="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+
+<pre class="odoccode"><span class="VALcompare_t"><span class="keyword">val</span> compare_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+
+<pre class="odoccode"><span class="VALbin_size_t"><span class="keyword">val</span> bin_size_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+
+<pre class="odoccode"><span class="VALbin_write_t"><span class="keyword">val</span> bin_write_t</span> : <code class="type"><a href="http://mirage.github.io/bin_prot/#Common.buf">Bin_prot.Common.buf</a> -&gt; pos:<a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_writer_t"><span class="keyword">val</span> bin_writer_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.writer">Bin_prot.Type_class.writer</a></code></pre>
+
+<pre class="odoccode"><span class="VAL__bin_read_t__"><span class="keyword">val</span> __bin_read_t__</span> : <code class="type">'a -&gt; pos_ref:<a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a> ref -&gt; 'b -&gt; 'c</code></pre>
+
+<pre class="odoccode"><span class="VALbin_read_t"><span class="keyword">val</span> bin_read_t</span> : <code class="type"><a href="http://mirage.github.io/bin_prot/#Common.buf">Bin_prot.Common.buf</a> -&gt; pos_ref:<a href="http://mirage.github.io/bin_prot/#Common.pos_ref">Bin_prot.Common.pos_ref</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_reader_t"><span class="keyword">val</span> bin_reader_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.reader">Bin_prot.Type_class.reader</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_t"><span class="keyword">val</span> bin_t</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.t">Bin_prot.Type_class.t</a></code></pre>
+
+<pre class="odoccode"><span class="TYPEt_hum"><span class="keyword">type</span> t_hum</span> = <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a></code></pre>
+
+<pre class="odoccode"><span class="VALcompare_t_hum"><span class="keyword">val</span> compare_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t_hum" class="ocaml_internal">t_hum</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t_hum" class="ocaml_internal">t_hum</a> -&gt; int</code></pre>
+
+<pre class="odoccode"><span class="VALbin_size_t_hum"><span class="keyword">val</span> bin_size_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; int</code></pre>
+
+<pre class="odoccode"><span class="VALbin_write_t_hum"><span class="keyword">val</span> bin_write_t_hum</span> : <code class="type"><a href="http://mirage.github.io/bin_prot/#Common.buf">Bin_prot.Common.buf</a> -&gt; pos:<a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_writer_t_hum"><span class="keyword">val</span> bin_writer_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.writer">Bin_prot.Type_class.writer</a></code></pre>
+
+<pre class="odoccode"><span class="VAL__bin_read_t_hum__"><span class="keyword">val</span> __bin_read_t_hum__</span> : <code class="type">'a -&gt; pos_ref:<a href="http://mirage.github.io/bin_prot/#Common.pos">Bin_prot.Common.pos</a> ref -&gt; 'b -&gt; 'c</code></pre>
+
+<pre class="odoccode"><span class="VALbin_read_t_hum"><span class="keyword">val</span> bin_read_t_hum</span> : <code class="type"><a href="http://mirage.github.io/bin_prot/#Common.buf">Bin_prot.Common.buf</a> -&gt; pos_ref:<a href="http://mirage.github.io/bin_prot/#Common.pos_ref">Bin_prot.Common.pos_ref</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_reader_t_hum"><span class="keyword">val</span> bin_reader_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.reader">Bin_prot.Type_class.reader</a></code></pre>
+
+<pre class="odoccode"><span class="VALbin_t_hum"><span class="keyword">val</span> bin_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/bin_prot/#Type_class.t">Bin_prot.Type_class.t</a></code></pre>
+
+<pre class="odoccode"><span class="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALsexp_of_t_hum"><span class="keyword">val</span> sexp_of_t_hum</span> : <code class="type"><a href="http://mirage.github.io/core_kernel/#Source_code_position0.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/core_kernel/#Source_code_position0.Sexp.t" class="ocaml_internal">Sexp.t</a></code></pre>
+
+
+</div></div>

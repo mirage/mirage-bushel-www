@@ -1,0 +1,11 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content">
+
+<div class="info">An internal-only module factored out due to a circular dependency between core_array
+and core_list. Contains code for permuting an array.</div>
+<div class="ocaml_module" name="Random" path="http://mirage.github.io/core_kernel/#Core_random"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/core_kernel/#Array_permute.Random" class="ocaml_internal">Random</a> : <code class="type"><code class="code"><a href="http://mirage.github.io/core_kernel/#Core_random">Core_random</a></code></code></pre><div class="ocaml_summary"/></div>
+<pre class="odoccode"><span class="VALswap"><span class="keyword">val</span> swap</span> : <code class="type">'a array -&gt; int -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALpermute"><span class="keyword">val</span> permute</span> : <code class="type">?random_state:<a href="http://mirage.github.io/core_kernel/#Array_permute.Random.State.t" class="ocaml_internal">Random.State.t</a> -&gt; 'a array -&gt; unit</code></pre><div class="info">randomly permute an array.</div>
+
+
+</div></div>

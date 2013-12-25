@@ -18,14 +18,14 @@ table.typetable thead, table.typetable tfoot {
 
 }
 table.typetable thead tr th, table.typetable thead tr td, table.typetable tfoot tr th, table.typetable tfoot tr td {
-	font-size: 0.875rem;
+	font-size: 1rem;
 	color: #222222;
 	text-align: left;
 
 }
 table.typetable tr th, table.typetable tr td {
 	padding: 0px;
-	font-size: 0.875rem;
+	font-size: 1rem;
 	color: #222222;
 
 }
@@ -48,7 +48,7 @@ table.indextable thead, table.indextable tfoot {
 
 }
 table.indextable thead tr th, table.indextable thead tr td, table.indextable tfoot tr th, table.indextable tfoot tr td {
-	font-size: 0.875rem;
+	font-size: 1rem;
 	color: #222222;
 	text-align: left;
 

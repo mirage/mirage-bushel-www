@@ -1,0 +1,46 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALgenerators"><span class="keyword">val</span> generators</span> : <code class="type">(string,
+ Camlp4.PreCast.Syntax.Ast.module_type -&gt;
+ (Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+ list option -&gt; Camlp4.PreCast.Syntax.Ast.str_item)
+Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALno_arg"><span class="keyword">val</span> no_arg</span> : <code class="type">string -&gt; ('a -&gt; 'b) -&gt; 'a -&gt; 'c option -&gt; 'b</code></pre>
+<pre class="odoccode"><span class="VALparse_with"><span class="keyword">val</span> parse_with</span> : <code class="type">'a Camlp4.PreCast.Syntax.Gram.Entry.t -&gt;
+(Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+list option -&gt; 'a option</code></pre>
+<pre class="odoccode"><span class="VALignore_tokens"><span class="keyword">val</span> ignore_tokens</span> : <code class="type">unit Camlp4.PreCast.Syntax.Gram.Entry.t</code></pre>
+<pre class="odoccode"><span class="VALsafe_add_gen"><span class="keyword">val</span> safe_add_gen</span> : <code class="type">(string,
+ 'a -&gt;
+ (Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+ list option -&gt; 'b)
+Hashtbl.t -&gt;
+string -&gt;
+'c Camlp4.PreCast.Syntax.Gram.Entry.t -&gt; ('a -&gt; 'c option -&gt; 'b) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALadd_generator_with_arg"><span class="keyword">val</span> add_generator_with_arg</span> : <code class="type">?is_exn:bool -&gt;
+string -&gt;
+'a Camlp4.PreCast.Syntax.Gram.Entry.t -&gt;
+(Camlp4.PreCast.Syntax.Ast.module_type -&gt;
+ 'a option -&gt; Camlp4.PreCast.Syntax.Ast.str_item) -&gt;
+unit</code></pre>
+<pre class="odoccode"><span class="VALadd_generator"><span class="keyword">val</span> add_generator</span> : <code class="type">?is_exn:bool -&gt;
+string -&gt;
+(Camlp4.PreCast.Syntax.Ast.module_type -&gt; Camlp4.PreCast.Syntax.Ast.str_item) -&gt;
+unit</code></pre>
+<pre class="odoccode"><span class="VALgenerate"><span class="keyword">val</span> generate</span> : <code class="type">Camlp4.PreCast.Syntax.Ast.module_type -&gt;
+string *
+(Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+list option -&gt; Camlp4.PreCast.Syntax.Ast.str_item</code></pre>
+<pre class="odoccode"><span class="VALgen_derived_defs"><span class="keyword">val</span> gen_derived_defs</span> : <code class="type">Camlp4.PreCast.Syntax.Ast.loc -&gt;
+Camlp4.PreCast.Syntax.Ast.module_type -&gt;
+(string *
+ (Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+ list option)
+list -&gt; Camlp4.PreCast.Syntax.Ast.str_item</code></pre>
+<pre class="odoccode"><span class="VALfetch_generator_arg"><span class="keyword">val</span> fetch_generator_arg</span> : <code class="type">int -&gt;
+(Camlp4.PreCast.camlp4_token * Camlp4.PreCast.Syntax.Gram.token_info)
+Stream.t -&gt;
+(Camlp4.PreCast.camlp4_token * Camlp4.PreCast.Syntax.Gram.token_info) list</code></pre>
+<pre class="odoccode"><span class="VALgenerator_arg"><span class="keyword">val</span> generator_arg</span> : <code class="type">(Camlp4.PreCast.Syntax.Gram.Token.t * Camlp4.PreCast.Syntax.Gram.token_info)
+list option Camlp4.PreCast.Syntax.Gram.Entry.t</code></pre>
+
+</div></div>

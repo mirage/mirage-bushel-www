@@ -1,0 +1,20 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span> = <code class="type">int</code></pre>
+<pre class="odoccode"><code><span class="TYPErecord"><span class="keyword">type</span> <code class="type">'a </code>record</span> = {</code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTrecord.data">data</span> : <code class="type">'a</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="keyword">mutable</span> <span class="TYPEELTrecord.garbage">garbage</span> : <code class="type">bool</code>;</code></td></tr><tr><td>}</td></tr></table>
+<pre class="odoccode"><span class="VALint_string_tbl"><span class="keyword">val</span> int_string_tbl</span> : <code class="type">(int, string <a href="http://mirage.github.io/xenstore/#Symbol.record" class="ocaml_internal">record</a>) Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALstring_int_tbl"><span class="keyword">val</span> string_int_tbl</span> : <code class="type">(string, int) Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALcreated_counter"><span class="keyword">val</span> created_counter</span> : <code class="type">int ref</code></pre>
+<pre class="odoccode"><span class="VALused_counter"><span class="keyword">val</span> used_counter</span> : <code class="type">int ref</code></pre>
+<pre class="odoccode"><span class="VALcount"><span class="keyword">val</span> count</span> : <code class="type">int ref</code></pre>
+<pre class="odoccode"><span class="VALfresh"><span class="keyword">val</span> fresh</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALnew_record"><span class="keyword">val</span> new_record</span> : <code class="type">'a -&gt; 'a <a href="http://mirage.github.io/xenstore/#Symbol.record" class="ocaml_internal">record</a></code></pre>
+<pre class="odoccode"><span class="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">int -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALmark_all_as_unused"><span class="keyword">val</span> mark_all_as_unused</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALmark_as_used"><span class="keyword">val</span> mark_as_used</span> : <code class="type">int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALgarbage"><span class="keyword">val</span> garbage</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstats"><span class="keyword">val</span> stats</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALcreated"><span class="keyword">val</span> created</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALused"><span class="keyword">val</span> used</span> : <code class="type">unit -&gt; int</code></pre>
+</div></div>

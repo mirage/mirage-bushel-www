@@ -1,0 +1,15 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALexec_sql"><span class="keyword">val</span> exec_sql</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list -&gt; (<a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.stmt">Sqlite3.stmt</a> -&gt; 'a) -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALforeign_ids"><span class="keyword">val</span> foreign_ids</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; string * int64 -&gt; (string * int64) list</code></pre>
+<pre class="odoccode"><span class="VALlist_union"><span class="keyword">val</span> list_union</span> : <code class="type">'a list -&gt; 'a list -&gt; 'a list</code></pre>
+<pre class="odoccode"><span class="VALget_ids"><span class="keyword">val</span> get_ids</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string * int64 -&gt;
+<a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; (string * int64) list * (string * int64) list</code></pre>
+<pre class="odoccode"><span class="VALstring_of_ids"><span class="keyword">val</span> string_of_ids</span> : <code class="type">(string * int64) list -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALdelete_value"><span class="keyword">val</span> delete_value</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; recursive:bool -&gt; <a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; unit</code></pre>
+</div></div>

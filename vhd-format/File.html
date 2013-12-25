@@ -1,0 +1,9 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALuse_unbuffered"><span class="keyword">val</span> use_unbuffered</span> : <code class="type">bool ref</code></pre><div class="info">if set to true we will use unbuffered I/O via O_DIRECT</div>
+<pre class="odoccode"><span class="VALopenfile"><span class="keyword">val</span> openfile</span> : <code class="type">string -&gt; bool -&gt; int -&gt; Unix.file_descr</code></pre><div class="info"><code class="code">openfile filename mode</code> opens <code class="code">filename</code> read/write using
+the current global buffering mode</div>
+<pre class="odoccode"><span class="VALget_file_size"><span class="keyword">val</span> get_file_size</span> : <code class="type">string -&gt; int64</code></pre><div class="info"><code class="code">fet_file_size filename</code> returns the number of bytes in
+<code class="code">filename</code></div>
+<pre class="odoccode"><span class="VALfsync"><span class="keyword">val</span> fsync</span> : <code class="type">Unix.file_descr -&gt; unit</code></pre><div class="info"><code class="code">fsync fd</code> ensures that any buffered data is written to disk
+and throws a Unix_error if any error has been recorded.</div>
+</div></div>

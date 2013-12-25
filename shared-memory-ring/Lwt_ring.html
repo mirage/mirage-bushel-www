@@ -1,0 +1,38 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Lwt interface to shared memory ring.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONShutdown"><span class="keyword">exception</span> Shutdown</span></pre>
+<div class="ocaml_module" name="Front"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front" class="ocaml_internal">Front</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"><div class="info">The (client) front-end connection to the shared ring.</div></div><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">('a, 'b) </code>t</span></pre><div class="info">Type of a frontend connection to a shared ring. <code class="code">'a</code> is the
+response type, and <code class="code">'b</code> is the request id type (e.g. int or
+int64).</div>
+<pre class="odoccode"><span class="VALinit"><span class="keyword">val</span> init</span> : <code class="type">('b -&gt; string) -&gt; ('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Ring.Rpc.Front.t">Ring.Rpc.Front.t</a> -&gt; ('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">init string_of_id ring</code> initialises a stateful lwt client
+attached to <code class="code">ring</code>.</div>
+<pre class="odoccode"><span class="VALwrite"><span class="keyword">val</span> write</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; (<a href="http://mirage.github.io/shared-memory-ring/#Ring.buf">Ring.buf</a> -&gt; 'b) -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">write ring req_fn</code> blocks until a ring slot is free, calls
+<code class="code">req_fn</code> on it and returns a thread that will wakeup when the
+response will be available.</div>
+<pre class="odoccode"><span class="VALpush"><span class="keyword">val</span> push</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; (unit -&gt; unit) -&gt; unit</code></pre><div class="info"><code class="code">push ring notify_fn</code> advances <code class="code">ring</code> pointers, exposing the
+written requests to the other end. If the other end won't see
+the update, <code class="code">notify_fn</code> is called to signal it.</div>
+<pre class="odoccode"><span class="VALpush_request_and_wait"><span class="keyword">val</span> push_request_and_wait</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; (unit -&gt; unit) -&gt; (<a href="http://mirage.github.io/shared-memory-ring/#Ring.buf">Ring.buf</a> -&gt; 'b) -&gt; 'a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">push_request_and_wait frontend notify_fn req_fn</code> is <code class="code">write
+      req_fn &gt;&gt;= fun t -&gt; push notify_fn; return t</code>.</div>
+<pre class="odoccode"><span class="VALpush_request_async"><span class="keyword">val</span> push_request_async</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt;
+(unit -&gt; unit) -&gt; (<a href="http://mirage.github.io/shared-memory-ring/#Ring.buf">Ring.buf</a> -&gt; 'b) -&gt; ('a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a>) -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">push_request_async ring notify_fn req_fn free_fn</code> is like
+<code class="code">push_request_and_wait</code> except it calls <code class="code">free_fn</code> on the result
+of <code class="code">write</code> instead of returning it.</div>
+<pre class="odoccode"><span class="VALpoll"><span class="keyword">val</span> poll</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; (<a href="http://mirage.github.io/shared-memory-ring/#Ring.buf">Ring.buf</a> -&gt; 'b * 'a) -&gt; unit</code></pre><div class="info"><code class="code">poll frontend resp_fn</code> polls the ring for responses, and wakes
+up any threads that are sleeping (as a result of calling
+<code class="code">push_request_and_wait</code>). This can be called regularly, or
+triggered via some external event such as an event channel
+signal.</div>
+<pre class="odoccode"><span class="VALshutdown"><span class="keyword">val</span> shutdown</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Front.t" class="ocaml_internal">t</a> -&gt; string</code></pre><div class="info"><code class="code">to_string t</code> returns debug-printable description of the ring
+metadata</div></div></div>
+<div class="ocaml_module" name="Back"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Back" class="ocaml_internal">Back</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"><div class="info">The (server) back-end connection to the shared ring.</div></div><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">('a, 'b) </code>t</span></pre><div class="info">Type of a backend connection to a shared ring. 'a is the
+response type, and 'b is the request id type (e.g. int or
+int64).</div>
+<pre class="odoccode"><span class="VALinit"><span class="keyword">val</span> init</span> : <code class="type">('b -&gt; string) -&gt; ('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Ring.Rpc.Back.t">Ring.Rpc.Back.t</a> -&gt; ('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Back.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">init string_of_id ring</code> initialises a stateful lwt server
+attached to <code class="code">ring</code>.</div>
+<pre class="odoccode"><span class="VALpush_response"><span class="keyword">val</span> push_response</span> : <code class="type">('a, 'b) <a href="http://mirage.github.io/shared-memory-ring/#Lwt_ring.Back.t" class="ocaml_internal">t</a> -&gt; (unit -&gt; unit) -&gt; (<a href="http://mirage.github.io/shared-memory-ring/#Ring.buf">Ring.buf</a> -&gt; unit) -&gt; unit</code></pre><div class="info"><code class="code">push_response t notify_fn fn</code> finds a free slot and applies it
+to <code class="code">fn</code>, signalling the client via <code class="code">notify_fn</code> that a response
+is ready.</div></div></div>
+</div></div>

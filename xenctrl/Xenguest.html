@@ -1,0 +1,28 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Bindings to xenguest.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><code><span class="TYPEsuspend_flags"><span class="keyword">type</span> suspend_flags</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTsuspend_flags.Debug"><span class="constructor">Debug</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTsuspend_flags.Live"><span class="constructor">Live</span></span></code></td></tr></table>
+<pre class="odoccode"><span class="TYPEhandle"><span class="keyword">type</span> handle</span></pre>
+<pre class="odoccode"><span class="TYPEdomid"><span class="keyword">type</span> domid</span> = <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -&gt; <a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a></code></pre><div class="info">open a xenguest handle</div>
+<pre class="odoccode"><span class="VALclose"><span class="keyword">val</span> close</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt; unit</code></pre><div class="info">close a xenguest handle</div>
+<pre class="odoccode"><span class="VALlinux_build"><span class="keyword">val</span> linux_build</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt;
+<a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt;
+int -&gt;
+int -&gt;
+string -&gt;
+string option -&gt;
+string -&gt;
+string -&gt; int -&gt; int -&gt; int -&gt; int -&gt; int -&gt; nativeint * nativeint * string</code></pre><div class="info">build a linux domain</div>
+<pre class="odoccode"><span class="VALhvm_build"><span class="keyword">val</span> hvm_build</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt;
+<a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt;
+int -&gt; int -&gt; string -&gt; int -&gt; int -&gt; int -&gt; int -&gt; nativeint * nativeint</code></pre><div class="info">build a hvm domain</div>
+<pre class="odoccode"><span class="VALdomain_resume_slow"><span class="keyword">val</span> domain_resume_slow</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt; <a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt; unit</code></pre><div class="info">resume an uncooperative domain</div>
+<pre class="odoccode"><span class="VALdomain_restore"><span class="keyword">val</span> domain_restore</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt;
+Unix.file_descr -&gt;
+<a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt; int -&gt; int -&gt; int -&gt; int -&gt; bool -&gt; bool -&gt; nativeint * nativeint</code></pre><div class="info">restore a domain</div>
+<pre class="odoccode"><span class="VALdomain_save"><span class="keyword">val</span> domain_save</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt;
+Unix.file_descr -&gt; <a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt; int -&gt; int -&gt; <a href="http://mirage.github.io/xenctrl/#Xenguest.suspend_flags" class="ocaml_internal">suspend_flags</a> list -&gt; bool -&gt; unit</code></pre><div class="info">save a domain</div>
+<pre class="odoccode"><span class="VALdumpcore"><span class="keyword">val</span> dumpcore</span> : <code class="type"><a href="http://mirage.github.io/xenctrl/#Xenguest.handle" class="ocaml_internal">handle</a> -&gt; <a href="http://mirage.github.io/xenctrl/#Xenguest.domid" class="ocaml_internal">domid</a> -&gt; string -&gt; unit</code></pre>
+<div class="info"><code class="code">dumpcore xch domid filename</code> will dump the core of <code class="code">domid</code> into
+<code class="code">filename</code>.</div>
+</div></div>

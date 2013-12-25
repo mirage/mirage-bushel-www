@@ -1,0 +1,47 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><div class="info">Client and server interface for Xen's vchan protocol.</div>
+<div class="ocaml_module" name="Make"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/vchan/#Vchan.Make" class="ocaml_internal">Make</a> : <code class="type"><div class="sig_block"><code class="code">functor (</code><code class="code">Xs</code><code class="code"> : </code><code class="code"><a href="http://mirage.github.io/xenstore/#Xs_client_lwt:S">Xs_client_lwt.S</a></code><code class="code">) -&gt; </code><code class="code">sig</code> .. <code class="code">end</code></div></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span></pre><div class="info">Type of a vchan handler.</div>
+<pre class="odoccode"><code><span class="TYPEstate"><span class="keyword">type</span> state</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTstate.Exited"><span class="constructor">Exited</span></span></code></td><td class="typefieldcomment" align="left"><div class="info">when one side has called <code class="code">close</code> or crashed</div></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTstate.Connected"><span class="constructor">Connected</span></span></code></td><td class="typefieldcomment" align="left"><div class="info">when both sides are open</div></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTstate.WaitingForConnection"><span class="constructor">WaitingForConnection</span></span></code></td><td class="typefieldcomment" align="left"><div class="info">(server only) where no client has yet connected</div></td></tr></table><div class="info">Type of the state of a connection between a vchan client and
+server.</div>
+<pre class="odoccode"><span class="EXCEPTIONNot_connected"><span class="keyword">exception</span> Not_connected</span> <span class="keyword">of</span> <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.state" class="ocaml_internal">state</a></code></pre><div class="info">Exception raised when trying to use a handler that is not
+currently connected to an endpoint.</div>
+<pre class="odoccode"><span class="VALserver"><span class="keyword">val</span> server</span> : <code class="type">evtchn_h:<a href="http://mirage.github.io/mirage-xen/#Eventchn.handle">OS.Eventchn.handle</a> -&gt;
+domid:int -&gt;
+xs_path:string -&gt; read_size:int -&gt; write_size:int -&gt; persist:bool -&gt; <a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">server ~evtchn_h ~domid ~xs_path ~read_size
+      ~write_size ~persist</code> initializes a vchan server listening to
+connections from domain <code class="code">~domid</code>, using connection information
+from <code class="code">~xs_path</code>, with left ring of size <code class="code">~read_size</code> and right
+ring of size <code class="code">~write_size</code>, which accepts reconnections
+depending on the value of <code class="code">~persist</code>. The <code class="code">~eventchn</code> argument
+is necessary because under Unix, handles do not see events from
+other handles.</div>
+<pre class="odoccode"><span class="VALclient"><span class="keyword">val</span> client</span> : <code class="type">evtchn_h:<a href="http://mirage.github.io/mirage-xen/#Eventchn.handle">OS.Eventchn.handle</a> -&gt; domid:int -&gt; xs_path:string -&gt; <a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">client ~evtchn_h ~domid ~xs_path</code> initializes a vchan
+client to communicate with domain <code class="code">~domid</code> using connection
+information from <code class="code">~xs_path</code>. See the above function for the
+definition of field <code class="code">~evtchn_h</code>.</div>
+<pre class="odoccode"><span class="VALclose"><span class="keyword">val</span> close</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; unit</code></pre><div class="info">Close a vchan. This deallocates the vchan and attempts to free
+its resources. The other side is notified of the close, but can
+still read any data pending prior to the close.</div>
+<pre class="odoccode"><span class="VALread"><span class="keyword">val</span> read</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; int -&gt; string <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">read count vch</code> read at most <code class="code">count</code> characters from <code class="code">vch</code>.</div>
+<pre class="odoccode"><span class="VALread_into"><span class="keyword">val</span> read_into</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; string -&gt; int -&gt; int -&gt; int <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">read_into vch buf off len</code> reads up to <code class="code">len</code> bytes, stores them
+in <code class="code">buf</code> at offset <code class="code">off</code>, and returns the number of bytes
+read.</div>
+<pre class="odoccode"><span class="VALread_into_exactly"><span class="keyword">val</span> read_into_exactly</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; string -&gt; int -&gt; int -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">read_into_exactly vch buf off len</code> reads exactly <code class="code">len</code> bytes from
+<code class="code">vch</code> and stores them in <code class="code">buf</code> at offset <code class="code">off</code>.<p>Raises <code class="code">End_of_file</code> if insufficient data is available.</p></div>
+<pre class="odoccode"><span class="VALwrite"><span class="keyword">val</span> write</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; string -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">write vch buf</code> writes <code class="code">buf</code> to the ring, and returns when its
+done (or never).</div>
+<pre class="odoccode"><span class="VALwrite_from"><span class="keyword">val</span> write_from</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; string -&gt; int -&gt; int -&gt; int <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">write_from vch buf off len</code> writes up to <code class="code">len</code> bytes of <code class="code">buf</code>
+starting at <code class="code">off</code> to <code class="code">vch</code> and returns <code class="code">len</code> eventually (or
+never).</div>
+<pre class="odoccode"><span class="VALwrite_from_exactly"><span class="keyword">val</span> write_from_exactly</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; string -&gt; int -&gt; int -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">write_from_exactly vch buf off len</code> writes exactly <code class="code">len</code> bytes to
+<code class="code">vch</code> from buffer <code class="code">buf</code> at offset <code class="code">off</code> if enough space is
+available, or do not write anything and immediately raises
+<code class="code">End_of_file</code> otherwise.</div>
+<pre class="odoccode"><span class="VALstate"><span class="keyword">val</span> state</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/vchan/#Vchan.Make.state" class="ocaml_internal">state</a></code></pre><div class="info"><code class="code">state vch</code> is the state of a vchan connection.</div>
+<pre class="odoccode"><span class="VALdata_ready"><span class="keyword">val</span> data_ready</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; int</code></pre><div class="info"><code class="code">data_ready vch</code> is the amount of data ready to be read on <code class="code">vch</code>,
+in bytes.</div>
+<pre class="odoccode"><span class="VALbuffer_space"><span class="keyword">val</span> buffer_space</span> : <code class="type"><a href="http://mirage.github.io/vchan/#Vchan.Make.t" class="ocaml_internal">t</a> -&gt; int</code></pre><div class="info"><code class="code">buffer_space vch</code> is the amount of data it is currently possible
+to send on <code class="code">vch</code>.</div></div></div>
+</div></div>

@@ -1,0 +1,42 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONLinkingFailed"><span class="keyword">exception</span> LinkingFailed</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONInferFailed"><span class="keyword">exception</span> InferFailed</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><code><span class="TYPEc_linking_mode"><span class="keyword">type</span> c_linking_mode</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTc_linking_mode.LinkingStatic"><span class="constructor">LinkingStatic</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTc_linking_mode.LinkingShared"><span class="constructor">LinkingShared</span></span></code></td></tr></table>
+<pre class="odoccode"><code><span class="TYPElinking_mode"><span class="keyword">type</span> linking_mode</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTlinking_mode.LinkingLibrary"><span class="constructor">LinkingLibrary</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTlinking_mode.LinkingExecutable"><span class="constructor">LinkingExecutable</span></span></code></td></tr></table>
+<pre class="odoccode"><code><span class="TYPEannotation_mode"><span class="keyword">type</span> annotation_mode</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTannotation_mode.AnnotationNone"><span class="constructor">AnnotationNone</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTannotation_mode.AnnotationBin"><span class="constructor">AnnotationBin</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTannotation_mode.AnnotationText"><span class="constructor">AnnotationText</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTannotation_mode.AnnotationBoth"><span class="constructor">AnnotationBoth</span></span></code></td></tr></table>
+<pre class="odoccode"><span class="TYPEpackopt"><span class="keyword">type</span> packopt</span> = <code class="type"><a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> option</code></pre>
+<pre class="odoccode"><span class="VALannotToOpts"><span class="keyword">val</span> annotToOpts</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Buildprogs.annotation_mode" class="ocaml_internal">annotation_mode</a> -&gt; string list</code></pre>
+<pre class="odoccode"><span class="VALrunOcamlCompile"><span class="keyword">val</span> runOcamlCompile</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Prepare.dir_spec">Prepare.dir_spec</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Prepare.use_thread_flag">Prepare.use_thread_flag</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Buildprogs.annotation_mode" class="ocaml_internal">annotation_mode</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Types.ocaml_compilation_mode">Types.ocaml_compilation_mode</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Types.ocaml_compilation_option">Types.ocaml_compilation_option</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> option -&gt;
+<a href="http://mirage.github.io/obuild/#Pp.pp">Pp.pp</a> -&gt; string list -&gt; <a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> -&gt; <a href="http://mirage.github.io/obuild/#Process.process_state">Process.process_state</a></code></pre>
+<pre class="odoccode"><span class="VALrunOcamlPack"><span class="keyword">val</span> runOcamlPack</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Buildprogs.annotation_mode" class="ocaml_internal">annotation_mode</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Types.ocaml_compiled_type">Types.ocaml_compiled_type</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> option -&gt; <a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> -&gt; <a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> list -&gt; <a href="http://mirage.github.io/obuild/#Process.process_state">Process.process_state</a></code></pre>
+<pre class="odoccode"><span class="VALrunOcamlInfer"><span class="keyword">val</span> runOcamlInfer</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> list -&gt; <a href="http://mirage.github.io/obuild/#Pp.pp">Pp.pp</a> -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALo_from_cfile"><span class="keyword">val</span> o_from_cfile</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Filepath.filename">Ext.Filepath.filename</a> -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filename">Ext.Filepath.filename</a></code></pre>
+<pre class="odoccode"><span class="VALrunCCompile"><span class="keyword">val</span> runCCompile</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Analyze.project_config">Analyze.project_config</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Prepare.dir_spec">Prepare.dir_spec</a> -&gt;
+string list -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filename">Ext.Filepath.filename</a> -&gt; <a href="http://mirage.github.io/obuild/#Process.process_state">Process.process_state</a></code></pre>
+<pre class="odoccode"><span class="VALrunAr"><span class="keyword">val</span> runAr</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> list -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALrunRanlib"><span class="keyword">val</span> runRanlib</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALrunCLinking"><span class="keyword">val</span> runCLinking</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Buildprogs.c_linking_mode" class="ocaml_internal">c_linking_mode</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> list -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALrunOcamlLinking"><span class="keyword">val</span> runOcamlLinking</span> : <code class="type"><a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> list -&gt;
+<a href="http://mirage.github.io/obuild/#Types.ocaml_compiled_type">Types.ocaml_compiled_type</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Buildprogs.linking_mode" class="ocaml_internal">linking_mode</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Types.ocaml_compilation_option">Types.ocaml_compilation_option</a> -&gt;
+<a href="http://mirage.github.io/obuild/#Prepare.use_thread_flag">Prepare.use_thread_flag</a> -&gt;
+string list -&gt;
+<a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> list -&gt;
+<a href="http://mirage.github.io/obuild/#Hier.hier">Hier.hier</a> list -&gt; <a href="http://mirage.github.io/obuild/#Filepath.filepath">Ext.Filepath.filepath</a> -&gt; string</code></pre>
+</div></div>

@@ -1,0 +1,10 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONInvalid"><span class="keyword">exception</span> Invalid</span></pre>
+<pre class="odoccode"><code><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span> = {</code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.generation">generation</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTt.value">value</span> : <code class="type">'a</code>;</code></td></tr><tr><td>}</td></tr></table>
+<pre class="odoccode"><span class="VALgeneration"><span class="keyword">val</span> generation</span> : <code class="type">int ref</code></pre>
+<pre class="odoccode"><span class="VALwrap"><span class="keyword">val</span> wrap</span> : <code class="type">'a -&gt; 'a <a href="http://mirage.github.io/mirage-xen/#Generation.t" class="ocaml_internal">t</a></code></pre>
+<pre class="odoccode"><span class="VALmaybe"><span class="keyword">val</span> maybe</span> : <code class="type">'a <a href="http://mirage.github.io/mirage-xen/#Generation.t" class="ocaml_internal">t</a> -&gt; ('a -&gt; 'b) -&gt; 'b -&gt; 'b</code></pre>
+<pre class="odoccode"><span class="VALextract"><span class="keyword">val</span> extract</span> : <code class="type">'a <a href="http://mirage.github.io/mirage-xen/#Generation.t" class="ocaml_internal">t</a> -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALresume"><span class="keyword">val</span> resume</span> : <code class="type">unit -&gt; unit</code></pre>
+</div></div>

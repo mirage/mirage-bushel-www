@@ -1,0 +1,39 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALstr"><span class="keyword">val</span> str</span> : <code class="type">('a, unit, string) format -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALlog"><span class="keyword">val</span> log</span> : <code class="type">('a, Format.formatter, unit, unit, unit, unit) format6 -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALfail"><span class="keyword">val</span> fail</span> : <code class="type">('a, Format.formatter, unit, 'b) format4 -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALencoder_invalid"><span class="keyword">val</span> encoder_invalid</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencoder_escapes"><span class="keyword">val</span> encoder_escapes</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_encoding_guess"><span class="keyword">val</span> decoder_encoding_guess</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest_decode"><span class="keyword">val</span> test_decode</span> : <code class="type">([&lt; `Await
+  | `Comment of [ `M | `S ] * string
+  | `End
+  | `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error">Jsonm.error</a>
+  | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme">Jsonm.lexeme</a>
+  | `White of string ]
+ as 'a) -&gt;
+'a -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest_seq"><span class="keyword">val</span> test_seq</span> : <code class="type">(<a href="http://mirage.github.io/jsonm/#Jsonm.decoder">Jsonm.decoder</a> -&gt;
+ ([&lt; `Await
+   | `Comment of [ `M | `S ] * string
+   | `End
+   | `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error">Jsonm.error</a>
+   | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme">Jsonm.lexeme</a>
+   | `White of string ]
+  as 'a)) -&gt;
+string -&gt; 'a list -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALarr"><span class="keyword">val</span> arr</span> : <code class="type">([&gt; `End | `Lexeme of [&gt; `Ae | `As ] ] as 'a) list -&gt; 'a list</code></pre>
+<pre class="odoccode"><span class="VALdecoder_comments"><span class="keyword">val</span> decoder_comments</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_escapes"><span class="keyword">val</span> decoder_escapes</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_strings"><span class="keyword">val</span> decoder_strings</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_literals"><span class="keyword">val</span> decoder_literals</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_numbers"><span class="keyword">val</span> decoder_numbers</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_arrays"><span class="keyword">val</span> decoder_arrays</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_objects"><span class="keyword">val</span> decoder_objects</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_json_text"><span class="keyword">val</span> decoder_json_text</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_bom"><span class="keyword">val</span> decoder_bom</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecoder_eoi"><span class="keyword">val</span> decoder_eoi</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip"><span class="keyword">val</span> trip</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtest"><span class="keyword">val</span> test</span> : <code class="type">unit -&gt; unit</code></pre>
+
+</div></div>

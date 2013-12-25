@@ -1,0 +1,162 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALtabulate_defs"><span class="keyword">val</span> tabulate_defs</span> : <code class="type"><a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> list -&gt; int * (string, int * <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a>) Hashtbl.t</code></pre>
+<div class="ocaml_class" name="env"><pre class="odoccode"><span class="TYPEenv"><span class="keyword">class</span> <span class="keyword">virtual </span><code class="type">['env] </code><a href="http://mirage.github.io/menhir/#Traverse.env" class="ocaml_internal">env</a></span> : <code class="code">object</code> .. <code class="code">end</code></pre><div class="ocaml_summary"/><div class="ocaml_content"><pre class="odoccode"><span class="METHODpvar"><span class="keyword">method</span> pvar</span> : <code class="code">'env -&gt; string -&gt; 'env</code></pre>
+
+<pre class="odoccode"><span class="METHODpat"><span class="keyword">method</span> pat</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> -&gt; 'env</code></pre>
+
+<pre class="odoccode"><span class="METHODpats"><span class="keyword">method</span> pats</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> list -&gt; 'env</code></pre>
+
+<pre class="odoccode"><span class="METHODfpats"><span class="keyword">method</span> fpats</span> : <code class="code">'env -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a>) list -&gt; 'env</code></pre>
+
+<pre class="odoccode"><span class="METHODfpat"><span class="keyword">method</span> fpat</span> : <code class="code">'env -&gt; string * <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> -&gt; 'env</code></pre>
+</div></div>
+<pre class="odoccode"><span class="EXCEPTIONNoChange"><span class="keyword">exception</span> NoChange</span></pre>
+<div class="ocaml_class" name="map"><pre class="odoccode"><span class="TYPEmap"><span class="keyword">class</span> <span class="keyword">virtual </span><code class="type">['env] </code><a href="http://mirage.github.io/menhir/#Traverse.map" class="ocaml_internal">map</a></span> : <code class="code">object</code> .. <code class="code">end</code></pre><div class="ocaml_summary"/><div class="ocaml_content"><div class="ocaml_class" name="_inherit_field" path="http://mirage.github.io/menhir/#Traverse.env"> <pre class="odoccode"><span class="keyword">inherit</span> <code class="type"/><code class="type">['env] </code><a href="http://mirage.github.io/menhir/#Traverse.env" class="ocaml_internal">env</a></pre></div>
+
+<pre class="odoccode"><span class="METHODexpr"><span class="keyword">method</span> expr</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODevar"><span class="keyword">method</span> evar</span> : <code class="code">'env -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODefun"><span class="keyword">method</span> efun</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeapp"><span class="keyword">method</span> eapp</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODelet"><span class="keyword">method</span> elet</span> : <code class="code">'env -&gt; (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODematch"><span class="keyword">method</span> ematch</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeifthen"><span class="keyword">method</span> eifthen</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeifthenelse"><span class="keyword">method</span> eifthenelse</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeraise"><span class="keyword">method</span> eraise</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODetry"><span class="keyword">method</span> etry</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeunit"><span class="keyword">method</span> eunit</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeintconst"><span class="keyword">method</span> eintconst</span> : <code class="code">'env -&gt; int -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODemaxint"><span class="keyword">method</span> emaxint</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODestringconst"><span class="keyword">method</span> estringconst</span> : <code class="code">'env -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODedata"><span class="keyword">method</span> edata</span> : <code class="code">'env -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODetuple"><span class="keyword">method</span> etuple</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODeannot"><span class="keyword">method</span> eannot</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.typescheme">IL.typescheme</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODemagic"><span class="keyword">method</span> emagic</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODerepr"><span class="keyword">method</span> erepr</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODerecord"><span class="keyword">method</span> erecord</span> : <code class="code">'env -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODerecordaccess"><span class="keyword">method</span> erecordaccess</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODerecordwrite"><span class="keyword">method</span> erecordwrite</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODearray"><span class="keyword">method</span> earray</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODearrayaccess"><span class="keyword">method</span> earrayaccess</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODetextual"><span class="keyword">method</span> etextual</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#Stretch.t">Stretch.t</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODecomment"><span class="keyword">method</span> ecomment</span> : <code class="code">'env -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODepatcomment"><span class="keyword">method</span> epatcomment</span> : <code class="code">'env -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODexprs"><span class="keyword">method</span> exprs</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list</code></pre>
+
+<pre class="odoccode"><span class="METHODfields"><span class="keyword">method</span> fields</span> : <code class="code">'env -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list</code></pre>
+
+<pre class="odoccode"><span class="METHODfield"><span class="keyword">method</span> field</span> : <code class="code">'env -&gt; string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a></code></pre>
+
+<pre class="odoccode"><span class="METHODbranches"><span class="keyword">method</span> branches</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list</code></pre>
+
+<pre class="odoccode"><span class="METHODbranch"><span class="keyword">method</span> branch</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a></code></pre>
+
+<pre class="odoccode"><span class="METHODbinding"><span class="keyword">method</span> binding</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'env * (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>)</code></pre>
+
+<pre class="odoccode"><span class="METHODbindings"><span class="keyword">method</span> bindings</span> : <code class="code">'env -&gt; (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; 'env * (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list</code></pre>
+
+<pre class="odoccode"><span class="METHODvaldef"><span class="keyword">method</span> valdef</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a></code></pre>
+
+<pre class="odoccode"><span class="METHODvaldefs"><span class="keyword">method</span> valdefs</span> : <code class="code">'env -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> list</code></pre>
+</div></div>
+<div class="ocaml_class" name="fold"><pre class="odoccode"><span class="TYPEfold"><span class="keyword">class</span> <span class="keyword">virtual </span><code class="type">['env, 'a] </code><a href="http://mirage.github.io/menhir/#Traverse.fold" class="ocaml_internal">fold</a></span> : <code class="code">object</code> .. <code class="code">end</code></pre><div class="ocaml_summary"/><div class="ocaml_content"><div class="ocaml_class" name="_inherit_field" path="http://mirage.github.io/menhir/#Traverse.env"> <pre class="odoccode"><span class="keyword">inherit</span> <code class="type"/><code class="type">['env] </code><a href="http://mirage.github.io/menhir/#Traverse.env" class="ocaml_internal">env</a></pre></div>
+
+<pre class="odoccode"><span class="METHODexpr"><span class="keyword">method</span> expr</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODevar"><span class="keyword">method</span> evar</span> : <code class="code">'env -&gt; 'a -&gt; string -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODefun"><span class="keyword">method</span> efun</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeapp"><span class="keyword">method</span> eapp</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODelet"><span class="keyword">method</span> elet</span> : <code class="code">'env -&gt; 'a -&gt; (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODematch"><span class="keyword">method</span> ematch</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeifthen"><span class="keyword">method</span> eifthen</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeifthenelse"><span class="keyword">method</span> eifthenelse</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeraise"><span class="keyword">method</span> eraise</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODetry"><span class="keyword">method</span> etry</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeunit"><span class="keyword">method</span> eunit</span> : <code class="code">'env -&gt; 'a -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeintconst"><span class="keyword">method</span> eintconst</span> : <code class="code">'env -&gt; 'a -&gt; int -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODemaxint"><span class="keyword">method</span> emaxint</span> : <code class="code">'env -&gt; 'a -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODestringconst"><span class="keyword">method</span> estringconst</span> : <code class="code">'env -&gt; 'a -&gt; string -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODedata"><span class="keyword">method</span> edata</span> : <code class="code">'env -&gt; 'a -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODetuple"><span class="keyword">method</span> etuple</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODeannot"><span class="keyword">method</span> eannot</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.typescheme">IL.typescheme</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODemagic"><span class="keyword">method</span> emagic</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODerepr"><span class="keyword">method</span> erepr</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODerecord"><span class="keyword">method</span> erecord</span> : <code class="code">'env -&gt; 'a -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODerecordaccess"><span class="keyword">method</span> erecordaccess</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; string -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODerecordwrite"><span class="keyword">method</span> erecordwrite</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODearray"><span class="keyword">method</span> earray</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODearrayaccess"><span class="keyword">method</span> earrayaccess</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODetextual"><span class="keyword">method</span> etextual</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#Stretch.t">Stretch.t</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODecomment"><span class="keyword">method</span> ecomment</span> : <code class="code">'env -&gt; 'a -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODepatcomment"><span class="keyword">method</span> epatcomment</span> : <code class="code">'env -&gt; 'a -&gt; string -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODexprs"><span class="keyword">method</span> exprs</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODfields"><span class="keyword">method</span> fields</span> : <code class="code">'env -&gt; 'a -&gt; (string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODfield"><span class="keyword">method</span> field</span> : <code class="code">'env -&gt; 'a -&gt; string * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODbranches"><span class="keyword">method</span> branches</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> list -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODbranch"><span class="keyword">method</span> branch</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.branch">IL.branch</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODbinding"><span class="keyword">method</span> binding</span> : <code class="code">'env * 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a> -&gt; 'env * 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODbindings"><span class="keyword">method</span> bindings</span> : <code class="code">'env -&gt; 'a -&gt; (<a href="http://mirage.github.io/menhir/#IL.pattern">IL.pattern</a> * <a href="http://mirage.github.io/menhir/#IL.expr">IL.expr</a>) list -&gt; 'env * 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODvaldef"><span class="keyword">method</span> valdef</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> -&gt; 'a</code></pre>
+
+<pre class="odoccode"><span class="METHODvaldefs"><span class="keyword">method</span> valdefs</span> : <code class="code">'env -&gt; 'a -&gt; <a href="http://mirage.github.io/menhir/#IL.valdef">IL.valdef</a> list -&gt; 'a</code></pre>
+</div></div>
+</div></div>

@@ -1,0 +1,38 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Module for dealing with TUN/TAP devices. TUN refers to layer 3
+virtual interfaces whereas TAP refers to layer 2 ones.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALopentun"><span class="keyword">val</span> opentun</span> : <code class="type">?pi:bool -&gt;
+?persist:bool -&gt;
+?user:int -&gt;
+?group:int -&gt; ?devname:string -&gt; unit -&gt; Unix.file_descr * string</code></pre><div class="info"><code class="code">opentun ~pi ~persist ~user ~group ~devname ()</code> will create a TUN
+interface. If <code class="code">devname</code> is specified, or if <code class="code">devname</code> specify an
+unexistant device, a new device will be created, otherwise, the
+interface <code class="code">devname</code> will be opened. <code class="code">no_pi</code> is to indicate if you
+want packet information associated with your frames (tap) or
+packets (tun) (defaults to no information). <code class="code">persist</code> will set the
+device persistent with permissions set to <code class="code">user</code> and <code class="code">group</code> if
+supported by your OS (currently MacOSX does not support it). The
+return value is a pair consisting of a fd opened on the freshly
+created interface, and its name as will be displayed by command
+<code class="code">ifconfig</code> for example.</div>
+<pre class="odoccode"><span class="VALopentap"><span class="keyword">val</span> opentap</span> : <code class="type">?pi:bool -&gt;
+?persist:bool -&gt;
+?user:int -&gt;
+?group:int -&gt; ?devname:string -&gt; unit -&gt; Unix.file_descr * string</code></pre><div class="info">Like <code class="code">opentun</code>, but open TAP interfaces instead of TUN ones.</div>
+<pre class="odoccode"><span class="VALclosetun"><span class="keyword">val</span> closetun</span> : <code class="type">string -&gt; unit</code></pre><div class="info"><code class="code">closetun devname kind</code> will destroy <code class="code">devname</code>, if it exists.</div>
+<pre class="odoccode"><span class="VALclosetap"><span class="keyword">val</span> closetap</span> : <code class="type">string -&gt; unit</code></pre><div class="info">Like <code class="code">closetun</code>, but for TAP interfaces.</div>
+<pre class="odoccode"><span class="VALget_ifnamsiz"><span class="keyword">val</span> get_ifnamsiz</span> : <code class="type">unit -&gt; int</code></pre><div class="info"><code class="code">get_ifnamsiz ()</code> is the value of the constant IFNAMSIZ,
+defined in &lt;net/if.h&gt;. Useful for allocating buffers that contain
+interface names.</div>
+<pre class="odoccode"><span class="VALget_macaddr"><span class="keyword">val</span> get_macaddr</span> : <code class="type">string -&gt; <a href="http://mirage.github.io/ipaddr/#Macaddr.t">Macaddr.t</a></code></pre><div class="info"><code class="code">get_hwaddr devname</code> is the MAC address of interface
+<code class="code">devname</code>, as a raw string (not hexa).</div>
+<pre class="odoccode"><span class="VALset_ipv4"><span class="keyword">val</span> set_ipv4</span> : <code class="type">devname:string -&gt; ipv4:string -&gt; ?netmask:string -&gt; unit -&gt; unit</code></pre><div class="info"><code class="code">set_ipv4 devname ipv4addr netmask</code> assign an IPv4 to interface
+<code class="code">devname</code>.</div>
+<pre class="odoccode"><span class="VALset_up_and_running"><span class="keyword">val</span> set_up_and_running</span> : <code class="type">string -&gt; unit</code></pre><div class="info"><code class="code">set_up_and_running devname</code> sets interface <code class="code">devname</code> up and
+running. Note that when using the <code class="code">set_ipv4</code> function, the
+interface will automatically be set up and running.</div>
+<pre class="odoccode"><code><span class="TYPEiface_addr"><span class="keyword">type</span> iface_addr</span> = {</code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTiface_addr.addr">addr</span> : <code class="type"><a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a></code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTiface_addr.mask">mask</span> : <code class="type"><a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a></code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTiface_addr.brd">brd</span> : <code class="type"><a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a></code>;</code></td></tr><tr><td>}</td></tr></table><div class="info">Type of the interface addresses record.</div>
+<pre class="odoccode"><span class="VALgetifaddrs"><span class="keyword">val</span> getifaddrs</span> : <code class="type">unit -&gt; (string * <a href="http://mirage.github.io/tuntap/#Tuntap.iface_addr" class="ocaml_internal">iface_addr</a>) list</code></pre><div class="info"><code class="code">getifaddrs ()</code> is a list of size equal to the number of network
+interfaces that have an IPv4 address, each cell containing the
+name of the network interface, and its iface_addr record.</div>
+</div></div>

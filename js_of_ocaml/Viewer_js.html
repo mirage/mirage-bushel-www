@@ -1,0 +1,52 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><code><span class="TYPErect"><span class="keyword">type</span> rect</span> = {</code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTrect.x">x</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTrect.y">y</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTrect.width">width</span> : <code class="type">int</code>;</code></td></tr><tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="TYPEELTrect.height">height</span> : <code class="type">int</code>;</code></td></tr><tr><td>}</td></tr></table>
+<div class="ocaml_module" name="Html" path="http://mirage.github.io/js_of_ocaml/#Dom_html"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html" class="ocaml_internal">Html</a> : <code class="type"><code class="code"><a href="http://mirage.github.io/js_of_ocaml/#Dom_html">Dom_html</a></code></code></pre><div class="ocaml_summary"/></div>
+<pre class="odoccode"><span class="VALcreate_canvas"><span class="keyword">val</span> create_canvas</span> : <code class="type">int -&gt; int -&gt; <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.canvasElement" class="ocaml_internal">Html.canvasElement</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a></code></pre>
+<div class="ocaml_module" name="Common" path="http://mirage.github.io/js_of_ocaml/#Viewer_common.F"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Common" class="ocaml_internal">Common</a> : <code class="type"><code class="code"><a href="http://mirage.github.io/js_of_ocaml/#Viewer_common.F">Viewer_common.F</a></code>(<code class="code">sig</code> .. <code class="code">end</code>)</code></pre><div class="ocaml_summary"/></div>
+<pre class="odoccode"><span class="VALredraw"><span class="keyword">val</span> redraw</span> : <code class="type"><a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Common.st" class="ocaml_internal">Common.st</a> -&gt; float -&gt; float -&gt; float -&gt; <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.canvasElement" class="ocaml_internal">Html.canvasElement</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VAL(&gt;&gt;=)"><span class="keyword">val</span> (&gt;&gt;=)</span> : <code class="type">'a <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a> -&gt; ('a -&gt; 'b <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a>) -&gt; 'b <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALhttp_get"><span class="keyword">val</span> http_get</span> : <code class="type">string -&gt; string <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALjson"><span class="keyword">val</span> json</span> : <code class="type">&lt; parse : <a href="http://mirage.github.io/js_of_ocaml/#Js.js_string">Js.js_string</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> -&gt; 'a &gt; <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a></code></pre>
+<div class="ocaml_class" name="adjustment"><pre class="odoccode"><span class="TYPEadjustment"><span class="keyword">class</span> <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.adjustment" class="ocaml_internal">adjustment</a></span> : <code class="type">unit -&gt; float option -&gt; float option -&gt; float option -&gt; float option -&gt; float option -&gt; float option -&gt; </code><code class="code">object</code> .. <code class="code">end</code></pre><div class="ocaml_summary"/><div class="ocaml_content"><pre class="odoccode"><span class="ATT_value"><span class="keyword">val</span> <span class="keyword">mutable</span> _value</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODvalue"><span class="keyword">method</span> value</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="ATT_lower"><span class="keyword">val</span> <span class="keyword">mutable</span> _lower</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODlower"><span class="keyword">method</span> lower</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="ATT_upper"><span class="keyword">val</span> <span class="keyword">mutable</span> _upper</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODupper"><span class="keyword">method</span> upper</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="ATT_step_incr"><span class="keyword">val</span> <span class="keyword">mutable</span> _step_incr</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODstep_increment"><span class="keyword">method</span> step_increment</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="ATT_page_incr"><span class="keyword">val</span> <span class="keyword">mutable</span> _page_incr</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODpage_increment"><span class="keyword">method</span> page_increment</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="ATT_page_size"><span class="keyword">val</span> <span class="keyword">mutable</span> _page_size</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODpage_size"><span class="keyword">method</span> page_size</span> : <code class="code">float</code></pre>
+<pre class="odoccode"><span class="METHODset_value"><span class="keyword">method</span> set_value</span> : <code class="code">float -&gt; unit</code></pre>
+<pre class="odoccode"><span class="METHODset_bounds"><span class="keyword">method</span> set_bounds</span> : <code class="code">?lower:float -&gt;
+?upper:float -&gt;
+?step_incr:float -&gt; ?page_incr:float -&gt; ?page_size:float -&gt; unit -&gt; unit</code></pre></div></div>
+<pre class="odoccode"><span class="VALhandle_drag"><span class="keyword">val</span> handle_drag</span> : <code class="type">&lt; onmousedown : &lt; set : ('a,
+                         &lt; _type : <a href="http://mirage.github.io/js_of_ocaml/#Js.js_string">Js.js_string</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.readonly_prop">Js.readonly_prop</a>;
+                           clientX : &lt; get : int; .. &gt; <a href="http://mirage.github.io/js_of_ocaml/#Js.gen_prop">Js.gen_prop</a>;
+                           clientY : &lt; get : int; .. &gt; <a href="http://mirage.github.io/js_of_ocaml/#Js.gen_prop">Js.gen_prop</a>;
+                           currentTarget : <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.element" class="ocaml_internal">Html.element</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.optdef">Js.optdef</a>
+                                           <a href="http://mirage.github.io/js_of_ocaml/#Js.readonly_prop">Js.readonly_prop</a>;
+                           srcElement : <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.element" class="ocaml_internal">Html.element</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.optdef">Js.optdef</a>
+                                        <a href="http://mirage.github.io/js_of_ocaml/#Js.readonly_prop">Js.readonly_prop</a>;
+                           target : <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.element" class="ocaml_internal">Html.element</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.optdef">Js.optdef</a>
+                                    <a href="http://mirage.github.io/js_of_ocaml/#Js.readonly_prop">Js.readonly_prop</a>;
+                           .. &gt;
+                         <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a>)
+                        <a href="http://mirage.github.io/js_of_ocaml/#Viewer_js.Html.event_listener" class="ocaml_internal">Html.event_listener</a> -&gt; unit;
+                  .. &gt;
+                <a href="http://mirage.github.io/js_of_ocaml/#Js.gen_prop">Js.gen_prop</a>;
+  style : &lt; get : &lt; cursor : &lt; set : <a href="http://mirage.github.io/js_of_ocaml/#Js.js_string">Js.js_string</a> <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> -&gt; unit; .. &gt;
+                             <a href="http://mirage.github.io/js_of_ocaml/#Js.gen_prop">Js.gen_prop</a>;
+                    .. &gt;
+                  <a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a>;
+            .. &gt;
+          <a href="http://mirage.github.io/js_of_ocaml/#Js.gen_prop">Js.gen_prop</a>;
+  .. &gt;
+<a href="http://mirage.github.io/js_of_ocaml/#Js.t">Js.t</a> -&gt; (int -&gt; int -&gt; 'b) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstart"><span class="keyword">val</span> start</span> : <code class="type">unit -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+
+</div></div>

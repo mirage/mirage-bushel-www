@@ -1,0 +1,23 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Event channels handlers.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEevent"><span class="keyword">type</span> event</span></pre><div class="info">identifies the an event notification received from xen</div>
+<pre class="odoccode"><span class="VALprogram_start"><span class="keyword">val</span> program_start</span> : <code class="type"><a href="http://mirage.github.io/mirage-xen/#Activations.event" class="ocaml_internal">event</a></code></pre><div class="info">represents an event which 'fired' when the program started</div>
+<pre class="odoccode"><span class="VALafter"><span class="keyword">val</span> after</span> : <code class="type"><a href="http://mirage.github.io/mirage-xen/#Eventchn.t">Eventchn.t</a> -&gt; <a href="http://mirage.github.io/mirage-xen/#Activations.event" class="ocaml_internal">event</a> -&gt; <a href="http://mirage.github.io/mirage-xen/#Activations.event" class="ocaml_internal">event</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">next channel event</code> blocks until the system receives an event
+newer than <code class="code">event</code> on channel <code class="code">channel</code>. If an event is received
+while we aren't looking then this will be remembered and the
+next call to <code class="code">after</code> will immediately unblock. If the system
+is suspended and then resumed, all event channel bindings are invalidated
+and this function will fail with Generation.Invalid</div>
+<div class="info"><h2 id="2_TITLE">Low level interface</h2></div>
+<pre class="odoccode"><span class="VALwait"><span class="keyword">val</span> wait</span> : <code class="type"><a href="http://mirage.github.io/mirage-xen/#Eventchn.t">Eventchn.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">wait evtchn</code> is a cancellable thread that will wake up when
+<code class="code">evtchn</code> is notified. Cancel it if you are no longer interested in
+waiting on <code class="code">evtchn</code>. Note that if the notification is sent before
+<code class="code">wait</code> is called then the notification is lost.</div>
+<pre class="odoccode"><span class="VALrun"><span class="keyword">val</span> run</span> : <code class="type"><a href="http://mirage.github.io/mirage-xen/#Eventchn.handle">Eventchn.handle</a> -&gt; unit</code></pre><div class="info"><code class="code">run ()</code> goes through the event mask and activate any events,
+potentially spawning new threads. This function is called by
+<code class="code">Main.run</code>. Do not call it unless you know what you are doing.</div>
+<pre class="odoccode"><span class="VALresume"><span class="keyword">val</span> resume</span> : <code class="type">unit -&gt; unit</code></pre><div class="info"><code class="code">resume</code> needs to be called after the unikernel is
+resumed. However, this function is automatically called by
+Sched.suspend. Do NOT use it unless you know what you are
+doing.</div>
+<pre class="odoccode"><span class="VALdump"><span class="keyword">val</span> dump</span> : <code class="type">unit -&gt; unit</code></pre><div class="info"><code class="code">dump ()</code> prints internal state to the console for debugging</div>
+</div></div>

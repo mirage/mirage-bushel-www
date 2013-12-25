@@ -1,0 +1,144 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALpr"><span class="keyword">val</span> pr</span> : <code class="type">Format.formatter -&gt; ('a, Format.formatter, unit) format -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALpr_range"><span class="keyword">val</span> pr_range</span> : <code class="type">Format.formatter -&gt; (int * int) * (int * int) -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALpr_decode"><span class="keyword">val</span> pr_decode</span> : <code class="type">Format.formatter -&gt;
+string -&gt;
+<a href="http://mirage.github.io/jsonm/#Jsonm.decoder">Jsonm.decoder</a> -&gt;
+[&lt; `Await
+ | `Comment of [ `M | `S ] * string
+ | `End
+ | `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error">Jsonm.error</a>
+ | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme">Jsonm.lexeme</a>
+ | `White of string ] -&gt;
+unit</code></pre>
+<pre class="odoccode"><span class="VALexec"><span class="keyword">val</span> exec</span> : <code class="type">string</code></pre>
+<pre class="odoccode"><span class="VALlog"><span class="keyword">val</span> log</span> : <code class="type">('a, Format.formatter, unit, unit, unit, unit) format6 -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALlog_error"><span class="keyword">val</span> log_error</span> : <code class="type">string -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.decoder">Jsonm.decoder</a> -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.error">Jsonm.error</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALio_buffer_size"><span class="keyword">val</span> io_buffer_size</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALunix_buffer_size"><span class="keyword">val</span> unix_buffer_size</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALunix_read"><span class="keyword">val</span> unix_read</span> : <code class="type">Unix.file_descr -&gt; string -&gt; int -&gt; int -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALunix_write"><span class="keyword">val</span> unix_write</span> : <code class="type">Unix.file_descr -&gt; string -&gt; int -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstring_of_channel"><span class="keyword">val</span> string_of_channel</span> : <code class="type">bool -&gt; in_channel -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALstring_to_channel"><span class="keyword">val</span> string_to_channel</span> : <code class="type">bool -&gt; out_channel -&gt; string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdst_for"><span class="keyword">val</span> dst_for</span> : <code class="type">bool -&gt; [&gt; `Buffer of Buffer.t | `Channel of out_channel ]</code></pre>
+<pre class="odoccode"><span class="VALsrc_for"><span class="keyword">val</span> src_for</span> : <code class="type">string -&gt; bool -&gt; bool -&gt; [&gt; `Channel of in_channel | `String of string ]</code></pre>
+<pre class="odoccode"><span class="VALclose_src"><span class="keyword">val</span> close_src</span> : <code class="type">[&gt; `Channel of in_channel ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALsrc_for_unix"><span class="keyword">val</span> src_for_unix</span> : <code class="type">string -&gt; Unix.file_descr</code></pre>
+<pre class="odoccode"><span class="VALclose_src_unix"><span class="keyword">val</span> close_src_unix</span> : <code class="type">Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencode_unix"><span class="keyword">val</span> encode_unix</span> : <code class="type">(<a href="http://mirage.github.io/jsonm/#Jsonm.encoder">Jsonm.encoder</a> -&gt; ([&gt; `Await ] as 'a) -&gt; [&lt; `Ok | `Partial ]) -&gt;
+Unix.file_descr -&gt; string -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoder">Jsonm.encoder</a> -&gt; 'a -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump_"><span class="keyword">val</span> dump_</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.src">Jsonm.src</a> &gt; `Channel ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump_unix"><span class="keyword">val</span> dump_unix</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; int -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump"><span class="keyword">val</span> dump</span> : <code class="type">string -&gt; bool -&gt; bool -&gt; int -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALguess"><span class="keyword">val</span> guess</span> : <code class="type">string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode_"><span class="keyword">val</span> decode_</span> : <code class="type">string -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.src">Jsonm.src</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode_unix"><span class="keyword">val</span> decode_unix</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; int -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type">string -&gt; bool -&gt; bool -&gt; int -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALr_ascii_letter"><span class="keyword">val</span> r_ascii_letter</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALr_general_scripts"><span class="keyword">val</span> r_general_scripts</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALmax_rint"><span class="keyword">val</span> max_rint</span> : <code class="type">int64</code></pre>
+<pre class="odoccode"><span class="VALr_int"><span class="keyword">val</span> r_int</span> : <code class="type">unit -&gt; float</code></pre>
+<pre class="odoccode"><span class="VALr_float"><span class="keyword">val</span> r_float</span> : <code class="type">unit -&gt; float</code></pre>
+<pre class="odoccode"><span class="VALr_name"><span class="keyword">val</span> r_name</span> : <code class="type">Buffer.t -&gt; int -&gt; [&gt; `Name of string ]</code></pre>
+<pre class="odoccode"><span class="VALr_string"><span class="keyword">val</span> r_string</span> : <code class="type">Buffer.t -&gt; int -&gt; [&gt; `String of string ]</code></pre>
+<pre class="odoccode"><span class="VALr_comment"><span class="keyword">val</span> r_comment</span> : <code class="type">Buffer.t -&gt; [&gt; `Comment of [&gt; `M | `S ] * string ]</code></pre>
+<pre class="odoccode"><span class="VALr_white"><span class="keyword">val</span> r_white</span> : <code class="type">Buffer.t -&gt; [&gt; `White of string ]</code></pre>
+<pre class="odoccode"><span class="VALr_value"><span class="keyword">val</span> r_value</span> : <code class="type">((([&gt; `Ae
+    | `As
+    | `Bool of bool
+    | `Float of float
+    | `Name of string
+    | `Null
+    | `Oe
+    | `Os
+    | `String of string ]
+   as 'a) -&gt;
+  'b) -&gt;
+ Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c) -&gt;
+('a -&gt; 'b) -&gt; Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c</code></pre>
+<pre class="odoccode"><span class="VALr_obj_ms"><span class="keyword">val</span> r_obj_ms</span> : <code class="type">int -&gt;
+((([&gt; `Ae
+    | `As
+    | `Bool of bool
+    | `Float of float
+    | `Name of string
+    | `Null
+    | `Oe
+    | `Os
+    | `String of string ]
+   as 'a) -&gt;
+  'b) -&gt;
+ Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c) -&gt;
+('a -&gt; 'b) -&gt; Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c</code></pre>
+<pre class="odoccode"><span class="VALr_arr_vs"><span class="keyword">val</span> r_arr_vs</span> : <code class="type">int -&gt;
+((([&gt; `Ae
+    | `As
+    | `Bool of bool
+    | `Float of float
+    | `Name of string
+    | `Null
+    | `Oe
+    | `Os
+    | `String of string ]
+   as 'a) -&gt;
+  'b) -&gt;
+ Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c) -&gt;
+('a -&gt; 'b) -&gt; Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c</code></pre>
+<pre class="odoccode"><span class="VALr_json"><span class="keyword">val</span> r_json</span> : <code class="type">int -&gt;
+((([&gt; `Ae
+    | `As
+    | `Bool of bool
+    | `Float of float
+    | `Name of string
+    | `Null
+    | `Oe
+    | `Os
+    | `String of string ]
+   as 'a) -&gt;
+  'b) -&gt;
+ Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c) -&gt;
+('a -&gt; 'b) -&gt; Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'c</code></pre>
+<pre class="odoccode"><span class="VALr_json_text"><span class="keyword">val</span> r_json_text</span> : <code class="type">([&gt; `End
+  | `Lexeme of
+      [&gt; `Ae
+       | `As
+       | `Bool of bool
+       | `Float of float
+       | `Name of string
+       | `Null
+       | `Oe
+       | `Os
+       | `String of string ] ] -&gt;
+ 'a) -&gt;
+Buffer.t -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALr_uncut"><span class="keyword">val</span> r_uncut</span> : <code class="type">([&gt; `Comment of [&gt; `M | `S ] * string | `White of string ] -&gt; unit) -&gt;
+Buffer.t -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencode_f"><span class="keyword">val</span> encode_f</span> : <code class="type">Buffer.t -&gt;
+bool -&gt;
+bool -&gt;
+[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.dst">Jsonm.dst</a> ] -&gt; [&lt; `Await | `End | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme">Jsonm.lexeme</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencode_f_unix"><span class="keyword">val</span> encode_f_unix</span> : <code class="type">int -&gt;
+Buffer.t -&gt;
+bool -&gt;
+bool -&gt;
+Unix.file_descr -&gt;
+[&lt; `Await | `End | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme">Jsonm.lexeme</a> &gt; `Await ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALr_encode"><span class="keyword">val</span> r_encode</span> : <code class="type">bool -&gt;
+bool -&gt;
+int -&gt; bool -&gt; bool -&gt; int -&gt; int -&gt; bool -&gt; int -&gt; int -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip_"><span class="keyword">val</span> trip_</span> : <code class="type">string -&gt;
+bool -&gt; bool -&gt; 'a -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.src">Jsonm.src</a> &gt; `Channel ] -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.dst">Jsonm.dst</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip_unix"><span class="keyword">val</span> trip_unix</span> : <code class="type">string -&gt;
+int -&gt;
+bool -&gt;
+bool -&gt;
+[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; Unix.file_descr -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip"><span class="keyword">val</span> trip</span> : <code class="type">string -&gt;
+bool -&gt;
+bool -&gt; bool -&gt; int -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding">Jsonm.encoding</a> ] option -&gt; bool -&gt; bool -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALmain"><span class="keyword">val</span> main</span> : <code class="type">unit -&gt; unit</code></pre>
+
+</div></div>

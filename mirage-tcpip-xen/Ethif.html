@@ -1,0 +1,50 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">INTERNAL: Ethernet protocol.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span></pre><div class="info">Type of an ethernet protocol interface. It contains a OS.Netif.t
+&quot;raw&quot; interface, as well as IPv4 and ARP callbacks to perform IP
+or ARP operations on this interface.</div>
+<pre class="odoccode"><code><span class="TYPEpacket"><span class="keyword">type</span> packet</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTpacket.Input"><span class="constructor">Input</span></span> <span class="keyword">of</span> <code class="type"><a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a></code></code></td><td class="typefieldcomment" align="left"><div class="info">always read as a whole chunk</div></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTpacket.Output"><span class="constructor">Output</span></span> <span class="keyword">of</span> <code class="type"><a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> list</code></code></td><td class="typefieldcomment" align="left"><div class="info">written as a list of fragments</div></td></tr></table>
+<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type"><a href="http://mirage.github.io/mirage-net-xen/#Netif.t">Netif.t</a> -&gt; <a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> * unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">create netif</code> creates a value of type t out of a <code class="code">netif</code> value,
+and calls <code class="code">listen</code> on the result. It returns a tuple composed of a
+value of type t, and the result of the <code class="code">listen</code> function that has
+been called on it.</div>
+<div class="info">Functions to set up callback for processing an IPv4 packet. By
+default, <code class="code">create</code> ignores all received packets, so use <code class="code">attach</code> to
+start doing something useful with the packet you receive. <code class="code">detach</code>
+will replace the callback installed with <code class="code">attach</code> by the default
+callback that does nothing.</div>
+<pre class="odoccode"><span class="VALattach"><span class="keyword">val</span> attach</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; [&lt; `IPv4 of <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdetach"><span class="keyword">val</span> detach</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; [&lt; `IPv4 ] -&gt; unit</code></pre>
+<div class="info">Accessors for t values</div>
+<pre class="odoccode"><span class="VALmac"><span class="keyword">val</span> mac</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/ipaddr/#Macaddr.t">Macaddr.t</a></code></pre>
+<pre class="odoccode"><span class="VALget_netif"><span class="keyword">val</span> get_netif</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/mirage-net-xen/#Netif.t">Netif.t</a></code></pre>
+<pre class="odoccode"><span class="VALset_promiscuous"><span class="keyword">val</span> set_promiscuous</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; (<a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.packet" class="ocaml_internal">packet</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a>) -&gt; unit</code></pre><div class="info"><code class="code">set_promiscuous ethif cb</code> will install <code class="code">cb</code> as a callback to be
+called every time a packet is received</div>
+<pre class="odoccode"><span class="VALdisable_promiscuous"><span class="keyword">val</span> disable_promiscuous</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; unit</code></pre><div class="info"><code class="code">disable_promiscuous ethif</code> removes the callback associated with
+promiscuous mode in <code class="code">ethif</code></div>
+<pre class="odoccode"><span class="VALdefault_process"><span class="keyword">val</span> default_process</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">default_process ethif frame</code> is called by function <code class="code">input</code>
+whenever promiscuous mode is disabled (e.g. when no promiscuous
+callback function has been set)</div>
+<pre class="odoccode"><span class="VALinput"><span class="keyword">val</span> input</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">input ethif frame</code> processes the incoming data from <code class="code">frame</code>
+coming from <code class="code">ethif</code>. It either call <code class="code">default_process</code> if the
+promiscuous mode is disabled, otherwise call the promiscuous
+callback function</div>
+<div class="info">Functions related to the ARP protocol, and applied to the arp
+value contained inside <code class="code">t</code>. Please refer to the documentation of
+module <code class="code">Arp</code> for more information.</div>
+<pre class="odoccode"><span class="VALadd_ip"><span class="keyword">val</span> add_ip</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALremove_ip"><span class="keyword">val</span> remove_ip</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALquery_arp"><span class="keyword">val</span> query_arp</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/ipaddr/#Ipaddr.V4.t">Ipaddr.V4.t</a> -&gt; <a href="http://mirage.github.io/ipaddr/#Macaddr.t">Macaddr.t</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<div class="info">Low-level functions to interact with the value of type <code class="code">Netif.t</code>
+embedded into <code class="code">t</code>. Please refer to the documentation of module
+<code class="code">OS.Netif</code> for more information.</div>
+<pre class="odoccode"><span class="VALget_frame"><span class="keyword">val</span> get_frame</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALwrite"><span class="keyword">val</span> write</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<pre class="odoccode"><span class="VALwritev"><span class="keyword">val</span> writev</span> : <code class="type"><a href="http://mirage.github.io/mirage-tcpip-xen/#Ethif.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> list -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre>
+<div class="info">Functions generated by <code class="code">cstruct</code> via a camlp4 extension. Refer to
+the documentation of <code class="code">cstruct</code>.</div>
+<pre class="odoccode"><span class="VALsizeof_ethernet"><span class="keyword">val</span> sizeof_ethernet</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALset_ethernet_dst"><span class="keyword">val</span> set_ethernet_dst</span> : <code class="type">string -&gt; int -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALset_ethernet_src"><span class="keyword">val</span> set_ethernet_src</span> : <code class="type">string -&gt; int -&gt; <a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALset_ethernet_ethertype"><span class="keyword">val</span> set_ethernet_ethertype</span> : <code class="type"><a href="http://mirage.github.io/cstruct/#Cstruct.t">Cstruct.t</a> -&gt; int -&gt; unit</code></pre>
+</div></div>

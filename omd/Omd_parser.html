@@ -1,0 +1,193 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Beware: the functions in this module may raise exceptions! If you
+use them, you should be careful.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEr"><span class="keyword">type</span> r</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre><div class="info">accumulator (beware, reversed tokens)</div>
+<pre class="odoccode"><span class="TYPEp"><span class="keyword">type</span> p</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info">context information: previous elements</div>
+<pre class="odoccode"><span class="TYPEl"><span class="keyword">type</span> l</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info">tokens to parse</div>
+<pre class="odoccode"><span class="TYPEmain_loop"><span class="keyword">type</span> main_loop</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre>
+<div class="info">most important loop, which has to be given as an argument</div>
+<pre class="odoccode"><span class="VALdefault_parse"><span class="keyword">val</span> default_parse</span> : <code class="type">?extensions:<a href="http://mirage.github.io/omd/#Omd_representation.extensions">Omd_representation.extensions</a> -&gt;
+?default_lang:string -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre><div class="info">Translate tokens to Markdown representation.<div class="parameters"><div class="param_info"><code class="code">lang</code> : language for blocks of code where it was not specified.
+Default: <code class="code">&quot;&quot;</code>.</div></div></div>
+<div class="ocaml_modtype" name="Env"><pre class="odoccode"><span class="keyword">module type</span> <a href="http://mirage.github.io/omd/#Omd_parser:Env" class="ocaml_internal">Env</a> = <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="VALrc"><span class="keyword">val</span> rc</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.ref_container">Omd_representation.ref_container</a></code></pre><div class="info">reference container</div>
+<pre class="odoccode"><span class="VALextensions"><span class="keyword">val</span> extensions</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.extensions">Omd_representation.extensions</a></code></pre><div class="info">list of parser extensions</div>
+<pre class="odoccode"><span class="VALdefault_lang"><span class="keyword">val</span> default_lang</span> : <code class="type">string</code></pre><div class="info">default language for code blocks</div>
+<pre class="odoccode"><span class="VALgh_uemph_or_bold_style"><span class="keyword">val</span> gh_uemph_or_bold_style</span> : <code class="type">bool</code></pre><div class="info">flag: bold/emph using using underscores is by default
+github-style, which means that underscores inside words are
+left as underscore, rather than special characters, because
+it's more convenient. However it is also less expressive
+because then you can't bold/emph a part of a word. You might
+want to set this flag to false.</div>
+<pre class="odoccode"><span class="VALblind_html"><span class="keyword">val</span> blind_html</span> : <code class="type">bool</code></pre><div class="info">flag: if true, will not check whether a used HTML tag actually
+exists in HTML.</div>
+<pre class="odoccode"><span class="VALstrict_html"><span class="keyword">val</span> strict_html</span> : <code class="type">bool</code></pre><div class="info">flag: if true, will only accept known inline HTML tags in inline HTML.</div></div></div>
+<div class="ocaml_module" name="Default_env" path="http://mirage.github.io/omd/#Omd_parser:Env"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/omd/#Omd_parser.Default_env" class="ocaml_internal">Default_env</a> : <code class="type"><div class="sig_block"><code class="code">functor (</code><code class="code">Unit</code><code class="code"> : </code><code class="code">sig</code> .. <code class="code">end</code><code class="code">) -&gt; </code><code class="code"><a href="http://mirage.github.io/omd/#Omd_parser:Env" class="ocaml_internal">Env</a></code></div></code></pre><div class="ocaml_summary"/></div>
+<div class="ocaml_module" name="Make"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/omd/#Omd_parser.Make" class="ocaml_internal">Make</a> : <code class="type"><div class="sig_block"><code class="code">functor (</code><code class="code">Env</code><code class="code"> : </code><code class="code"><a href="http://mirage.github.io/omd/#Omd_parser:Env" class="ocaml_internal">Env</a></code><code class="code">) -&gt; </code><code class="code">sig</code> .. <code class="code">end</code></div></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="VALrc"><span class="keyword">val</span> rc</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.ref_container">Omd_representation.ref_container</a></code></pre><div class="info">reference container</div>
+<pre class="odoccode"><span class="VALextensions"><span class="keyword">val</span> extensions</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.extensions">Omd_representation.extensions</a></code></pre><div class="info">list of parser extensions</div>
+<pre class="odoccode"><span class="VALdefault_lang"><span class="keyword">val</span> default_lang</span> : <code class="type">string</code></pre><div class="info">default language for code blocks</div>
+<pre class="odoccode"><span class="VALgh_uemph_or_bold_style"><span class="keyword">val</span> gh_uemph_or_bold_style</span> : <code class="type">bool</code></pre><div class="info">flag: bold/emph using using underscores is by default
+github-style, which means that underscores inside words are
+left as underscore, rather than special characters, because
+it's more convenient. However it is also less expressive
+because then you can't bold/emph a part of a word. You might
+want to set this flag to false.</div>
+<pre class="odoccode"><span class="VALblind_html"><span class="keyword">val</span> blind_html</span> : <code class="type">bool</code></pre><div class="info">flag: if true, will not check whether a used HTML tag actually
+exists in HTML.</div>
+<pre class="odoccode"><span class="VALstrict_html"><span class="keyword">val</span> strict_html</span> : <code class="type">bool</code></pre><div class="info">flag: if true, will only accept known inline HTML tags in inline HTML.</div>
+<pre class="odoccode"><span class="VALhtmlcodes_set"><span class="keyword">val</span> htmlcodes_set</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_utils.StringSet.t">Omd_utils.StringSet.t</a></code></pre><div class="info">set of known HTML codes</div>
+<pre class="odoccode"><span class="VALinline_htmltags_set"><span class="keyword">val</span> inline_htmltags_set</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_utils.StringSet.t">Omd_utils.StringSet.t</a></code></pre><div class="info">set of known inline HTML tags</div>
+<pre class="odoccode"><span class="VALhtmltags_set"><span class="keyword">val</span> htmltags_set</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_utils.StringSet.t">Omd_utils.StringSet.t</a></code></pre><div class="info">All known HTML tags</div>
+<pre class="odoccode"><span class="VALunindent_rev"><span class="keyword">val</span> unindent_rev</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info"><code class="code">unindent_rev n l</code> returns the same couple as <code class="code">unindent n l</code>
+except that the first element (which is a list) is reversed.
+This function is used for lists.</div>
+<pre class="odoccode"><span class="VALunindent"><span class="keyword">val</span> unindent</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info"><code class="code">unindent n l</code> returns <code class="code">(unindented, rest)</code> where <code class="code">unindented</code> is
+the consecutive lines of <code class="code">l</code> that are indented with at least <code class="code">n</code>
+spaces, and de-indented by <code class="code">n</code> spaces. If <code class="code">l</code> starts with a line
+that is indented by less than <code class="code">n</code> spaces, then it returns <code class="code">([], l)</code>.<p>(* This function is used for lists, so it does not require <code class="code">n</code> *)
+(* spaces on every single line, but only on some specific ones of them. *)</p><p>This function is used for lists and blockquotes.</p></div>
+<pre class="odoccode"><span class="VALis_blank"><span class="keyword">val</span> is_blank</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt; bool</code></pre><div class="info"><code class="code">is_blank l</code> returns <code class="code">true</code> if <code class="code">l</code> only contains blanks, which are
+spaces and newlines.</div>
+<pre class="odoccode"><span class="VALsemph_or_bold"><span class="keyword">val</span> semph_or_bold</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+(<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list) option</code></pre><div class="info"><code class="code">semph_or_bold n l</code> returns <code class="code">None</code> if <code class="code">l</code> doesn't start with
+a bold/emph phrase (marked using stars), else it returns <code class="code">Some(x,y)</code>
+where <code class="code">x</code> is the emph and/or bold phrase at the beginning of <code class="code">l</code>
+and <code class="code">y</code> is the rest of <code class="code">l</code>.</div>
+<pre class="odoccode"><span class="VALsm_uemph_or_bold"><span class="keyword">val</span> sm_uemph_or_bold</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+(<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list) option</code></pre><div class="info"><code class="code">sm_uemph_or_bold n l</code> returns <code class="code">None</code> if <code class="code">l</code> doesn't start with
+a bold/emph phrase (marked using underscores), else it returns <code class="code">Some(x,y)</code>
+where <code class="code">x</code> is the emph and/or bold phrase at the beginning of <code class="code">l</code>
+and <code class="code">y</code> is the rest of <code class="code">l</code>.</div>
+<pre class="odoccode"><span class="VALgh_uemph_or_bold"><span class="keyword">val</span> gh_uemph_or_bold</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+(<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list) option</code></pre><div class="info"><code class="code">gh_uemph_or_bold n l</code> returns <code class="code">None</code> if <code class="code">l</code> doesn't start with
+a bold/emph phrase (marked using underscores), else it returns <code class="code">Some(x,y)</code>
+where <code class="code">x</code> is the emph and/or bold phrase at the beginning of <code class="code">l</code>
+and <code class="code">y</code> is the rest of <code class="code">l</code>.</div>
+<pre class="odoccode"><span class="VALuemph_or_bold"><span class="keyword">val</span> uemph_or_bold</span> : <code class="type">int -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+(<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list) option</code></pre><div class="info"><code class="code">uemph_or_bold n l</code> returns <code class="code">None</code> if <code class="code">l</code> doesn't start with a
+bold/emph phrase (marked using underscores), else it returns
+<code class="code">Some(x,y)</code> where <code class="code">x</code> is the emph and/or bold phrase at the
+beginning of <code class="code">l</code> and <code class="code">y</code> is the rest of <code class="code">l</code>. N.B. if
+<code class="code">!gh_uemph_or_bold_style</code> then in Github style (i.e., underscores
+inside words are considered as underscores).</div>
+<pre class="odoccode"><span class="VALeat_blank"><span class="keyword">val</span> eat_blank</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info"><code class="code">eat_blank l</code> returns <code class="code">l</code> where all blanks at the beginning of the
+list have been removed (it stops removing as soon as it meets an element
+that is not a blank). Blanks are spaces and newlines only.</div>
+<pre class="odoccode"><span class="VALtag__maybe_h1"><span class="keyword">val</span> tag__maybe_h1</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a></code></pre><div class="info"><code class="code">tag__maybe_h1 main_loop</code> is a tag that is injected everywhere that
+might preceed a H1 title. It needs <code class="code">main_loop</code> as argument because
+it is used to parse the contents of the titles.</div>
+<pre class="odoccode"><span class="VALtag__maybe_h2"><span class="keyword">val</span> tag__maybe_h2</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a></code></pre><div class="info"><code class="code">tag__maybe_h2 main_loop</code> is the same as <code class="code">tag__maybe_h1 main_loop</code>
+but for H2.</div>
+<pre class="odoccode"><span class="VALtag__md"><span class="keyword">val</span> tag__md</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a></code></pre><div class="info"><code class="code">tag__md md</code> encapsulates <code class="code">md</code> to make it a value of type <code class="code">tok</code>.
+Its purpose is to inject some pre-parsed markdown (i.e., <code class="code">md</code> of type <code class="code">t</code>)
+in a yet-to-parse token stream of type <code class="code">tok</code>.</div>
+<pre class="odoccode"><span class="VALtag_setext"><span class="keyword">val</span> tag_setext</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info">Tag used for the lines that *might* be titles using setext-style.</div>
+<pre class="odoccode"><span class="VALhr_m"><span class="keyword">val</span> hr_m</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> option</code></pre><div class="info"><code class="code">hr_m l</code> returns <code class="code">Some nl</code> where <code class="code">nl</code> is the remaining of <code class="code">l</code> if <code class="code">l</code>
+contains a horizontal rule &quot;drawn&quot; with dashes. If there's no HR, then
+returns <code class="code">None</code>.</div>
+<pre class="odoccode"><span class="VALhr_s"><span class="keyword">val</span> hr_s</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> option</code></pre><div class="info"><code class="code">hr_s l</code> is the same as <code class="code">hr_m l</code> but for horizontal rules
+&quot;drawn&quot; with stars instead.</div>
+<pre class="odoccode"><span class="EXCEPTIONNL_exception"><span class="keyword">exception</span> NL_exception</span></pre>
+<pre class="odoccode"><span class="EXCEPTIONPremature_ending"><span class="keyword">exception</span> Premature_ending</span></pre>
+<pre class="odoccode"><span class="VALread_until_gt"><span class="keyword">val</span> read_until_gt</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_lt"><span class="keyword">val</span> read_until_lt</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_cparenth"><span class="keyword">val</span> read_until_cparenth</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_oparenth"><span class="keyword">val</span> read_until_oparenth</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_dq"><span class="keyword">val</span> read_until_dq</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_q"><span class="keyword">val</span> read_until_q</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_obracket"><span class="keyword">val</span> read_until_obracket</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_cbracket"><span class="keyword">val</span> read_until_cbracket</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_space"><span class="keyword">val</span> read_until_space</span> : <code class="type">?bq:bool -&gt;
+?no_nl:bool -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre>
+<pre class="odoccode"><span class="VALread_until_newline"><span class="keyword">val</span> read_until_newline</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt;
+<a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list * <a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list</code></pre><div class="info"><code class="code">read_until_...</code> are functions that read from a token list
+and return two token lists: the first one is the tokens read
+until a specific token is met, and the second one is the remainder.
+The particularity of these functions is that they do consider
+backslash-escaped characters and closing characters.
+For instance, <code class="code">read_until_gt &quot;1 &lt; 2 &gt; 3 &gt; 4&quot;</code> returns
+<code class="code">&quot;1 &lt; 2 &gt; 3 &quot;, &quot; 4&quot;</code>: note that the &quot;&gt;&quot; before &quot; 4&quot; has disappeared
+and that <code class="code">read_until_gt</code> takes a <code class="code">tok list</code> (not a string) and
+returns a couple of <code class="code">tok list</code> (not a couple of strings), the
+string notation is used here for concision.<p>Until otherwise noted, those functions do *not* consider
+backquote-trapped sections.
+For instance, <code class="code">read_until_gt &quot;1 &lt; 2 &gt; 3 `&gt;` 4&quot;</code>
+returns <code class="code">&quot;1 &lt; 2 &gt; 3 `&quot;, &quot;` 4&quot;</code>.
+If you use these functions, you should make sure that they
+do what you think they do (i.e., do look at the code).</p><p>If the expected characters are not found, the exception
+<code class="code">Premature_ending</code> is raised. For instance,
+<code class="code">read_until_gt &quot;1 &lt; &gt; 3&quot;</code> raises <code class="code">Premature_ending</code>.</p><p>If <code class="code">no_nl</code> is <code class="code">true</code> (default value for <code class="code">no_nl</code> is <code class="code">false</code>)
+and <code class="code">'\n'</code> occurs before the splitting character,
+then <code class="code">NL_exception</code> is raised.</p></div>
+<pre class="odoccode"><span class="VALread_title"><span class="keyword">val</span> read_title</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; int -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">read_title main_loop n r p l</code> returns <code class="code">Some(r,p,l)</code>
+if it succeeds, <code class="code">None</code> otherwise.<p><code class="code">read_title main_loop n r p l</code> expects to read a <code class="code">n</code>-level
+hash-declared title from <code class="code">l</code>, where the hashes have *already*
+been *removed*. If <code class="code">n</code> is not between 1 and 6 (included), then
+it returns <code class="code">None</code>.</p><p><code class="code">main_loop</code> is used to parse the contents of the title.</p><p><code class="code">r</code> and <code class="code">p</code> are the classical &quot;result&quot; and &quot;previous&quot; parameters.</p></div>
+<pre class="odoccode"><span class="VALmaybe_extension"><span class="keyword">val</span> maybe_extension</span> : <code class="type">(<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option) list -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">maybe_extension e r p l</code> returns <code class="code">None</code> if there is no extension or
+if extensions haven't had any effect, returns <code class="code">Some(nr, np, nl)</code> if
+at least one extension has applied successfully.</div>
+<pre class="odoccode"><span class="VALemailstyle_quoting"><span class="keyword">val</span> emailstyle_quoting</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">emailstyle_quoting main_loop r p l</code> returns <code class="code">Some(r,p,l)</code> with
+<code class="code">r</code> being the updated result, <code class="code">p</code> being the last parsed token
+and <code class="code">l</code> being the remaining tokens to parse. If <code class="code">emailstyle_quoting</code>
+fails, then it returns <code class="code">None</code>, in which case its user is advise
+to investigate why it returns <code class="code">None</code> because there's possibly a
+real problem.</div>
+<pre class="odoccode"><span class="VALmaybe_reference"><span class="keyword">val</span> maybe_reference</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.ref_container">Omd_representation.ref_container</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">maybe_reference</code> tries to parse a reference, a reference definition or
+a github-style short reference (e.g., <code class="code">foo</code> as a shortcut for <code class="code">foo</code><code class="code"></code>),
+and returns <code class="code">Some(r,p,l)</code> if it succeeds, <code class="code">None</code> otherwise.</div>
+<pre class="odoccode"><span class="VALmaybe_link"><span class="keyword">val</span> maybe_link</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">maybe_link</code> tries to parse a link,
+and returns <code class="code">Some(r,p,l)</code> if it succeeds, <code class="code">None</code> otherwise.</div>
+<pre class="odoccode"><span class="VALparse_list"><span class="keyword">val</span> parse_list</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.main_loop" class="ocaml_internal">main_loop</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a></code></pre><div class="info"><code class="code">parse_list main_loop r p l</code> parses a list from <code class="code">l</code>.<p>**Important property***
+It is considered in Omd that a sub-list is always more indented than
+the item that contains it (so, 2 items with different indentations cannot
+have the direct same parent).</p></div>
+<pre class="odoccode"><span class="VALmake_paragraphs"><span class="keyword">val</span> make_paragraphs</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre><div class="info">Since <code class="code">Omd_parser.parse</code> doesn't build paragraphs, if you want
+Markdown-style paragraphs, you need to apply this function to
+the result of <code class="code">Omd_parser.parse</code>.</div>
+<pre class="odoccode"><span class="VALbcode"><span class="keyword">val</span> bcode</span> : <code class="type">?default_lang:<a href="http://mirage.github.io/omd/#Omd_representation.name">Omd_representation.name</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">bcode default_lang r p l</code>
+tries to parse some code that's delimited by backquotes,
+and returns <code class="code">Some(r,p,l)</code> if it succeeds, <code class="code">None</code> otherwise.</div>
+<pre class="odoccode"><span class="VALicode"><span class="keyword">val</span> icode</span> : <code class="type">?default_lang:<a href="http://mirage.github.io/omd/#Omd_representation.name">Omd_representation.name</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; (<a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> * <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> * <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a>) option</code></pre><div class="info"><code class="code">icode default_lang r p l</code>
+tries to parse some code that's delimited by space indentation.
+It should always return <code class="code">Some(r,p,l)</code>, if it returns <code class="code">None</code>
+it means that it's been misused or there's a bug.</div>
+<pre class="odoccode"><span class="VALmain_loop_rev"><span class="keyword">val</span> main_loop_rev</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a></code></pre>
+<pre class="odoccode"><span class="VALmain_loop"><span class="keyword">val</span> main_loop</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_parser.r" class="ocaml_internal">r</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.p" class="ocaml_internal">p</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_parser.l" class="ocaml_internal">l</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre>
+<pre class="odoccode"><span class="VALmain_parse"><span class="keyword">val</span> main_parse</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre>
+<pre class="odoccode"><span class="VALparse"><span class="keyword">val</span> parse</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a> list -&gt; <a href="http://mirage.github.io/omd/#Omd_representation.t">Omd_representation.t</a></code></pre></div></div>
+</div></div>

@@ -1,0 +1,73 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALinit"><span class="keyword">val</span> init</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALinitRO"><span class="keyword">val</span> initRO</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALsave"><span class="keyword">val</span> save</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALget"><span class="keyword">val</span> get</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALlazy_get"><span class="keyword">val</span> lazy_get</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALid"><span class="keyword">val</span> id</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALcache"><span class="keyword">val</span> cache</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALget_by"><span class="keyword">val</span> get_by</span> : <code class="type">string -&gt; string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALormid"><span class="keyword">val</span> ormid</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALenv_to_env"><span class="keyword">val</span> env_to_env</span> : <code class="type">Camlp4.PreCast.Syntax.Ast.loc -&gt;
+[&lt; `Debug of string list
+ | `Dot of string
+ | `Index of (string * string list) list
+ | `Mode of 'a
+ | `Unique of (string * string list) list ]
+list -&gt; Camlp4.PreCast.Syntax.Ast.expr</code></pre>
+<pre class="odoccode"><span class="VALinit_binding"><span class="keyword">val</span> init_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALinitRO_binding"><span class="keyword">val</span> initRO_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALgen_id"><span class="keyword">val</span> gen_id</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt; string -&gt; Camlp4.PreCast.Ast.expr</code></pre>
+<pre class="odoccode"><span class="VALid_seed"><span class="keyword">val</span> id_seed</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt; 'a option * Camlp4.PreCast.Ast.ctyp</code></pre>
+<pre class="odoccode"><span class="VALsave_binding"><span class="keyword">val</span> save_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<div class="ocaml_module" name="Get"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/orm/#P4_orm_sqlite.Get" class="ocaml_internal">Get</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="VALpp_type_of"><span class="keyword">val</span> pp_type_of</span> : <code class="type">'a -&gt; Camlp4.PreCast.Ast.ctyp -&gt; string -&gt; <a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a></code></pre>
+<pre class="odoccode"><span class="VALmap_type"><span class="keyword">val</span> map_type</span> : <code class="type">(string list -&gt; <a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; 'a option) -&gt; <a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; 'a list</code></pre>
+<pre class="odoccode"><span class="VALarg_names_of_type"><span class="keyword">val</span> arg_names_of_type</span> : <code class="type"><a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; string list</code></pre>
+<pre class="odoccode"><span class="VALvariant_names_of_type"><span class="keyword">val</span> variant_names_of_type</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt; string -&gt; Camlp4.PreCast.Ast.ctyp</code></pre>
+<pre class="odoccode"><span class="VALmatch_case_of_type"><span class="keyword">val</span> match_case_of_type</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt; string -&gt; Camlp4.PreCast.Ast.match_case</code></pre>
+<pre class="odoccode"><span class="VALfun_of_type"><span class="keyword">val</span> fun_of_type</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt;
+<a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; Camlp4.PreCast.Ast.expr -&gt; Camlp4.PreCast.Ast.expr</code></pre>
+<pre class="odoccode"><span class="VALctyp_of_arg"><span class="keyword">val</span> ctyp_of_arg</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt; <a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; Camlp4.PreCast.Ast.ctyp list</code></pre>
+<pre class="odoccode"><span class="VALsig_of_type"><span class="keyword">val</span> sig_of_type</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt; <a href="http://mirage.github.io/dyntype/#Type.t">Dyntype.Type.t</a> -&gt; Camlp4.PreCast.Ast.ctyp</code></pre>
+<pre class="odoccode"><span class="VALfun_of_name"><span class="keyword">val</span> fun_of_name</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt;
+string -&gt; Camlp4.PreCast.Ast.expr -&gt; Camlp4.PreCast.Ast.expr</code></pre>
+<pre class="odoccode"><span class="VALsig_of_name"><span class="keyword">val</span> sig_of_name</span> : <code class="type">Camlp4.PreCast.Ast.loc -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt; string -&gt; Camlp4.PreCast.Ast.ctyp</code></pre>
+<pre class="odoccode"><span class="VALconstraints_of_args"><span class="keyword">val</span> constraints_of_args</span> : <code class="type">Camlp4.PreCast.Syntax.Ast.loc -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt; string -&gt; Camlp4.PreCast.Ast.expr</code></pre></div></div>
+<pre class="odoccode"><span class="VALget_by_id_binding"><span class="keyword">val</span> get_by_id_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALget_binding"><span class="keyword">val</span> get_binding</span> : <code class="type">'a -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt;
+Camlp4.PreCast.Ast.loc * string * 'b -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALlazy_get_binding"><span class="keyword">val</span> lazy_get_binding</span> : <code class="type">'a -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt;
+Camlp4.PreCast.Ast.loc * string * 'b -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALdelete_binding"><span class="keyword">val</span> delete_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALid_binding"><span class="keyword">val</span> id_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALcache_binding"><span class="keyword">val</span> cache_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALcache_module"><span class="keyword">val</span> cache_module</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.str_item</code></pre>
+<pre class="odoccode"><span class="VALormid_module"><span class="keyword">val</span> ormid_module</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.str_item</code></pre>
+<pre class="odoccode"><span class="VALorm_module"><span class="keyword">val</span> orm_module</span> : <code class="type">'a -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt;
+Camlp4.PreCast.Ast.loc * string * 'b -&gt; Camlp4.PreCast.Ast.str_item</code></pre>
+<pre class="odoccode"><span class="VALgen"><span class="keyword">val</span> gen</span> : <code class="type">[&lt; `Debug of string list
+ | `Dot of string
+ | `Index of (string * string list) list
+ | `Mode of 'a
+ | `Unique of (string * string list) list ]
+list -&gt; Camlp4.PreCast.Syntax.Ast.ctyp -&gt; Camlp4.PreCast.Ast.str_item</code></pre>
+</div></div>

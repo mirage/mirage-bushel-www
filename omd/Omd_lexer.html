@@ -1,0 +1,24 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEtoken"><span class="keyword">type</span> token</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_representation.tok">Omd_representation.tok</a></code></pre>
+<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span> = <code class="type"><a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a> list</code></pre>
+<pre class="odoccode"><span class="VALlex"><span class="keyword">val</span> lex</span> : <code class="type">string -&gt; <a href="http://mirage.github.io/omd/#Omd_lexer.t" class="ocaml_internal">t</a></code></pre><div class="info">Translate a raw string into tokens for the parser. To implement
+an extension to the lexer, one may process its result before
+giving it to the parser. To implement an extension to the
+parser, one may extend it using the constructor <code class="code">Tag</code>
+from type <code class="code">tok</code> and/or using the extensions mechanism
+of the parser (cf. the optional argument <code class="code">extensions</code>).
+The main difference is that <code class="code">Tag</code> is processed by the parser
+in highest priority whereas functions in <code class="code">extensions</code> are applied
+with lowest priority.</div>
+<pre class="odoccode"><span class="VALstring_of_tokens"><span class="keyword">val</span> string_of_tokens</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_lexer.t" class="ocaml_internal">t</a> -&gt; string</code></pre><div class="info"><code class="code">string_of_tokens t</code> return the string corresponding to the token
+list <code class="code">t</code>.</div>
+<pre class="odoccode"><span class="VALlength"><span class="keyword">val</span> length</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a> -&gt; int</code></pre><div class="info"><code class="code">length t</code> number of characters of the string represented as <code class="code">t</code>
+(i.e. <code class="code">String.length(string_of_token t)</code>).</div>
+<pre class="odoccode"><span class="VALstring_of_token"><span class="keyword">val</span> string_of_token</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a> -&gt; string</code></pre><div class="info"><code class="code">string_of_token tk</code> return the string corresponding to the token
+<code class="code">tk</code>.</div>
+<pre class="odoccode"><span class="VALmake_space"><span class="keyword">val</span> make_space</span> : <code class="type">int -&gt; <a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a></code></pre>
+<pre class="odoccode"><span class="VALsplit_first"><span class="keyword">val</span> split_first</span> : <code class="type"><a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a> -&gt; <a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a> * <a href="http://mirage.github.io/omd/#Omd_lexer.token" class="ocaml_internal">token</a></code></pre><div class="info"><code class="code">split_first(Xs n)</code> returns <code class="code">(X, X(n-1))</code> where <code class="code">X</code> is a token
+carrying an int count. <b>Raises</b> <code>Invalid_argument</code> is passed a single token.<br/></div>
+<pre class="odoccode"><span class="VALdestring_of_tokens"><span class="keyword">val</span> destring_of_tokens</span> : <code class="type">?limit:int -&gt; <a href="http://mirage.github.io/omd/#Omd_lexer.t" class="ocaml_internal">t</a> -&gt; string</code></pre><div class="info">Converts the tokens to a simple string representation useful for
+debugging.</div>
+</div></div>

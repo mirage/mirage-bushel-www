@@ -1,9 +1,0 @@
-<div class="ocaml_top"><div class="ocaml_summary"/>
-<div class="ocaml_content"><div class="ocaml_include" path="http://mirage.github.io/core_kernel/#Std.Bigstring_marshal" items="[]" types="[]"><pre class="ocaml_include_handle"><span class="keyword">include</span> <code class="type">module type of <code class="code"><a href="http://mirage.github.io/core_kernel/#Std.Bigstring_marshal">Core_kernel.Std.Bigstring_marshal</a></code></code></pre><div class="ocaml_summary"/></div>
-<pre class="odoccode"><span class="VALmarshal_to_fd"><span class="keyword">val</span> marshal_to_fd</span> : <code class="type">?buf:<a href="http://mirage.github.io/core_kernel/#Std.Bigstring.t">Core_kernel.Std.Bigstring.t</a> -&gt;
-?flags:Marshal.extern_flags list -&gt; Unix.file_descr -&gt; 'a -&gt; unit</code></pre>
-<pre class="odoccode"><span class="VALmarshal_to_sock_no_sigpipe"><span class="keyword">val</span> marshal_to_sock_no_sigpipe</span> : <code class="type">(?buf:<a href="http://mirage.github.io/core_kernel/#Std.Bigstring.t">Core_kernel.Std.Bigstring.t</a> -&gt;
- ?flags:Marshal.extern_flags list -&gt; Unix.file_descr -&gt; 'a -&gt; unit)
-<a href="http://mirage.github.io/core_kernel/#Std.Or_error.t">Core_kernel.Std.Or_error.t</a></code></pre>
-<pre class="odoccode"><span class="VALunmarshal_from_sock"><span class="keyword">val</span> unmarshal_from_sock</span> : <code class="type">?buf:<a href="http://mirage.github.io/core_kernel/#Std.Bigstring.t">Core_kernel.Std.Bigstring.t</a> -&gt; Unix.file_descr -&gt; 'a</code></pre>
-</div></div>

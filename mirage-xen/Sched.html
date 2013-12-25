@@ -1,0 +1,14 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Xen scheduler operations.</div></div>
+<div class="ocaml_content"><pre class="odoccode"><code><span class="TYPEreason"><span class="keyword">type</span> reason</span> = </code></pre><table class="typetable">
+		    <tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTreason.Poweroff"><span class="constructor">Poweroff</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTreason.Reboot"><span class="constructor">Reboot</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTreason.Suspend"><span class="constructor">Suspend</span></span></code></td></tr><tr><td align="left" valign="top"><code><span class="keyword">|</span></code></td><td align="left" valign="top"><code><span class="TYPEELTreason.Crash"><span class="constructor">Crash</span></span></code></td></tr></table><div class="info">Type of the argument of function <code class="code">shutdown</code>.</div>
+<pre class="odoccode"><span class="VALadd_resume_hook"><span class="keyword">val</span> add_resume_hook</span> : <code class="type">(unit -&gt; unit <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a>) -&gt; unit</code></pre><div class="info"><code class="code">add_resume_hook f</code> adds <code class="code">f</code> in the list of functions to be called
+on resume.</div>
+<pre class="odoccode"><span class="VALshutdown"><span class="keyword">val</span> shutdown</span> : <code class="type"><a href="http://mirage.github.io/mirage-xen/#Sched.reason" class="ocaml_internal">reason</a> -&gt; unit</code></pre><div class="info"><code class="code">shutdown reason</code> informs Xen that the unikernel has shutdown. The
+<code class="code">reason</code> argument indicates the type of shutdown (according to
+this type and the configuration of the unikernel, Xen might
+restart the unikernel or not). To suspend, do a <code class="code">shutdown Suspend</code>
+is not enough, use the function below instead.</div>
+<pre class="odoccode"><span class="VALsuspend"><span class="keyword">val</span> suspend</span> : <code class="type">unit -&gt; int <a href="http://mirage.github.io/lwt/#Lwt.t">Lwt.t</a></code></pre><div class="info"><code class="code">suspend ()</code> suspends the unikernel and returns <code class="code">0</code> after
+the kernel has been resumed, in case of success, or
+immediately returns a non-zero value in case of error.</div>
+</div></div>

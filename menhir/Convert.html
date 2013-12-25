@@ -1,0 +1,17 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEtraditional"><span class="keyword">type</span> <code class="type">('token, 'semantic_value) </code>traditional</span> = <code class="type">(Lexing.lexbuf -&gt; 'token) -&gt; Lexing.lexbuf -&gt; 'semantic_value</code></pre>
+<pre class="odoccode"><span class="TYPErevised"><span class="keyword">type</span> <code class="type">('token, 'semantic_value) </code>revised</span> = <code class="type">(unit -&gt; 'token) -&gt; 'semantic_value</code></pre>
+<pre class="odoccode"><span class="VALtraditional2revised"><span class="keyword">val</span> traditional2revised</span> : <code class="type">('token -&gt; 'raw_token) -&gt;
+('token -&gt; Lexing.position) -&gt;
+('token -&gt; Lexing.position) -&gt;
+('raw_token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.traditional" class="ocaml_internal">traditional</a> -&gt;
+('token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.revised" class="ocaml_internal">revised</a></code></pre>
+<pre class="odoccode"><span class="VALrevised2traditional"><span class="keyword">val</span> revised2traditional</span> : <code class="type">('raw_token -&gt; Lexing.position -&gt; Lexing.position -&gt; 'token) -&gt;
+('token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.revised" class="ocaml_internal">revised</a> -&gt;
+('raw_token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.traditional" class="ocaml_internal">traditional</a></code></pre>
+<div class="ocaml_module" name="Simplified"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/menhir/#Convert.Simplified" class="ocaml_internal">Simplified</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="VALtraditional2revised"><span class="keyword">val</span> traditional2revised</span> : <code class="type">('token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.traditional" class="ocaml_internal">traditional</a> -&gt;
+('token * Lexing.position * Lexing.position, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.revised" class="ocaml_internal">revised</a></code></pre>
+<pre class="odoccode"><span class="VALrevised2traditional"><span class="keyword">val</span> revised2traditional</span> : <code class="type">('token * Lexing.position * Lexing.position, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.revised" class="ocaml_internal">revised</a> -&gt;
+('token, 'semantic_value) <a href="http://mirage.github.io/menhir/#Convert.traditional" class="ocaml_internal">traditional</a></code></pre></div></div>
+</div></div>

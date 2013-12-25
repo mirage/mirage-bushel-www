@@ -1,0 +1,7 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALcurrent_token_precedence"><span class="keyword">val</span> current_token_precedence</span> : <code class="type">Lexing.position -&gt; Lexing.position -&gt; <a href="http://mirage.github.io/menhir/#Syntax.precedence_level">Syntax.precedence_level</a></code></pre>
+<pre class="odoccode"><span class="VALcurrent_reduce_precedence"><span class="keyword">val</span> current_reduce_precedence</span> : <code class="type">unit -&gt; <a href="http://mirage.github.io/menhir/#Syntax.precedence_level">Syntax.precedence_level</a></code></pre>
+<pre class="odoccode"><span class="VALcheck_production_group"><span class="keyword">val</span> check_production_group</span> : <code class="type">(<a href="http://mirage.github.io/menhir/#Syntax.producer">Syntax.producer</a> list * 'a * 'b * 'c) list -&gt;
+Lexing.position -&gt; Lexing.position -&gt; <a href="http://mirage.github.io/menhir/#Action.t">Action.t</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALoverride"><span class="keyword">val</span> override</span> : <code class="type"><a href="http://mirage.github.io/menhir/#Positions.t">Positions.t</a> -&gt; 'a option -&gt; 'a option -&gt; 'a option</code></pre>
+</div></div>

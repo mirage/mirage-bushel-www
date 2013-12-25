@@ -1,0 +1,78 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -&gt; ('a, Format.formatter, unit) format -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALpp_pos"><span class="keyword">val</span> pp_pos</span> : <code class="type">Format.formatter -&gt; <a href="http://mirage.github.io/uutf/#Uutf.decoder">Uutf.decoder</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALpp_decode"><span class="keyword">val</span> pp_decode</span> : <code class="type">string -&gt;
+<a href="http://mirage.github.io/uutf/#Uutf.decoder">Uutf.decoder</a> -&gt;
+Format.formatter -&gt;
+[&lt; `Await | `End | `Malformed of string | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALexec"><span class="keyword">val</span> exec</span> : <code class="type">string</code></pre>
+<pre class="odoccode"><span class="VALlog"><span class="keyword">val</span> log</span> : <code class="type">('a, Format.formatter, unit, unit, unit, unit) format6 -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALlog_malformed"><span class="keyword">val</span> log_malformed</span> : <code class="type">string -&gt;
+<a href="http://mirage.github.io/uutf/#Uutf.decoder">Uutf.decoder</a> -&gt;
+[&lt; `Await | `End | `Malformed of string | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALio_buffer_size"><span class="keyword">val</span> io_buffer_size</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALunix_buffer_size"><span class="keyword">val</span> unix_buffer_size</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALunix_read"><span class="keyword">val</span> unix_read</span> : <code class="type">Unix.file_descr -&gt; string -&gt; int -&gt; int -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALunix_write"><span class="keyword">val</span> unix_write</span> : <code class="type">Unix.file_descr -&gt; string -&gt; int -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstring_of_channel"><span class="keyword">val</span> string_of_channel</span> : <code class="type">bool -&gt; in_channel -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALstring_to_channel"><span class="keyword">val</span> string_to_channel</span> : <code class="type">bool -&gt; out_channel -&gt; string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdst_for"><span class="keyword">val</span> dst_for</span> : <code class="type">bool -&gt; [&gt; `Buffer of Buffer.t | `Channel of out_channel ]</code></pre>
+<pre class="odoccode"><span class="VALsrc_for"><span class="keyword">val</span> src_for</span> : <code class="type">string -&gt; bool -&gt; bool -&gt; [&gt; `Channel of in_channel | `String of string ]</code></pre>
+<pre class="odoccode"><span class="VALclose_src"><span class="keyword">val</span> close_src</span> : <code class="type">[&gt; `Channel of in_channel ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALsrc_for_unix"><span class="keyword">val</span> src_for_unix</span> : <code class="type">string -&gt; Unix.file_descr</code></pre>
+<pre class="odoccode"><span class="VALclose_src_unix"><span class="keyword">val</span> close_src_unix</span> : <code class="type">Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencode_unix"><span class="keyword">val</span> encode_unix</span> : <code class="type">Unix.file_descr -&gt;
+string -&gt;
+<a href="http://mirage.github.io/uutf/#Uutf.encoder">Uutf.encoder</a> -&gt; [&lt; `Await | `End | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> &gt; `Await ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump_"><span class="keyword">val</span> dump_</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.src">Uutf.src</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump_unix"><span class="keyword">val</span> dump_unix</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; int -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdump"><span class="keyword">val</span> dump</span> : <code class="type">string -&gt;
+bool -&gt;
+bool -&gt;
+int -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALguess"><span class="keyword">val</span> guess</span> : <code class="type">string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode_"><span class="keyword">val</span> decode_</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.src">Uutf.src</a> &gt; `Channel ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode_unix"><span class="keyword">val</span> decode_unix</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; int -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type">string -&gt;
+bool -&gt;
+bool -&gt;
+int -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALu_surrogate_count"><span class="keyword">val</span> u_surrogate_count</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALuchar_count"><span class="keyword">val</span> uchar_count</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALr_uchar"><span class="keyword">val</span> r_uchar</span> : <code class="type">unit -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALr_text"><span class="keyword">val</span> r_text</span> : <code class="type">'a -&gt; ([&gt; `End | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> ] -&gt; 'b) -&gt; int -&gt; 'b</code></pre>
+<pre class="odoccode"><span class="VALencode_f"><span class="keyword">val</span> encode_f</span> : <code class="type">[&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> ] -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.dst">Uutf.dst</a> ] -&gt; [&lt; `Await | `End | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALencode_f_unix"><span class="keyword">val</span> encode_f_unix</span> : <code class="type">int -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> ] -&gt;
+Unix.file_descr -&gt; [&lt; `Await | `End | `Uchar of <a href="http://mirage.github.io/uutf/#Uutf.uchar">Uutf.uchar</a> &gt; `Await ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALr_encode"><span class="keyword">val</span> r_encode</span> : <code class="type">bool -&gt;
+bool -&gt; int -&gt; int -&gt; int -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> &gt; `UTF_8 ] option -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip_"><span class="keyword">val</span> trip_</span> : <code class="type">string -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.src">Uutf.src</a> &gt; `Channel ] -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.dst">Uutf.dst</a> ] -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip_unix"><span class="keyword">val</span> trip_unix</span> : <code class="type">string -&gt;
+int -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> ] option -&gt; Unix.file_descr -&gt; Unix.file_descr -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALtrip"><span class="keyword">val</span> trip</span> : <code class="type">string -&gt;
+bool -&gt;
+bool -&gt;
+bool -&gt;
+int -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.decoder_encoding">Uutf.decoder_encoding</a> ] option -&gt;
+[&lt; <a href="http://mirage.github.io/uutf/#Uutf.encoding">Uutf.encoding</a> ] option -&gt; [&lt; <a href="http://mirage.github.io/uutf/#Uutf.nln">Uutf.nln</a> ] option -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALmain"><span class="keyword">val</span> main</span> : <code class="type">unit -&gt; unit</code></pre>
+
+</div></div>

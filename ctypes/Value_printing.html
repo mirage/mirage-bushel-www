@@ -1,0 +1,12 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALformat"><span class="keyword">val</span> format</span> : <code class="type">'a. 'a <a href="http://mirage.github.io/ctypes/#Static.typ">Static.typ</a> -&gt; Format.formatter -&gt; 'a -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_struct"><span class="keyword">val</span> format_struct</span> : <code class="type">'a. Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.structure">Static.structure</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_union"><span class="keyword">val</span> format_union</span> : <code class="type">'a. Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.union">Static.union</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_array"><span class="keyword">val</span> format_array</span> : <code class="type">'a. Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.array">Static.array</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_fields"><span class="keyword">val</span> format_fields</span> : <code class="type">'a 'b.
+  string -&gt;
+  ('a, 'b) <a href="http://mirage.github.io/ctypes/#Static.structured">Static.structured</a> <a href="http://mirage.github.io/ctypes/#Static.boxed_field">Static.boxed_field</a> list -&gt;
+  Format.formatter -&gt; ('a, 'b) <a href="http://mirage.github.io/ctypes/#Static.structured">Static.structured</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_ptr"><span class="keyword">val</span> format_ptr</span> : <code class="type">'a. Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.ptr">Static.ptr</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstring_of"><span class="keyword">val</span> string_of</span> : <code class="type">'a <a href="http://mirage.github.io/ctypes/#Static.typ">Static.typ</a> -&gt; 'a -&gt; string</code></pre>
+</div></div>

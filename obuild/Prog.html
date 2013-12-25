@@ -1,0 +1,31 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONOCamlProgramError"><span class="keyword">exception</span> OCamlProgramError</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONTarError"><span class="keyword">exception</span> TarError</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONPkgConfigError"><span class="keyword">exception</span> PkgConfigError</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONPkgConfigErrorNoVersion"><span class="keyword">exception</span> PkgConfigErrorNoVersion</span></pre>
+<pre class="odoccode"><span class="EXCEPTIONPkgConfigErrorUnexpectedOutput"><span class="keyword">exception</span> PkgConfigErrorUnexpectedOutput</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONProgramNotFound"><span class="keyword">exception</span> ProgramNotFound</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre class="odoccode"><span class="VALprog_cache"><span class="keyword">val</span> prog_cache</span> : <code class="type">(string, string) Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALgetCache"><span class="keyword">val</span> getCache</span> : <code class="type">string -&gt; (unit -&gt; string list) -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlOpt"><span class="keyword">val</span> getOcamlOpt</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlC"><span class="keyword">val</span> getOcamlC</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlDep"><span class="keyword">val</span> getOcamlDep</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlDoc"><span class="keyword">val</span> getOcamlDoc</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlYacc"><span class="keyword">val</span> getOcamlYacc</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlLex"><span class="keyword">val</span> getOcamlLex</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlMklib"><span class="keyword">val</span> getOcamlMklib</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetCamlp4"><span class="keyword">val</span> getCamlp4</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetCC"><span class="keyword">val</span> getCC</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetRanlib"><span class="keyword">val</span> getRanlib</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetAR"><span class="keyword">val</span> getAR</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetLD"><span class="keyword">val</span> getLD</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetPkgConfig"><span class="keyword">val</span> getPkgConfig</span> : <code class="type">unit -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlVersion"><span class="keyword">val</span> getOcamlVersion</span> : <code class="type">unit -&gt; int * int * string</code></pre>
+<pre class="odoccode"><span class="VALgetOcamlConfig"><span class="keyword">val</span> getOcamlConfig</span> : <code class="type">unit -&gt; (string, string) Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALgetCamlp4Config"><span class="keyword">val</span> getCamlp4Config</span> : <code class="type">unit -&gt; string list</code></pre>
+<pre class="odoccode"><span class="VALrunTar"><span class="keyword">val</span> runTar</span> : <code class="type">string -&gt; string -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALrunPkgConfig"><span class="keyword">val</span> runPkgConfig</span> : <code class="type">string -&gt; string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALrunPkgConfigVersion"><span class="keyword">val</span> runPkgConfigVersion</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALrunPkgConfigIncludes"><span class="keyword">val</span> runPkgConfigIncludes</span> : <code class="type">string -&gt; string list</code></pre>
+<pre class="odoccode"><span class="VALrunPkgConfigLibs"><span class="keyword">val</span> runPkgConfigLibs</span> : <code class="type">string -&gt; string list</code></pre>
+</div></div>

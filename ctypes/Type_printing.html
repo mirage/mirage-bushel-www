@@ -1,0 +1,16 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="TYPEformat_context"><span class="keyword">type</span> format_context</span> = <code class="type">[ `array | `nonarray | `toplevel ]</code></pre>
+<pre class="odoccode"><span class="VALformat_typ"><span class="keyword">val</span> format_typ</span> : <code class="type">'a.
+  'a <a href="http://mirage.github.io/ctypes/#Static.typ">Static.typ</a> -&gt;
+  (<a href="http://mirage.github.io/ctypes/#Type_printing.format_context" class="ocaml_internal">format_context</a> -&gt; Format.formatter -&gt; unit) -&gt;
+  <a href="http://mirage.github.io/ctypes/#Type_printing.format_context" class="ocaml_internal">format_context</a> -&gt; Format.formatter -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_fields"><span class="keyword">val</span> format_fields</span> : <code class="type">'a. 'a <a href="http://mirage.github.io/ctypes/#Static.boxed_field">Static.boxed_field</a> list -&gt; Format.formatter -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_parameter_list"><span class="keyword">val</span> format_parameter_list</span> : <code class="type"><a href="http://mirage.github.io/ctypes/#Static.boxed_typ">Static.boxed_typ</a> list -&gt;
+(Format.formatter -&gt; unit) -&gt; Format.formatter -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_fn'"><span class="keyword">val</span> format_fn'</span> : <code class="type">'a. 'a <a href="http://mirage.github.io/ctypes/#Static.fn">Static.fn</a> -&gt; (Format.formatter -&gt; unit) -&gt; Format.formatter -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_name"><span class="keyword">val</span> format_name</span> : <code class="type">?name:string -&gt; Format.formatter -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_typ"><span class="keyword">val</span> format_typ</span> : <code class="type">?name:string -&gt; Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.typ">Static.typ</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALformat_fn"><span class="keyword">val</span> format_fn</span> : <code class="type">?name:string -&gt; Format.formatter -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.fn">Static.fn</a> -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstring_of_typ"><span class="keyword">val</span> string_of_typ</span> : <code class="type">?name:string -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.typ">Static.typ</a> -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALstring_of_fn"><span class="keyword">val</span> string_of_fn</span> : <code class="type">?name:string -&gt; 'a <a href="http://mirage.github.io/ctypes/#Static.fn">Static.fn</a> -&gt; string</code></pre>
+</div></div>

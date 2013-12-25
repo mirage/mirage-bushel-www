@@ -1,0 +1,342 @@
+<div class="ocaml_top"><div class="ocaml_summary"><div class="info">Non-blocking streaming JSON codec.<p><code class="code">Jsonm</code> is a non-blocking streaming codec to
+decode and encode the
+ <a href="http://tools.ietf.org/html/rfc4627">JSON</a> data format. It can
+process JSON text without blocking on IO and without a complete
+in-memory representation of the data.</p><p>The uncut codec also processes whitespace and
+(non-standard) JSON with JavaScript comments.</p><p>Consult the data model, limitations
+and examples of use.</p><p><em>Version 0.9.1 - Daniel Bünzli &lt;daniel.buenzli at erratique.ch&gt;</em>
+</p><h3 id="3_TITLE">References</h3>
+<ul><li>D. Crockford
+<em> <a href="http://tools.ietf.org/html/rfc4627">JSON The application/json Media
+Type for JavaScript Object Notation (JSON)</a></em>, 2006.</li></ul></div></div>
+<div class="ocaml_content"><div class="info"><h1 id="datamodel">JSON data model</h1></div>
+<pre class="odoccode"><span class="TYPElexeme"><span class="keyword">type</span> lexeme</span> = <code class="type">[ `Ae
+| `As
+| `Bool of bool
+| `Float of float
+| `Name of string
+| `Null
+| `Oe
+| `Os
+| `String of string ]</code></pre><div class="info">The type for JSON lexemes. <code class="code">`As</code> and <code class="code">`Ae</code>
+start and end arrays and <code class="code">`Os</code> and <code class="code">`Oe</code> start
+and end objects. <code class="code">`Name</code> is for the member names of objects.<p>A <em>well-formed</em> sequence of lexemes belongs to the language of
+the <code class="code">json</code> grammar:
+</p><pre class="code"><code>  json = object / array
+object = `Os *member `Oe
+member = (`Name s) value 
+ array = `As *value `Ae
+ value = `Null / `Bool b / `Float f / `String s / object / array  </code></pre>
+A decoder returns only well-formed sequences of
+lexemes or <code class="code">`Error</code>s are returned. The
+ <a href="http://tools.ietf.org/html/rfc3629">UTF-8</a>,
+ <a href="http://tools.ietf.org/html/rfc2781">UTF-16</a>, UTF-16LE and
+UTF-16BE encoding schemes are supported. The strings of decoded
+<code class="code">`Name</code> and <code class="code">`String</code> lexemes are however always UTF-8 encoded. In
+these strings, characters originally escaped in the input are in
+their unescaped representation.<p>An encoder accepts only well-formed sequences
+of lexemes or <code class="code">Invalid_argument</code> is raised. Only the UTF-8
+encoding scheme is supported. The strings of encoded <code class="code">`Name</code> and
+<code class="code">`String</code> lexemes are assumed to be immutable and must be UTF-8
+encoded, this is <b>not</b> checked by the module. In these strings,
+the delimiter characters <code class="code">U+0022</code> and <code class="code">U+005C</code> (<code class="code">'&quot;'</code>, <code class="code">'\'</code>)
+aswell as the control characters <code class="code">U+0000-U+001F</code> are automatically
+escaped by the encoders, as mandated by the standard.</p></div>
+<pre class="odoccode"><span class="VALpp_lexeme"><span class="keyword">val</span> pp_lexeme</span> : <code class="type">Format.formatter -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a> ] -&gt; unit</code></pre><div class="info"><code class="code">pp_lexeme ppf l</code> prints a unspecified non-JSON representation of <code class="code">l</code>
+on <code class="code">ppf</code>.</div>
+<div class="info"><h1 id="decode">Decode</h1></div>
+<pre class="odoccode"><span class="TYPEerror"><span class="keyword">type</span> error</span> = <code class="type">[ `Expected of
+    [ `Aval of bool
+    | `Comment
+    | `Eoi
+    | `Json
+    | `Name
+    | `Name_sep
+    | `Omem of bool
+    | `Value ]
+| `Illegal_BOM
+| `Illegal_bytes of string
+| `Illegal_escape of
+    [ `Lone_hi_surrogate of int
+    | `Lone_lo_surrogate of int
+    | `Not_esc_uchar of int
+    | `Not_hex_uchar of int
+    | `Not_lo_surrogate of int ]
+| `Illegal_literal of string
+| `Illegal_number of string
+| `Illegal_string_uchar of int
+| `Unclosed of [ `As | `Comment | `Os | `String ] ]</code></pre>
+<div class="info">The type for decoding errors.</div>
+<pre class="odoccode"><span class="VALpp_error"><span class="keyword">val</span> pp_error</span> : <code class="type">Format.formatter -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.error" class="ocaml_internal">error</a> ] -&gt; unit</code></pre><div class="info"><code class="code">pp_error e</code> prints an unspecified UTF-8 representation of <code class="code">e</code> on <code class="code">ppf</code>.</div>
+<pre class="odoccode"><span class="TYPEencoding"><span class="keyword">type</span> encoding</span> = <code class="type">[ `UTF_16 | `UTF_16BE | `UTF_16LE | `UTF_8 ]</code></pre><div class="info">The type for Unicode encoding schemes.</div>
+<pre class="odoccode"><span class="TYPEsrc"><span class="keyword">type</span> src</span> = <code class="type">[ `Channel of in_channel | `Manual | `String of string ]</code></pre><div class="info">The type for input sources. With a <code class="code">`Manual</code> source the client
+must provide input with Manual.src.</div>
+<pre class="odoccode"><span class="TYPEdecoder"><span class="keyword">type</span> decoder</span></pre><div class="info">The type for JSON decoders.</div>
+<pre class="odoccode"><span class="VALdecoder"><span class="keyword">val</span> decoder</span> : <code class="type">?encoding:[&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding" class="ocaml_internal">encoding</a> ] -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.src" class="ocaml_internal">src</a> ] -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a></code></pre><div class="info"><code class="code">decoder encoding src</code> is a JSON decoder that inputs from <code class="code">src</code>.
+<code class="code">encoding</code> specifies the character encoding of the data. If unspecified
+the encoding is guessed as
+ <a href="http://tools.ietf.org/html/rfc4627#section-3">suggested</a> by
+the standard.</div>
+<pre class="odoccode"><span class="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt; [&gt; `Await | `End | `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error" class="ocaml_internal">error</a> | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a> ]</code></pre><div class="info"><code class="code">decode d</code> is:
+<ul><li><code class="code">`Await</code> if <code class="code">d</code> has a <code class="code">`Manual</code> source and awaits for more input.
+The client must use Manual.src to provide it.</li><li><code class="code">`Lexeme l</code> if a lexeme <code class="code">l</code> was decoded.</li><li><code class="code">`End</code> if the end of input was reached.</li><li><code class="code">`Error e</code> if a decoding error occured. If the client is interested
+in a best-effort decoding it can still continue to decode
+after an error (see errorrecovery) although the resulting sequence
+of <code class="code">`Lexeme</code>s is undefined and may not be well-formed.</li></ul><p>The Uncut.pp_decode function can be used to inspect decode results.</p><p><b>Note.</b> Repeated invocation always eventually returns <code class="code">`End</code>, even
+in case of errors.</p></div>
+<pre class="odoccode"><span class="VALdecoded_range"><span class="keyword">val</span> decoded_range</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt; (int * int) * (int * int)</code></pre><div class="info"><code class="code">decoded_range d</code> is the range of characters spanning the last
+<code class="code">`Lexeme</code> or <code class="code">`Error</code> (or <code class="code">`White</code> or <code class="code">`Comment</code> for an
+Uncut.decode) decoded by <code class="code">d</code>. A pair of line and column numbers
+respectively one and zero based.</div>
+<pre class="odoccode"><span class="VALdecoder_encoding"><span class="keyword">val</span> decoder_encoding</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoding" class="ocaml_internal">encoding</a></code></pre><div class="info"><code class="code">decoder_encoding d</code> is <code class="code">d</code>'s encoding.<p><b>Warning.</b> If the decoder guesses the encoding, rely on this
+value only after the first <code class="code">`Lexeme</code> was decoded.</p></div>
+<pre class="odoccode"><span class="VALdecoder_src"><span class="keyword">val</span> decoder_src</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.src" class="ocaml_internal">src</a></code></pre><div class="info"><code class="code">decoder_src d</code> is <code class="code">d</code>'s input source.</div>
+<div class="info"><h1 id="encode">Encode</h1></div>
+<pre class="odoccode"><span class="TYPEdst"><span class="keyword">type</span> dst</span> = <code class="type">[ `Buffer of Buffer.t | `Channel of out_channel | `Manual ]</code></pre><div class="info">The type for output destinations. With a <code class="code">`Manual</code> destination the
+client must provide output storage with Manual.dst.</div>
+<pre class="odoccode"><span class="TYPEencoder"><span class="keyword">type</span> encoder</span></pre><div class="info">The type for JSON encoders.</div>
+<pre class="odoccode"><span class="VALencoder"><span class="keyword">val</span> encoder</span> : <code class="type">?minify:bool -&gt; [&lt; <a href="http://mirage.github.io/jsonm/#Jsonm.dst" class="ocaml_internal">dst</a> ] -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a></code></pre><div class="info"><code class="code">encoder minify dst</code> is an encoder that outputs to <code class="code">dst</code>. If
+<code class="code">minify</code> is <code class="code">true</code> (default) the output is made as compact as
+possible, otherwise the output is indented. If you want better
+control on whitespace use <code class="code">minify = true</code> and Uncut.encode.</div>
+<pre class="odoccode"><span class="VALencode"><span class="keyword">val</span> encode</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt; [&lt; `Await | `End | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a> ] -&gt; [ `Ok | `Partial ]</code></pre><div class="info"><code class="code">encode e v</code> is:
+<ul><li><code class="code">`Partial</code> iff <code class="code">e</code> has a <code class="code">`Manual</code> destination and needs more
+output storage. The client must use Manual.dst to provide
+a new buffer and then call encode with <code class="code">`Await</code> until <code class="code">`Ok</code>
+is returned.</li><li><code class="code">`Ok</code> when the encoder is ready to encode a new <code class="code">`Lexeme</code>
+or <code class="code">`End</code>.</li></ul>
+For <code class="code">`Manual</code> destinations, encoding <code class="code">`End</code> always returns <code class="code">`Partial</code>,
+the client should as usual use Manual.dst and continue with <code class="code">`Await</code>
+until <code class="code">`Ok</code> is returned at which point Manual.dst_rem <code class="code">e</code> is guaranteed
+to be the size of the last provided buffer (i.e. nothing was written).<p><b>Raises.</b> <code class="code">Invalid_argument</code> if a non well-formed
+sequence of lexemes is encoded or if <code class="code">`Lexeme</code> or <code class="code">`End</code> is
+encoded after a <code class="code">`Partial</code> encode.</p></div>
+<pre class="odoccode"><span class="VALencoder_dst"><span class="keyword">val</span> encoder_dst</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt; <a href="http://mirage.github.io/jsonm/#Jsonm.dst" class="ocaml_internal">dst</a></code></pre><div class="info"><code class="code">encoder_dst e</code> is <code class="code">e</code>'s output destination.</div>
+<pre class="odoccode"><span class="VALencoder_minify"><span class="keyword">val</span> encoder_minify</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt; bool</code></pre><div class="info"><code class="code">encoder_minify e</code> is <code class="code">true</code> if <code class="code">e</code>'s output is minified.</div>
+<div class="info"><h1 id="manual">Manual sources and destinations</h1></div>
+<div class="ocaml_module" name="Manual"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/jsonm/#Jsonm.Manual" class="ocaml_internal">Manual</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"><div class="info">Manual input sources and output destinations.<p><b>Warning.</b> Use only with <code class="code">`Manual</code> decoders and encoders.</p></div></div><div class="ocaml_content">
+<pre class="odoccode"><span class="VALsrc"><span class="keyword">val</span> src</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt; string -&gt; int -&gt; int -&gt; unit</code></pre><div class="info"><code class="code">src d s j l</code> provides <code class="code">d</code> with <code class="code">l</code> bytes to read, starting
+at <code class="code">j</code> in <code class="code">s</code>. This byte range is read by calls to decode until
+<code class="code">`Await</code> is returned. To signal the end of input call the function
+with <code class="code">l = 0</code>.</div>
+<pre class="odoccode"><span class="VALdst"><span class="keyword">val</span> dst</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt; string -&gt; int -&gt; int -&gt; unit</code></pre><div class="info"><code class="code">dst e s j l</code> provides <code class="code">e</code> with <code class="code">l</code> bytes to write, starting
+at <code class="code">j</code> in <code class="code">s</code>. This byte rang is written by calls to encode with <code class="code">e</code>
+until <code class="code">`Partial</code> is returned. Use dst_rem to know the remaining
+number of non-written free bytes in <code class="code">s</code>.</div>
+<pre class="odoccode"><span class="VALdst_rem"><span class="keyword">val</span> dst_rem</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt; int</code></pre><div class="info"><code class="code">dst_rem e</code> is the remaining number of non-written, free bytes
+in the last buffer provided with dst.</div></div></div>
+<div class="info"><h1 id="uncut">Uncut codec</h1></div>
+<div class="ocaml_module" name="Uncut"><pre class="odoccode"><span class="keyword">module</span> <a href="http://mirage.github.io/jsonm/#Jsonm.Uncut" class="ocaml_internal">Uncut</a> : <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"><div class="info">Codec with comments and whitespace.<p>The uncut codec also processes whitespace and JavaScript
+comments. The latter is non-standard JSON, fail on <code class="code">`Comment</code>
+decoding if you want to process whitespace but stick to the standard.</p><p>The uncut codec preserves as much of the original input as
+possible. Perfect round-trip with <code class="code">Jsonm</code> is however impossible for
+the following reasons:
+</p><ul><li>Escapes unescaped by the decoder may not be escaped or escaped
+differently by the encoder.</li><li>The encoder automatically inserts name separator <code class="code">':'</code> and
+value separators <code class="code">&quot;,&quot;</code>. If you just reencode the sequence of
+decodes, whitespace and comments may (harmlessly, but significantly)
+commute with these separators.</li><li>Internally the encoder uses <code class="code">U+000A</code> (<code class="code">'\n'</code>) for newlines.</li><li><code class="code">`Float</code> lexemes may be rewritten differently by the encoder.</li></ul></div></div><div class="ocaml_content">
+<div class="info"><h1 id="uncutdatamodel">Uncut data model</h1><p>The uncut data model is the same as the regular
+data model, except that before or after any lexeme
+you may decode/encode one or more:
+</p><ul><li><code class="code">`White w</code>, representing JSON whitespace <code class="code">w</code>. On input
+the sequence CR (<code class="code">U+000D</code>) and CRLF (&lt;<code class="code">U+000A</code>, <code class="code">U+000A</code>&gt;)
+are normalized to <code class="code">U+000A</code>. The string <code class="code">w</code> must be
+a sequence of <code class="code">U+0020</code>, <code class="code">U+0009</code>, <code class="code">U+000A</code> or <code class="code">U+000D</code>
+characters (<code class="code">' '</code>, <code class="code">'\t'</code>, <code class="code">'\n'</code>, <code class="code">'\r'</code>).</li><li><code class="code">`Comment (`S, c)</code>, representing a JavaScript single line
+comment <code class="code">c</code>. <code class="code">c</code> is the comment's content without the starting
+<code class="code">//</code> and the ending newline. The string <code class="code">c</code> must not contain any newline.</li><li><code class="code">`Comment (`M, c)</code>, representing a JavaScript multi-line
+comment <code class="code">c</code>. <code class="code">c</code> is the comment's content without the starting
+<code class="code">/*</code> and the ending <code class="code">*/</code>. The string <code class="code">c</code> must not contain the
+sequence <code class="code">*/</code>.</li></ul><p><b>Warning.</b> Uncut.encode does not check the above constraints on
+<code class="code">w</code> and <code class="code">c</code>.</p></div>
+<div class="info"><h1 id="1_TITLE">Decode</h1></div>
+<pre class="odoccode"><span class="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.decoder" class="ocaml_internal">decoder</a> -&gt;
+[ `Await
+| `Comment of [ `M | `S ] * string
+| `End
+| `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error" class="ocaml_internal">error</a>
+| `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a>
+| `White of string ]</code></pre><div class="info"><code class="code">decode d</code> is like Jsonm.decode but for the
+uncut data model.</div>
+<pre class="odoccode"><span class="VALpp_decode"><span class="keyword">val</span> pp_decode</span> : <code class="type">Format.formatter -&gt;
+[&lt; `Await
+ | `Comment of [ `M | `S ] * string
+ | `End
+ | `Error of <a href="http://mirage.github.io/jsonm/#Jsonm.error" class="ocaml_internal">error</a>
+ | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a>
+ | `White of string ] -&gt;
+unit</code></pre><div class="info"><code class="code">pp_decode ppf v</code> prints an unspecified representation of <code class="code">v</code>
+on <code class="code">ppf</code>.</div>
+<div class="info"><h1 id="1_TITLE">Encode</h1></div>
+<pre class="odoccode"><span class="VALencode"><span class="keyword">val</span> encode</span> : <code class="type"><a href="http://mirage.github.io/jsonm/#Jsonm.encoder" class="ocaml_internal">encoder</a> -&gt;
+[&lt; `Await
+ | `Comment of [ `M | `S ] * string
+ | `End
+ | `Lexeme of <a href="http://mirage.github.io/jsonm/#Jsonm.lexeme" class="ocaml_internal">lexeme</a>
+ | `White of string ] -&gt;
+[ `Ok | `Partial ]</code></pre><div class="info"><code class="code">encode</code> is like Jsonm.encode but for the uncut data model.<p><b>IMPORTANT.</b> Never encode <code class="code">`Comment</code> for the web, it is
+non-standard and breaks interoperability.</p></div></div></div>
+<div class="info"><h1 id="limitations">Limitations</h1><h2 id="2_TITLE">Decode</h2><p>Decoders parse valid JSON with the following limitations:
+</p><ul><li>JSON numbers are represented with OCaml <code class="code">float</code> values.
+This means that it can only represent integers exactly
+in the in the interval [-2<sup class="superscript">53</sup>;2<sup class="superscript">53</sup>]. This is equivalent
+to the contraints JavaScript has.</li><li>A superset of JSON numbers is parsed. After having seen a minus
+or a digit, including zero, Pervasives.float_of_string, is
+used. In particular this parses number with leading zeros, which are
+specifically prohibited by the standard.</li><li>Strings returned by <code class="code">`String</code>, <code class="code">`Name</code>, <code class="code">`White</code> and <code class="code">`Comment</code>
+are limited by Sys.max_string_length. There is no built-in
+protection against the fact that the internal OCaml <code class="code">Buffer.t</code>
+value may raise <code class="code">Failure</code> on Jsonm.decode. This should
+however only be a problem on 32-bits platforms if your
+strings are greater than 16Mo.</li></ul><p>Position tracking assumes that each decoded Unicode scalar value
+has a column width of 1. The same assumption may not be made by
+the display program (e.g. for <code class="code">emacs</code>' compilation mode you need
+to set <code class="code">compilation-error-screen-columns</code> to <code class="code">nil</code>).</p><p>The newlines LF (<code class="code">U+000A</code>), CR (<code class="code">U+000D</code>), and CRLF are all normalized
+to LF internally. This may have an impact in some corner <code class="code">`Error</code>
+cases. For example the invalid escape sequence <code class="code">&lt;U+005C,U+000D&gt;</code> in
+a string will be reported as being <code class="code">`Illegal_escape (`Not_esc_uchar
+    0x000A)</code>.</p><h2 id="2_TITLE">Encode</h2><p>Encoders produce valid JSON provided the <em>client</em> ensures that
+the following holds.
+</p><ul><li>All the strings given to the encoder must be valid UTF-8 and immutable.
+Characters that need to be escaped are automatically escaped by <code class="code">Jsonm</code>.</li><li><code class="code">`Float</code> lexemes must not be, Pervasives.nan,
+Pervasives.infinity or Pervasives.neg_infinity. They
+are encoded with the format string <code class="code">&quot;%.16g&quot;</code>, this allows
+to roundtrip all the integers that can be precisely represented
+in OCaml <code class="code">float</code> values, i.e. the integers in the interval
+[-2<sup class="superscript">53</sup>;2<sup class="superscript">53</sup>]. This is equivalent to the constraints
+JavaScript has.</li><li>If the uncut codec is used <code class="code">`White</code> must be made
+of JSON whitespace and <code class="code">`Comment</code>
+must never be encoded.</li></ul></div>
+<div class="info"><h1 id="errorrecovery">Error recovery</h1><p>After a decoding error, if best-effort decoding is performed. The following
+happens before continuing:
+</p><ul><li><code class="code">`Illegal_BOM</code>, the initial
+ <a href="http://unicode.org/glossary/#byte_order_mark">BOM</a> is skipped.</li><li><code class="code">`Illegal_bytes</code>, <code class="code">`Illegal_escape</code>, <code class="code">`Illegal_string_uchar</code>, a
+Unicode
+ <a href="http://unicode.org/glossary/#replacement_character">replacement
+character</a> (<code class="code">U+FFFD</code>) is substituted to the illegal sequence.</li><li><code class="code">`Illegal_literal</code>, <code class="code">`Illegal_number</code> the corresponding
+<code class="code">`Lexeme</code> is skipped.</li><li><code class="code">`Expected r</code>, input is discarded until a synchronyzing lexeme
+that depends on <code class="code">r</code> is found.</li><li><code class="code">`Unclosed</code>, the end of input is reached, further decodes will be
+<code class="code">`End</code></li></ul></div>
+<div class="info"><h1 id="examples">Examples</h1><h2 id="filter">Trip</h2><p>The result of <code class="code">trip src dst</code> has the JSON from <code class="code">src</code> written on <code class="code">dst</code>.
+</p><pre class="code"><code>let trip ?encoding ?minify 
+    (src : [`Channel of in_channel | `String of string])
+    (dst : [`Channel of out_channel | `Buffer of Buffer.t])
+  = 
+  let rec loop d e = match Jsonm.decode d with 
+  | `Lexeme _ as v -&gt; ignore (Jsonm.encode e v); loop d e 
+  | `End -&gt; ignore (Jsonm.encode e `End); `Ok
+  | `Error err -&gt; `Error (Jsonm.decoded_range d, err)
+  | `Await -&gt; assert false
+  in
+  let d = Jsonm.decoder ?encoding src in 
+  let e = Jsonm.encoder ?minify dst in
+  loop d e</code></pre>
+Using the <code class="code">`Manual</code> interface, <code class="code">trip_fd</code> does the same but between Unix
+file descriptors.
+<pre class="code"><code>let trip_fd ?encoding ?minify
+    (fdi : Unix.file_descr) 
+    (fdo : Unix.file_descr) 
+  = 
+  let rec encode fd s e v = match Jsonm.encode e v with `Ok -&gt; () 
+  | `Partial -&gt; 
+      let rec unix_write fd s j l = 
+        let rec write fd s j l = try Unix.single_write fd s j l with 
+        | Unix.Unix_error (Unix.EINTR, _, _) -&gt; write fd s j l 
+        in
+        let wc = write fd s j l in 
+        if wc &lt; l then unix_write fd s (j + wc) (l - wc) else ()
+      in
+      unix_write fd s 0 (String.length s - Jsonm.Manual.dst_rem e); 
+      Jsonm.Manual.dst e s 0 (String.length s);
+      encode fd s e `Await
+  in
+  let rec loop fdi fdo ds es d e = match Jsonm.decode d with 
+  | `Lexeme _ as v -&gt; encode fdo es e v; loop fdi fdo ds es d e 
+  | `End -&gt; encode fdo es e `End; `Ok
+  | `Error err -&gt; `Error (Jsonm.decoded_range d, err)
+  | `Await -&gt;
+      let rec unix_read fd s j l = try Unix.read fd s j l with 
+      | Unix.Unix_error (Unix.EINTR, _, _) -&gt; unix_read fd s j l 
+      in
+      let rc = unix_read fdi ds 0 (String.length ds) in 
+      Jsonm.Manual.src d ds 0 rc; loop fdi fdo ds es d e 
+  in
+  let ds = String.create 65536 (* UNIX_BUFFER_SIZE in 4.0.0 *) in
+  let es = String.create 65536 (* UNIX_BUFFER_SIZE in 4.0.0 *) in
+  let d = Jsonm.decoder ?encoding `Manual in 
+  let e = Jsonm.encoder ?minify `Manual in
+  Jsonm.Manual.dst e es 0 (String.length es);
+  loop fdi fdo ds es d e</code></pre>
+<h2 id="memsel">Member selection</h2><p>The result of <code class="code">memsel names src</code> is the list of string values of
+members of <code class="code">src</code> that have their name in <code class="code">names</code>. In this example,
+decoding errors are silently ignored.
+</p><pre class="code"><code>let memsel ?encoding names 
+    (src : [`Channel of in_channel | `String of string])
+  = 
+  let rec loop acc names d = match Jsonm.decode d with 
+  | `Lexeme (`Name n) when List.mem n names -&gt; 
+      begin match Jsonm.decode d with 
+      | `Lexeme (`String s) -&gt; loop (s :: acc) names d
+      | _ -&gt; loop acc names d
+      end
+  | `Lexeme _ | `Error _ -&gt; loop acc names d
+  | `End -&gt; List.rev acc 
+  | `Await -&gt; assert false
+  in
+  loop [] names (Jsonm.decoder ?encoding src)</code></pre><h2 id="tree">Generic JSON representation</h2><p>A generic OCaml representation of JSON text is the following one.
+</p><pre class="code"><code>type json = 
+  [ `Null | `Bool of bool | `Float of float| `String of string
+  | `A of json list | `O of (string * json) list ]</code></pre>
+The result of <code class="code">json_of_src src</code> is the JSON text from <code class="code">src</code> in this
+representation. The function is tail recursive.
+<pre class="code"><code>exception Escape of ((int * int) * (int * int)) * Jsonm.error
+
+let json_of_src ?encoding 
+    (src : [`Channel of in_channel | `String of string])
+  =
+  let dec d = match Jsonm.decode d with 
+  | `Lexeme l -&gt; l
+  | `Error e -&gt; raise (Escape (Jsonm.decoded_range d, e))
+  | `End | `Await -&gt; assert false
+  in
+  let rec value v k d = match v with 
+  | `Os -&gt; obj [] k d  | `As -&gt; arr [] k d
+  | `Null | `Bool _ | `String _ | `Float _ as v -&gt; k v d 
+  | _ -&gt; assert false
+  and arr vs k d = match dec d with 
+  | `Ae -&gt; k (`A (List.rev vs)) d
+  | v -&gt; value v (fun v -&gt; arr (v :: vs) k) d
+  and obj ms k d = match dec d with 
+  | `Oe -&gt; k (`O (List.rev ms)) d
+  | `Name n -&gt; value (dec d) (fun v -&gt; obj ((n, v) :: ms) k) d
+  | _ -&gt; assert false
+  in
+  let d = Jsonm.decoder ?encoding src in
+  try `JSON (value (dec d) (fun v _ -&gt; v) d) with 
+  | Escape (r, e) -&gt; `Error (r, e)</code></pre>
+The result of <code class="code">json_to_dst dst json</code> has the JSON text <code class="code">json</code> written
+on <code class="code">dst</code>. The function is tail recursive.
+<pre class="code"><code>let json_to_dst ~minify 
+    (dst : [`Channel of out_channel | `Buffer of Buffer.t ]) 
+    (json : json)
+  =
+  let enc e l = ignore (Jsonm.encode e (`Lexeme l)) in
+  let rec value v k e = match v with 
+  | `A vs -&gt; arr vs k e 
+  | `O ms -&gt; obj ms k e 
+  | `Null | `Bool _ | `Float _ | `String _ as v -&gt; enc e v; k e
+  and arr vs k e = enc e `As; arr_vs vs k e
+  and arr_vs vs k e = match vs with 
+  | v :: vs' -&gt; value v (arr_vs vs' k) e 
+  | [] -&gt; enc e `Ae; k e
+  and obj ms k e = enc e `Os; obj_ms ms k e
+  and obj_ms ms k e = match ms with 
+  | (n, v) :: ms -&gt; enc e (`Name n); value v (obj_ms ms k) e
+  | [] -&gt; enc e `Oe; k e
+  in
+  let e = Jsonm.encoder ~minify dst in
+  let finish e = ignore (Jsonm.encode e `End) in
+  match json with `A _ | `O _ as json -&gt; value json finish e
+  | _ -&gt; invalid_arg &quot;invalid json text&quot;</code></pre></div>
+</div></div>

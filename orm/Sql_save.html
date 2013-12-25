@@ -1,0 +1,23 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONSql_process_error"><span class="keyword">exception</span> Sql_process_error</span> <span class="keyword">of</span> <code class="type"><a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> * string</code></pre>
+<pre class="odoccode"><span class="VALprocess_error"><span class="keyword">val</span> process_error</span> : <code class="type"><a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; string -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALexec_sql"><span class="keyword">val</span> exec_sql</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list -&gt; (<a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.stmt">Sqlite3.stmt</a> -&gt; 'a) -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALassert_exists"><span class="keyword">val</span> assert_exists</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt; db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; string -&gt; int64 -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALempty_row"><span class="keyword">val</span> empty_row</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt; db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; string -&gt; int64</code></pre>
+<pre class="odoccode"><span class="VALprocess_row"><span class="keyword">val</span> process_row</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string -&gt; string list -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list -&gt; <a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; int64</code></pre>
+<pre class="odoccode"><span class="VALcut_into_chunks"><span class="keyword">val</span> cut_into_chunks</span> : <code class="type">int -&gt; 'a list -&gt; 'a list list</code></pre>
+<pre class="odoccode"><span class="VALcombine"><span class="keyword">val</span> combine</span> : <code class="type">('a * 'a) list list -&gt; ('a * 'a) list</code></pre>
+<pre class="odoccode"><span class="VALprocess_enum_rows"><span class="keyword">val</span> process_enum_rows</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string -&gt; string list -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list list -&gt; <a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; int64</code></pre>
+<pre class="odoccode"><span class="VALvalue_of_field"><span class="keyword">val</span> value_of_field</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; string -&gt; <a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list</code></pre>
+<pre class="odoccode"><span class="VALreplace_row"><span class="keyword">val</span> replace_row</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt;
+db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt;
+string -&gt; int64 -&gt; string list -&gt; <a href="http://mirage.github.io/sqlite3-ocaml/#Sqlite3.Data.t">Sqlite3.Data.t</a> list -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALupdate_value"><span class="keyword">val</span> update_value</span> : <code class="type">env:<a href="http://mirage.github.io/orm/#Sql_backend.env">Sql_backend.env</a> -&gt; db:<a href="http://mirage.github.io/orm/#Sql_backend.state">Sql_backend.state</a> -&gt; <a href="http://mirage.github.io/dyntype/#Value.t">Dyntype.Value.t</a> -&gt; unit</code></pre>
+</div></div>

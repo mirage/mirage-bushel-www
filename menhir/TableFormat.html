@@ -1,0 +1,16 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><div class="ocaml_modtype" name="TABLES"><pre class="odoccode"><span class="keyword">module type</span> <a href="http://mirage.github.io/menhir/#TableFormat:TABLES" class="ocaml_internal">TABLES</a> = <code class="type"><code class="code">sig</code> .. <code class="code">end</code></code></pre><div class="ocaml_summary"/><div class="ocaml_content">
+<pre class="odoccode"><span class="TYPEtoken"><span class="keyword">type</span> token</span></pre>
+<pre class="odoccode"><span class="VALtoken2terminal"><span class="keyword">val</span> token2terminal</span> : <code class="type"><a href="http://mirage.github.io/menhir/#TableFormat:TABLES.token" class="ocaml_internal">token</a> -&gt; int</code></pre>
+<pre class="odoccode"><span class="VALerror_terminal"><span class="keyword">val</span> error_terminal</span> : <code class="type">int</code></pre>
+<pre class="odoccode"><span class="VALtoken2value"><span class="keyword">val</span> token2value</span> : <code class="type"><a href="http://mirage.github.io/menhir/#TableFormat:TABLES.token" class="ocaml_internal">token</a> -&gt; Obj.t</code></pre>
+<pre class="odoccode"><span class="VALdefault_reduction"><span class="keyword">val</span> default_reduction</span> : <code class="type"><a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a></code></pre>
+<pre class="odoccode"><span class="VALerror"><span class="keyword">val</span> error</span> : <code class="type">int * string</code></pre>
+<pre class="odoccode"><span class="VALaction"><span class="keyword">val</span> action</span> : <code class="type"><a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a> * <a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a></code></pre>
+<pre class="odoccode"><span class="VALlhs"><span class="keyword">val</span> lhs</span> : <code class="type"><a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a></code></pre>
+<pre class="odoccode"><span class="VALgoto"><span class="keyword">val</span> goto</span> : <code class="type"><a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a> * <a href="http://mirage.github.io/menhir/#PackedIntArray.t">PackedIntArray.t</a></code></pre>
+<pre class="odoccode"><span class="VALsemantic_action"><span class="keyword">val</span> semantic_action</span> : <code class="type">((int, Obj.t, <a href="http://mirage.github.io/menhir/#TableFormat:TABLES.token" class="ocaml_internal">token</a>) <a href="http://mirage.github.io/menhir/#EngineTypes.env">EngineTypes.env</a> -&gt; unit) array</code></pre>
+<pre class="odoccode"><span class="EXCEPTIONError"><span class="keyword">exception</span> Error</span></pre>
+<pre class="odoccode"><span class="VALrecovery"><span class="keyword">val</span> recovery</span> : <code class="type">bool</code></pre>
+<pre class="odoccode"><span class="VALtrace"><span class="keyword">val</span> trace</span> : <code class="type">(string array * string array) option</code></pre></div></div>
+</div></div>

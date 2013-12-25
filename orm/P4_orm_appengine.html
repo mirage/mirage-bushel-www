@@ -1,0 +1,31 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALinit"><span class="keyword">val</span> init</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALinitRO"><span class="keyword">val</span> initRO</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALsave"><span class="keyword">val</span> save</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALget"><span class="keyword">val</span> get</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALid"><span class="keyword">val</span> id</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALcache"><span class="keyword">val</span> cache</span> : <code class="type">string -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALenv_to_env"><span class="keyword">val</span> env_to_env</span> : <code class="type">Camlp4.PreCast.Syntax.Ast.loc -&gt;
+[&lt; `Debug of string list
+ | `Dot of string
+ | `Index of (string * string list) list
+ | `Mode of 'a
+ | `Unique of (string * string list) list ]
+list -&gt; Camlp4.PreCast.Syntax.Ast.expr</code></pre>
+<pre class="odoccode"><span class="VALinit_binding"><span class="keyword">val</span> init_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALinitRO_binding"><span class="keyword">val</span> initRO_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALsave_binding"><span class="keyword">val</span> save_binding</span> : <code class="type">'a -&gt;
+'b -&gt; Camlp4.PreCast.Ast.loc * string * 'c -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALget_binding"><span class="keyword">val</span> get_binding</span> : <code class="type">'a -&gt;
+Camlp4.PreCast.Ast.ctyp -&gt;
+Camlp4.PreCast.Ast.loc * string * 'b -&gt; Camlp4.PreCast.Ast.binding</code></pre>
+<pre class="odoccode"><span class="VALgen"><span class="keyword">val</span> gen</span> : <code class="type">[&lt; `Debug of string list
+ | `Dot of string
+ | `Index of (string * string list) list
+ | `Mode of 'a
+ | `Unique of (string * string list) list ]
+list -&gt; Camlp4.PreCast.Syntax.Ast.ctyp -&gt; Camlp4.PreCast.Ast.str_item</code></pre>
+</div></div>

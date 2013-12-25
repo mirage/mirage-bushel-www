@@ -1,0 +1,45 @@
+<div class="ocaml_top"><div class="ocaml_summary"/>
+<div class="ocaml_content"><pre class="odoccode"><span class="VALsavestart"><span class="keyword">val</span> savestart</span> : <code class="type">Lexing.lexbuf -&gt; (Lexing.lexbuf -&gt; 'a) -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VALupdate_loc"><span class="keyword">val</span> update_loc</span> : <code class="type">Lexing.lexbuf -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALchunk"><span class="keyword">val</span> chunk</span> : <code class="type">int -&gt; int -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALechunk"><span class="keyword">val</span> echunk</span> : <code class="type">int -&gt; string</code></pre>
+<pre class="odoccode"><span class="VALoverwrite"><span class="keyword">val</span> overwrite</span> : <code class="type">string -&gt; int -&gt; char -&gt; char -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALmk_stretch"><span class="keyword">val</span> mk_stretch</span> : <code class="type">bool -&gt;
+Lexing.position -&gt;
+Lexing.position -&gt; <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list -&gt; <a href="http://mirage.github.io/menhir/#Stretch.t">Stretch.t</a></code></pre>
+<pre class="odoccode"><span class="VALmk_keyword"><span class="keyword">val</span> mk_keyword</span> : <code class="type">Lexing.lexbuf -&gt;
+'a option -&gt;
+'b option -&gt;
+string option -&gt; string option -&gt; <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a></code></pre>
+<pre class="odoccode"><span class="VALreserved"><span class="keyword">val</span> reserved</span> : <code class="type">(string, unit) Hashtbl.t</code></pre>
+<pre class="odoccode"><span class="VALerror1"><span class="keyword">val</span> error1</span> : <code class="type">Lexing.position -&gt; string -&gt; 'a</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_tables"><span class="keyword">val</span> __ocaml_lex_tables</span> : <code class="type">Lexing.lex_tables</code></pre>
+<pre class="odoccode"><span class="VALmain"><span class="keyword">val</span> main</span> : <code class="type">Lexing.lexbuf -&gt; <a href="http://mirage.github.io/menhir/#Parser.token">Parser.token</a></code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_main_rec"><span class="keyword">val</span> __ocaml_lex_main_rec</span> : <code class="type">Lexing.lexbuf -&gt; int -&gt; <a href="http://mirage.github.io/menhir/#Parser.token">Parser.token</a></code></pre>
+<pre class="odoccode"><span class="VALcomment"><span class="keyword">val</span> comment</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_comment_rec"><span class="keyword">val</span> __ocaml_lex_comment_rec</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALocamltype"><span class="keyword">val</span> ocamltype</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; <a href="http://mirage.github.io/menhir/#Parser.token">Parser.token</a></code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_ocamltype_rec"><span class="keyword">val</span> __ocaml_lex_ocamltype_rec</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; int -&gt; <a href="http://mirage.github.io/menhir/#Parser.token">Parser.token</a></code></pre>
+<pre class="odoccode"><span class="VALaction"><span class="keyword">val</span> action</span> : <code class="type">bool -&gt;
+Lexing.position -&gt;
+<a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list -&gt;
+Lexing.lexbuf -&gt; Lexing.position * <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_action_rec"><span class="keyword">val</span> __ocaml_lex_action_rec</span> : <code class="type">bool -&gt;
+Lexing.position -&gt;
+<a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list -&gt;
+Lexing.lexbuf -&gt;
+int -&gt; Lexing.position * <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list</code></pre>
+<pre class="odoccode"><span class="VALparentheses"><span class="keyword">val</span> parentheses</span> : <code class="type">Lexing.position -&gt;
+<a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list -&gt;
+Lexing.lexbuf -&gt; Lexing.position * <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_parentheses_rec"><span class="keyword">val</span> __ocaml_lex_parentheses_rec</span> : <code class="type">Lexing.position -&gt;
+<a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list -&gt;
+Lexing.lexbuf -&gt;
+int -&gt; Lexing.position * <a href="http://mirage.github.io/menhir/#Keyword.keyword">Keyword.keyword</a> <a href="http://mirage.github.io/menhir/#Positions.located">Positions.located</a> list</code></pre>
+<pre class="odoccode"><span class="VALocamlcomment"><span class="keyword">val</span> ocamlcomment</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_ocamlcomment_rec"><span class="keyword">val</span> __ocaml_lex_ocamlcomment_rec</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALstring"><span class="keyword">val</span> string</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_string_rec"><span class="keyword">val</span> __ocaml_lex_string_rec</span> : <code class="type">Lexing.position -&gt; Lexing.lexbuf -&gt; int -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VALchar"><span class="keyword">val</span> char</span> : <code class="type">Lexing.lexbuf -&gt; unit</code></pre>
+<pre class="odoccode"><span class="VAL__ocaml_lex_char_rec"><span class="keyword">val</span> __ocaml_lex_char_rec</span> : <code class="type">Lexing.lexbuf -&gt; int -&gt; unit</code></pre>
+</div></div>

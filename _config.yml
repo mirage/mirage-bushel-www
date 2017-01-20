@@ -18,7 +18,7 @@ email: anil@recoil.org
 description: > # this means to ignore newlines until "baseurl:"
   MirageOS is a ...
 baseurl: ""
-url: "https://mirage.github..io/"
+url: "https://mirage.github.io/"
 
 # Build settings
 exclude:

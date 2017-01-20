@@ -1,0 +1,19 @@
+---
+layout: default
+title: Wiki
+permalink: /wiki/index.html
+---
+
+<div>
+  <h2>Documentation</h2>
+  <section class="archive_list">
+ {% for post in site.wiki reversed %}
+    <div class="post_title">
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
+      <span class="date">{{ post.date | date: "%-d %b, %Y" }}</span>
+    </div>
+{% endfor %}
+
+  </section>
+</div>
+

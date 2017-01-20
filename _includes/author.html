@@ -1,0 +1,8 @@
+{% assign author = site.authors | where:"uid",page.author | first %}
+<section class="author">
+  <div class="authorimage box" style="background: url({{site.baseurl}}/assets/img/{{page.author}}.png)"></div>
+  <div class="authorinfo box">
+    <p>Author | <a href="{{author.homepage}}">{{author.fullname}}</a></p>
+    <p class="bio">{{author.bio}}</p>
+  </div>
+</section>

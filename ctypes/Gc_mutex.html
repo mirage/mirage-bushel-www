@@ -1,9 +1,0 @@
-<div class="ocaml_top"><div class="ocaml_summary"/>
-<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONMutexError"><span class="keyword">exception</span> MutexError</span> <span class="keyword">of</span> <code class="type">string</code></pre>
-<pre class="odoccode"><code><span class="TYPEt"><span class="keyword">type</span> t</span> = {</code></pre><table class="typetable">
-		    <tr><td align="left" valign="top"><code>  </code></td><td align="left" valign="top"><code><span class="keyword">mutable</span> <span class="TYPEELTt.locked">locked</span> : <code class="type">bool</code>;</code></td></tr><tr><td>}</td></tr></table>
-<pre class="odoccode"><span class="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -&gt; <a href="http://mirage.github.io/ctypes/#Gc_mutex.t" class="ocaml_internal">t</a></code></pre>
-<pre class="odoccode"><span class="VALlock"><span class="keyword">val</span> lock</span> : <code class="type"><a href="http://mirage.github.io/ctypes/#Gc_mutex.t" class="ocaml_internal">t</a> -&gt; unit</code></pre>
-<pre class="odoccode"><span class="VALtry_lock"><span class="keyword">val</span> try_lock</span> : <code class="type"><a href="http://mirage.github.io/ctypes/#Gc_mutex.t" class="ocaml_internal">t</a> -&gt; bool</code></pre>
-<pre class="odoccode"><span class="VALunlock"><span class="keyword">val</span> unlock</span> : <code class="type"><a href="http://mirage.github.io/ctypes/#Gc_mutex.t" class="ocaml_internal">t</a> -&gt; unit</code></pre>
-</div></div>

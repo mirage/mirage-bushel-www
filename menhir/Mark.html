@@ -1,9 +1,0 @@
-<div class="ocaml_top"><div class="ocaml_summary"><div class="info">This module implements a very simple notion of ``mark''.</div></div>
-<div class="ocaml_content"><pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> t</span></pre><div class="info">The type of marks.</div>
-<pre class="odoccode"><span class="VALfresh"><span class="keyword">val</span> fresh</span> : <code class="type">unit -&gt; <a href="http://mirage.github.io/menhir/#Mark.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">fresh()</code> generates a fresh mark, that is, a mark that is guaranteed
-to be distinct from all existing marks.</div>
-<pre class="odoccode"><span class="VALsame"><span class="keyword">val</span> same</span> : <code class="type"><a href="http://mirage.github.io/menhir/#Mark.t" class="ocaml_internal">t</a> -&gt; <a href="http://mirage.github.io/menhir/#Mark.t" class="ocaml_internal">t</a> -&gt; bool</code></pre><div class="info"><code class="code">same mark1 mark2</code> tells whether <code class="code">mark1</code> and <code class="code">mark2</code> are the same
-mark, that is, were created by the same call to <code class="code">fresh</code>.</div>
-<pre class="odoccode"><span class="VALnone"><span class="keyword">val</span> none</span> : <code class="type"><a href="http://mirage.github.io/menhir/#Mark.t" class="ocaml_internal">t</a></code></pre><div class="info"><code class="code">none</code> is a distinguished mark, created via an initial call to
-<code class="code">fresh()</code>.</div>
-</div></div>

@@ -1,8 +1,0 @@
-<div class="ocaml_top"><div class="ocaml_summary"><div class="info">A single-cell variant of the weak arrays in the standard library.</div></div>
-<div class="ocaml_content"><pre class="odoccode"><span class="EXCEPTIONEmptyWeakReference"><span class="keyword">exception</span> EmptyWeakReference</span></pre><div class="info">An expired weak reference was accessed.</div>
-<pre class="odoccode"><span class="TYPEt"><span class="keyword">type</span> <code class="type">'a </code>t</span></pre><div class="info">The type of weak references..</div>
-<pre class="odoccode"><span class="VALmake"><span class="keyword">val</span> make</span> : <code class="type">'a -&gt; 'a <a href="http://mirage.github.io/ctypes/#WeakRef.t" class="ocaml_internal">t</a></code></pre><div class="info">Obtain a weak reference from a strong reference.</div>
-<pre class="odoccode"><span class="VALset"><span class="keyword">val</span> set</span> : <code class="type">'a <a href="http://mirage.github.io/ctypes/#WeakRef.t" class="ocaml_internal">t</a> -&gt; 'a -&gt; unit</code></pre><div class="info">Update a weak reference.</div>
-<pre class="odoccode"><span class="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="http://mirage.github.io/ctypes/#WeakRef.t" class="ocaml_internal">t</a> -&gt; 'a</code></pre><div class="info">Obtain a strong reference from a weak reference.</div>
-<pre class="odoccode"><span class="VALis_empty"><span class="keyword">val</span> is_empty</span> : <code class="type">'a <a href="http://mirage.github.io/ctypes/#WeakRef.t" class="ocaml_internal">t</a> -&gt; bool</code></pre><div class="info">Whether a weak reference is still live.</div>
-</div></div>

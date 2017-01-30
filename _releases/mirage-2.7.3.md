@@ -1,0 +1,20 @@
+---
+title: mirage 2.7.3 released
+date: 2017-01-03 14:57
+layout: post
+tags: ["mirage","Releases"]
+---
+
+The MirageOS library operating system
+
+
+MirageOS is a library operating system that constructs unikernels for
+secure, high-performance network applications across a variety of
+cloud computing and mobile platforms. Code can be developed on a
+normal OS such as Linux or MacOS X, and then compiled into a
+fully-standalone, specialised unikernel that runs under the Xen
+hypervisor.
+
+Since Xen powers most public cloud computing infrastructure such as
+Amazon EC2 or Rackspace, this lets your servers run more cheaply,
+securely and with finer control than with a full software stack.

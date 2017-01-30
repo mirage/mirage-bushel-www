@@ -9,4 +9,5 @@ venue:
 urls:
   pdf: "http://anil.recoil.org/papers/2015-usenixsec-nqsb.pdf"
   acm: "http://dl.acm.org/citation.cfm?id=2831158"
+tags: nqsb mirage
 ---

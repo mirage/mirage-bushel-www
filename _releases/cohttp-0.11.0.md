@@ -1,0 +1,14 @@
+---
+title: cohttp 0.11.0 released
+date: 2017-01-03 14:57
+layout: post
+tags: ["cohttp","Releases"]
+---
+
+HTTP library for Lwt, Async and Mirage
+
+
+If you wish to install the Lwt_unix version, then you will also need the ssl
+optional package for this version.  Just do:
+
+`opam install cohttp lwt ssl` to get a fully working HTTP(S) Lwt_unix client.

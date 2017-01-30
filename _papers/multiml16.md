@@ -9,4 +9,5 @@ venue:
   location: "Nara Kasugano International Forum, Nara, Japan"
 urls:
   pdf: "http://kcsrk.info/papers/mmcloud_mlw13.pdf"
+tags: multicore 
 ---

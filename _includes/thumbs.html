@@ -1,0 +1,26 @@
+<div class="image_block">
+<div class="image_block_elem">
+{% responsive_image_block %}
+    path: "assets/img/{{ include.name1 }}"
+    alt: {{ include.alt1 }}
+    template: _includes/responsive-float-thumb.html
+{% endresponsive_image_block %}
+{% if include.alt1 %}<div class="image_caption">{{ include.alt1 }}</div>{% endif %}
+</div>
+<div class="image_block_elem">
+{% responsive_image_block %}
+    path: "assets/img/{{ include.name2 }}"
+    alt: {{ include.alt2 }}
+    template: _includes/responsive-float-thumb.html
+{% endresponsive_image_block %}
+{% if include.alt2 %}<div class="image_caption">{{ include.alt2 }}</div>{% endif %}
+</div>
+<div class="image_block_elem">
+{% responsive_image_block %}
+    path: "assets/img/{{ include.name3 }}"
+    alt: {{ include.alt3 }}
+    template: _includes/responsive-float-thumb.html
+{% endresponsive_image_block %}
+{% if include.alt3 %}<div class="image_caption">{{ include.alt3 }}</div>{% endif %}
+</div>
+</div>

@@ -1,0 +1,42 @@
+<h2>Recent Activity</h2>
+<div class="post_news">
+{% assign posts = site.tags[include.name] %}
+{% assign postslen = posts.size %}
+{% if postslen > 0 %}
+<div class="post_news_mini_header">News</div>
+{% for post in site.tags[include.name] %}
+<div class="post_title_light">
+  <i class="fa fa-newspaper-o"></i>
+   <span class="post_date">{{ post.date | date: "%-d %b, %Y" }}</span>:
+<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
+</div>
+{% endfor %}
+{% endif %}
+{% capture paperexp %}item.tags contains '{{include.name}}'{% endcapture %}
+{% assign papers = site.papers | where_exp:"item",{{paperexp}} | reverse %}
+{% assign paperslen = papers.size %}
+{% if paperslen > 0 %}
+<div class="post_news_mini_header">Papers</div>
+{% for paper in papers %}
+<div class="post_title_light">
+  <i class="fa fa-book"></i>
+  <span class="post_date">{{ paper.date | date: "%-d %b, %Y" }}</span>:
+  <a href="/papers/#{{paper.id|slugify}}">{{paper.title}}</a>
+</div>
+{% endfor %}
+{% endif %}
+{% capture talkexp %}item.tags contains '{{include.name}}'{% endcapture %}
+{% assign talks = site.talks | where_exp:"item",{{talkexp}} | reverse %}
+{% assign talkslen = talks.size %}
+{% if talkslen > 0 %}
+<div class="post_news_mini_header">Talks</div>
+{% for talk in talks %}
+<div class="post_title_light">
+  <i class="fa fa-users"></i>
+  <span class="post_date">{{ talk.date | date: "%-d %b, %Y" | reverse }}</span>:
+  <a href="/talks/#{{talk.id|slugify}}">{{talk.title}}</a>
+</div>
+{% endfor %}
+{% endif %}
+
+</div>

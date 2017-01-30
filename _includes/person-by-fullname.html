@@ -1,0 +1,6 @@
+{% assign a = site.authors | where:"fullname",{{include.fullname}} | first %}
+{% if a %}
+<a href="{{a.homepage}}">@{{a.fullname}}</a>
+{% else %}
+{{include.fullname}}
+{% endif %}

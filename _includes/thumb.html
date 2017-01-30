@@ -1,0 +1,12 @@
+{% if include.pos == "left" %}
+{% assign side = "-left" %}
+{% else %}
+{% assign side = "-right" %}
+{% endif %}
+{% assign alt = include.alt %}
+{% responsive_image_block %}
+    path: "assets/img/{{ include.name }}"
+    alt: {{ alt }}
+    template: _includes/responsive-float-image.html
+    side: {{ side }}
+{% endresponsive_image_block %}

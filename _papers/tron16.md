@@ -9,4 +9,5 @@ venue:
   url: "http://www.internetsociety.org/events/ndss-symposium-2016/tls-13-ready-or-not-tron-workshop-programme"
 urls:
   pdf: "https://www.cl.cam.ac.uk/~hm519/tron.pdf"
+tags: nqsb
 ---

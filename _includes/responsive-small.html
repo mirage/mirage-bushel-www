@@ -1,0 +1,4 @@
+{% assign smallest = resized | sort: 'width' | first %}
+<div class="image-thumbnail{{side}}">
+    <a href="/{{original.path}}"><img src="/{{ smallest.path }}"></a>
+</div>

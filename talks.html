@@ -1,0 +1,31 @@
+---
+layout: page
+permalink: /talks/
+title: Talks
+---
+
+{% for talk in site.talks reversed %}
+  {% assign currentdate = talk.date | date: "%Y" %}
+  {% if currentdate != date %}
+    <div id="y{{currentdate}}" class="paper_year">{{ currentdate }}</div>
+    {% assign date = currentdate %} 
+  {% endif %}
+ <div class="paper" id="{{talk.id|slugify}}">
+   <div class="paper_title">{{talk.title}}</div>
+   <div class="paper_authors">
+    {% for author in talk.authors %}
+    {% include person-by-fullname.html fullname=author %}
+    {% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+   </div>
+   <div class="paper_venue">in {{talk.venue.name}} (<a href="{{talk.venue.url}}">{{talk.venue.short-name}})</a></div>
+   <div class="paper_urls">
+    {% for url in talk.urls %}
+     {% if url[1] %}
+     <span class="paper_url"><a href="{{url[1]}}">[{{url[0]}}]</a></span>
+     {% endif %}
+    {% endfor %}
+    </div>
+ </div>
+
+{% endfor %}

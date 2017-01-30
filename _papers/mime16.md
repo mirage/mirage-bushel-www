@@ -9,4 +9,5 @@ venue:
   location: "Nara Kasugano International Forum, Nara, Japan"
 urls:
   pdf: "http://din.osau.re/mrmime.pdf"
+tags: mirage databox
 ---

@@ -1,0 +1,2 @@
+{% assign smallest = resized | sort: 'width' | first %}
+<a href="/{{original.path}}"><img src="/{{ smallest.path }}"></a>

@@ -8,4 +8,5 @@ venue:
   url: "https://arxiv.org/abs/1608.06696"
 urls:
   pdf: "https://arxiv.org/pdf/1608.06696v1.pdf"
+tags: consensus
 ---

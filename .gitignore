@@ -1,4 +1,8 @@
 _site
 .sass-cache
 .jekyll-metadata
+vendor
+assets/resized
+.bundle
 .*.swp
+.tweet-cache

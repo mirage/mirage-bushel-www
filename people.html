@@ -4,33 +4,25 @@ permalink: /people/
 title: People
 ---
 
+{% include intro-people.html %}
+
 {% for role in site.roles %}
 <div class="role-group">
   <div class="role-header">{{role.name}}</div>
   <p>{{role.descr}}</p>
-{% assign a = site.authors | where:"role",role.uid %}
-{% for author in a %}
-<section class="author">
-{% if author.photo %}
-  <div class="authorimage box" style="background: url({{site.baseurl}}/assets/img/{{author.uid}}.png)"></div>
-{% else %}
-  <div class="authorimage box" style="background: url({{site.baseurl}}/assets/img/generic-headshot.png)"></div>
-{% endif %}
-  <div class="authorinfo box">
-    <p><b><a href="{{author.homepage}}">{{author.fullname}}</a></b></p>
-    <p class="bio">{{author.bio|markdownify}}</p>
-{% if author.homepage %}
-<div data-icon="ei-link"></div><a href="{author.homepage}}">home</a>  
-{% endif %}
-{% if author.github %}
-<div data-icon="ei-sc-github"></div><a href="https://github.com/{{author.github}}">{{author.github}}</a> 
-{% endif %}
-{% if author.twitter %}
-<div data-icon="ei-sc-twitter"></div><a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a> 
-{% endif %}
+  {% assign a = site.authors | where:"role",role.uid %}
+  {% for author in a %}
+    <section class="author">
+    {% if author.photo %}<div class="authorimage box" style="background: url({{site.baseurl}}/assets/img/{{author.photo}}.png)"></div>
+    {% else %}<div class="authorimage box" style="background: url({{site.baseurl}}/assets/img/generic-headshot.png)"></div>{% endif %}
+    <div class="authorinfo box">
+      <p><b><a href="{{author.homepage}}">{{author.fullname}}</a></b></p>
+      <p class="bio">{{author.bio|markdownify}}</p>
+      {% if author.homepage %}<i class="fa fa-home"></i> <a href="{author.homepage}}">home</a>{% endif %}
+      {% if author.github %}<i class="fa fa-github"></i> <a href="https://github.com/{{author.github}}">{{author.github}}</a>{% endif %}
+      {% if author.twitter %}<i class="fa fa-twitter"></i> <a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>{% endif %}
+    </div>
+    </section>
+  {% endfor %}
   </div>
-</section>
-</div>
-
-{% endfor %}
 {% endfor %}

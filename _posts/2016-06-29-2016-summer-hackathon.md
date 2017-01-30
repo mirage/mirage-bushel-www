@@ -1,6 +1,6 @@
 ---
 authors: [Gemma Gordon, Anil Madhavapeddy]
-categories: [News]
+category: Events
 title: "MirageOS Summer 2016 Hackathon announcement, and talk roundup"
 permalink: 2016-summer-hackathon
 layout: post

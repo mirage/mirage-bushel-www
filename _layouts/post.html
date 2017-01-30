@@ -12,14 +12,12 @@ layout: default
     {{ page.content }}
   </div>
 
-  <div class="article-related-header">Related Posts</div>
-  <div>
+  <div class="article-related">Related Posts</div>
   <ul>
    {% for r in site.related_posts %}
      <li><a href="{{r.url}}">{{ r.title }}</a></li>
    {% endfor %}
   </ul>
-  </div>
 
   <footer class="article-footer">
 

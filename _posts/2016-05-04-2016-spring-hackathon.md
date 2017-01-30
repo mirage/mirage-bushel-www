@@ -1,12 +1,10 @@
 ---
 authors: [Gemma Gordon]
-categories: [News]
+category: Events
 title: "MirageOS Spring 2016 Hackathon!"
 permalink: 2016-spring-hackathon
 layout: post
 ---
-
-# Hackathon Trip Reports
 
 We're looking forward to the next MirageOS hackathon already!  We've collected some reports from those who were present at our [2016 Spring hackathon](http://marrakech2016.mirage.io) to share our excitement!  Thanks to the folks who put in the time and effort to organize the event and our wonderful hosts, and a huge thanks to everyone who documented their hackathon experience!
 

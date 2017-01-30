@@ -10,9 +10,14 @@ title: Papers
     <div id="y{{currentdate}}" class="paper_year">{{ currentdate }}</div>
     {% assign date = currentdate %} 
   {% endif %}
- <div class="paper">
+ <div class="paper" id="{{paper.id|slugify}}">
    <div class="paper_title">{{paper.title}}</div>
-   <div class="paper_authors">{{ paper.authors | join: ', '}}</div>
+   <div class="paper_authors">
+    {% for author in paper.authors %}
+    {% include person-by-fullname.html fullname=author %}
+    {% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+   </div>
    <div class="paper_venue">in {{paper.venue.name}} (<a href="{{paper.venue.url}}">{{paper.venue.short-name}})</a></div>
    <div class="paper_urls">
     {% for url in paper.urls %}

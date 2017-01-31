@@ -1,6 +1,6 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
+category: General
 title: "Videos from around the world!"
 permalink: videos-around-world-2015
 layout: post

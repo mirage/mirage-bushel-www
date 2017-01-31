@@ -1,9 +1,10 @@
 ---
 authors: [Dan Williams]
-categories: [News]
+category: Features
 title: "Run Mirage Unikernels on KVM/QEMU with Solo5"
 permalink: introducing-solo5
 layout: post
+tags: solo5 kvm
 ---
 
 I'm excited to announce the release of

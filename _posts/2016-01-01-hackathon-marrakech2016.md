@@ -1,9 +1,10 @@
 ---
 authors: [Hannes Mehnert]
-categories: [News]
+category: Events
 title: "MirageOS hackathon"
 permalink: hackathon-marrakech2016
 layout: post
+tags: hackathon
 ---
 
 The first MirageOS hackathon will take place in Marrakech, Morocco, from 11th till 16th March 2016.  It is open for everybody.  The main goal is to get together people motivated to contribute to MirageOS.

@@ -1,6 +1,6 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
+category: General
 title: "Unikernel.org"
 permalink: unikernel-org
 layout: post

@@ -1,9 +1,10 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
+category: General
 title: "Getting Started Screencasts"
 permalink: getting-started-screencasts
 layout: post
+tags: screencasts
 ---
 
 We put together some quick screencasts to make it easier for people to get

@@ -1,9 +1,10 @@
 ---
 authors: [Christiano Haesbaert]
-categories: [News]
+category: Releases
 title: "Introducing Charrua — a DHCP implementation"
 permalink: introducing-charrua-dhcp
 layout: post
+tags: dhcp
 ---
 
 Almost every network needs to support

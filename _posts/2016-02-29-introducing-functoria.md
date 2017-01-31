@@ -1,9 +1,9 @@
 ---
 authors: [Gabriel Radanne]
-categories: [News]
+category: Releases
 title: "Introducing Functoria"
-permalink: introducing-functoria
 layout: post
+tags: functoria cli
 ---
 
 For the last few months, I've been working with [Thomas][] on improving the `mirage` tool and
@@ -133,7 +133,7 @@ let () = register "console" [main $ default_console]
 This is fairly straightforward: we define a `Unikernel.Main` functor using a console and we
 instantiate it with the default console. If we execute `mirage describe --dot` in this directory, we will get the following output.
 
-[![A console unikernel](../graphics/dot/console.svg "My little unikernel")](../graphics/dot/console.svg)
+[![A console unikernel](/assets/img/dot/console.svg "My little unikernel")](/assets/img/dot/console.svg)
 
 As you can see, there are already quite a few things going on!
 Rectangles are the various devices and you'll notice that
@@ -156,7 +156,7 @@ let main =
   foreign "Unikernel.Main" ~deps:[abstract app_info] (console @-> job)
 ```
 
-[![A unikernel with info](../graphics/dot/info.svg "My informed unikernel")](../graphics/dot/info.svg)
+[![A unikernel with info](/assets/img/dot/info.svg "My informed unikernel")](/assets/img/dot/info.svg)
 
 The only difference with the previous unikernel is the data dependency — represented by a dashed arrow — going from `Unikernel.Main` to `Info_gen`. This means that `Unikernel.Main.start` will take an extra argument of type `Mirage_info.t` which we can, for example, print:
 
@@ -177,14 +177,14 @@ The complete example is available in [mirage-skeleton][] in the [`app_info` dire
 
 Since we have a way to draw unikernels, we can now observe the sharing between various pieces. For example, the direct stack with static IP yields this diagram:
 
-[![A stack unikernel](../graphics/dot/stack.svg "My stack unikernel")](../graphics/dot/stack.svg)
+[![A stack unikernel](/assets/img/dot/stack.svg "My stack unikernel")](/assets/img/dot/stack.svg)
 
 You can see that all the sub-parts of the stack have been properly shared. To be merged, two devices must have the same name, keys, dependencies and functor arguments.
 To force non-sharing of two devices, it is enough to give them different names.
 
 This sharing also works up to switching keys. The generic stack gives us this diagram:
 
-[![A dynamic stack unikernel](../graphics/dot/dynamic.svg "My generic unikernel")](../graphics/dot/dynamic.svg)
+[![A dynamic stack unikernel](/assets/img/dot/dynamic.svg "My generic unikernel")](/assets/img/dot/dynamic.svg)
 
 If you look closely, you'll notice that there are actually _three_ stacks in the last example: the _socket_ stack, the _direct stack with DHCP_, and the _direct stack with IP_. All controlled by switching keys.
 
@@ -192,7 +192,7 @@ If you look closely, you'll notice that there are actually _three_ stacks in the
 
 There is more to be said about the new capabilities offered by functoria, in particular on how to define new devices. You can discover them by looking at the [mirage][] implementation.
 
-However, to wrap up this blog post, I offer you a visualization of the MirageOS website itself (brace yourself). [Enjoy!](../graphics/dot/www.svg)
+However, to wrap up this blog post, I offer you a visualization of the MirageOS website itself (brace yourself). [Enjoy!](/assets/img/dot/www.svg)
 
 [opam]: http://opam.ocaml.org/
 [API]: http://mirage.github.io/functoria/

@@ -1,6 +1,6 @@
 ---
 authors: [Mindy Preston, Hannes Mehnert]
-categories: [News]
+category: Features
 title: "Easy HTTPS Unikernels with mirage-seal"
 permalink: mirage-seal
 layout: post

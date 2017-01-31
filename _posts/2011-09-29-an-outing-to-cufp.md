@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: Events
 title: "An Outing to CUFP 2011"
 permalink: an-outing-to-cufp
 layout: post

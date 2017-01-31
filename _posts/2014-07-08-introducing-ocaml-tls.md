@@ -1,9 +1,10 @@
 ---
 authors: [Hannes Mehnert, David Kaloper]
-categories: [News]
+category: Libraries
 title: "Introducing transport layer security (TLS) in pure OCaml"
 permalink: introducing-ocaml-tls
 layout: post
+tags: nqsb
 ---
 
 We announce a **beta** release of `ocaml-tls`, a clean-slate implementation of

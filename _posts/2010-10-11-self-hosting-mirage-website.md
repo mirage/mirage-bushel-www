@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: General
 title: "Self-hosting MirageOS website"
 permalink: self-hosting-mirage-website
 layout: post

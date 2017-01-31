@@ -1,9 +1,10 @@
 ---
 authors: [Richard Mortier]
-categories: [News]
+category: Releases
 title: "Connected Cloud Control: OpenFlow in MirageOS"
 permalink: announcing-mirage-openflow
 layout: post
+tags: openflow
 ---
 
 **Due to continuing development, some of the details in this blog post are now out-of-date. It is archived here.**

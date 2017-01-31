@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: General
 title: "A Spring Wiki Cleaning"
 permalink: spring-cleaning
 layout: post

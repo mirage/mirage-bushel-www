@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: Releases
 title: "The road to a developer preview at OSCON 2013"
 permalink: the-road-to-a-dev-release
 layout: post

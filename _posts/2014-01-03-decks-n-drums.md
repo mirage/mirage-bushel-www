@@ -1,9 +1,10 @@
 ---
 authors: [Richard Mortier]
-categories: [News]
+category: General
 title: "Presenting Decks"
 permalink: decks-n-drums
 layout: post
+tags: infrastructure
 ---
 
 A few months ago, partly as a stunt, mostly because we could, Anil and I put together [a presentation][oscon-deck] for [OSCON'13][oscon] about Mirage in Mirage. That is, as a self-hosting Mirage web application that served up slides using [RevealJS][]. It was a bit of a hack, but it was cool (we thought!) and it worked. Several more presentations were written and given this way, at venues ranging from the [XenSummit 2013][xensummit] to [ACM FOCI 2013][foci] to the Cambridge Computer Lab's [MSc in Advanced Computer Science][acs].

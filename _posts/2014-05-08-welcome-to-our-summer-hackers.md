@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: General
 title: "Welcome to the summer MirageOS hackers"
 permalink: welcome-to-our-summer-hackers
 layout: post

@@ -1,9 +1,10 @@
 ---
 authors: [Dave Scott]
-categories: [News]
+category: Features
 title: "Creating Xen block devices with MirageOS"
 permalink: xen-block-devices-with-mirage
 layout: post
+tags: storage
 ---
 
 [MirageOS](http://www.openmirage.org/) is a

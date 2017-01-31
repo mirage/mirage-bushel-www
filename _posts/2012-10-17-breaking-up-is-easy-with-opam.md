@@ -1,9 +1,10 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: Features
 title: "Breaking up is easy to do (with OPAM)"
 permalink: breaking-up-is-easy-with-opam
 layout: post
+tags: opam
 ---
 
 When we first started developing Mirage in 2009, we were rewriting huge chunks of operating system and runtime code in OCaml. This ranged from low-level device drivers to higher-level networking protocols such as TCP/IP or HTTP.  The changes weren't just straight rewrites of C code either, but also involved experimenting with interfaces such as iteratees and [lightweight threading](/wiki/tutorial-lwt) to take advantage of OCaml's static type system.  To make all of this easy to work with, we decided to lump everything into a [single Git repository](http://github.com/avsm/mirage) that would bootstrap the entire system with a single `make` invocation.

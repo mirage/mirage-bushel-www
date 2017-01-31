@@ -1,9 +1,10 @@
 ---
 authors: [David Kaloper, Hannes Mehnert]
-categories: [News]
+category: Libraries
 title: "OCaml-TLS: the protocol implementation and mitigations to known attacks"
 permalink: ocaml-tls-api-internals-attacks-mitigation
 layout: post
+tags: nqsb
 ---
 
 *This is the fifth in a series of posts that introduce new libraries for a pure OCaml implementation of TLS.

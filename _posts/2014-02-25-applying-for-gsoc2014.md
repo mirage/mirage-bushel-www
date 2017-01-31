@@ -1,9 +1,10 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: General
 title: "MirageOS is in Google Summer of Code 2014"
 permalink: applying-for-gsoc2014
 layout: post
+tags: outreach
 ---
 
 MirageOS will part of the [Google Summer of Code](https://www.google-melange.com/gsoc/homepage/google/gsoc2014) 2014

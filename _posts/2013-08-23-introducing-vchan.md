@@ -1,6 +1,6 @@
 ---
 authors: [Vincent Bernardoff]
-categories: [News]
+category: Libraries
 title: "Introducing vchan"
 permalink: introducing-vchan
 layout: post

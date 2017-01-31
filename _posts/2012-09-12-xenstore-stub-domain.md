@@ -1,9 +1,10 @@
 ---
 authors: [Dave Scott]
-categories: [News]
+category: Features
 title: "Building a Xenstore stub domain with MirageOS"
 permalink: xenstore-stub-domain
 layout: post
+tags: xen
 ---
 
 [ *Due to continuing development, some of the details in this blog post are now out-of-date. It is archived here.* ]

@@ -1,9 +1,10 @@
 ---
 authors: [David Kaloper]
-categories: [News]
+category: Libraries
 title: "OCaml-TLS: ASN.1 and notation embedding"
 permalink: introducing-asn1
 layout: post
+tags: nqsb
 ---
 
 *This is the fourth in a series of posts that introduce new libraries for a pure OCaml implementation of TLS.

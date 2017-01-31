@@ -1,9 +1,10 @@
 ---
 authors: [Hannes Mehnert]
-categories: [News]
+category: Releases
 title: "OCaml-TLS: Adventures in X.509 certificate parsing and validation"
 permalink: introducing-x509
 layout: post
+tags: nqsb
 ---
 
 *This is the third in a series of posts that introduce new libraries for a pure OCaml implementation of TLS.

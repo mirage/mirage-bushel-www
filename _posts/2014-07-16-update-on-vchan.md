@@ -1,9 +1,10 @@
 ---
 authors: [Jon Ludlam]
-categories: [News]
+category: Libraries
 title: "Vchan: Low-latency inter-VM communication channels"
 permalink: update-on-vchan
 layout: post
+tags: vchan
 ---
 
 *Today's post is an update to [Vincent Bernardoff's](https://github.com/vbmithr)

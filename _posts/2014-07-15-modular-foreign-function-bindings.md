@@ -1,9 +1,10 @@
 ---
 authors: [Jeremy Yallop]
-categories: [News]
+category: Libraries
 title: "Modular foreign function bindings"
 permalink: modular-foreign-function-bindings
 layout: post
+tags: ctypes
 ---
 
 One of the most frequent questions about MirageOS from developers is

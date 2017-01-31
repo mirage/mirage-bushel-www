@@ -1,6 +1,6 @@
 ---
 authors: [Richard Mortier]
-categories: [News]
+category: Events
 title: "MirageOS travels to OSCON'13: a trip report"
 permalink: oscon13-trip-report
 layout: post
@@ -44,7 +44,7 @@ content and well done" and "one of the most excited projects I heard about"
 (though we are suspicious that just refers to Anil's usual high-energy
 presentation style...).
 
-<iframe align="right" style="margin-left: 10px;" width="420" height="235" src="//www.youtube-nocookie.com/embed/2Mx8Bd5JYyo" frameborder="0" allowfullscreen="1"> &nbsp; </iframe>
+{% youtube "http://youtube.com/watch?v=2Mx8Bd5JYyo" %}
 
 Probably the most interesting chat after the talk was with the Rust authors
 at Mozilla ([@pcwalton](http://twitter.com/pcwalton) and

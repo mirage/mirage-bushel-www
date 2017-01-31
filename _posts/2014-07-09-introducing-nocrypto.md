@@ -1,9 +1,10 @@
 ---
 authors: [David Kaloper]
-categories: [News]
+category: Libraries
 title: "OCaml-TLS: building the nocrypto library core"
 permalink: introducing-nocrypto
 layout: post
+tags: nqsb
 ---
 
 *This is the second in a series of posts that introduce new libraries for a pure OCaml implementation of TLS.

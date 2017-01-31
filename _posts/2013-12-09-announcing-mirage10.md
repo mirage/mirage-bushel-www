@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: Releases
 title: "MirageOS 1.0: not just a hallucination!"
 permalink: announcing-mirage10
 layout: post

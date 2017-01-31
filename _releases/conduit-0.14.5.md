@@ -1,6 +1,6 @@
 ---
-title: conduit 0.14.0 released
-date: 2016-12-26 00:52
+title: conduit 0.14.5 released
+date: 2017-01-28 17:15
 layout: post
 tags: ["conduit","Releases"]
 ---

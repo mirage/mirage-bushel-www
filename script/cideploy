@@ -1,0 +1,13 @@
+#!/bin/sh -ex
+
+eval `ssh-agent -s`
+chmod 600 deploy_id_rsa
+ssh-add deploy_id_rsa
+git config --global user.email "bactrian@recoil.org"
+git config --global user.name "CI Bot"
+cd _site
+git init
+git add *
+git commit -m sync -a
+git remote add origin git@github.com:mirage/mirage.github.io
+git push -u origin +master

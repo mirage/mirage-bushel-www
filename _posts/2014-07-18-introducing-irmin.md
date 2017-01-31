@@ -1,9 +1,10 @@
 ---
 authors: [Thomas Gazagnaire]
-categories: [News]
+category: Libraries
 title: "Introducing Irmin: Git-like distributed, branchable storage"
 permalink: introducing-irmin
 layout: post
+tags: irmin
 ---
 
 > This is the first post in a series which will describe [Irmin][irmin],

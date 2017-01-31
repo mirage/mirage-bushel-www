@@ -1,9 +1,10 @@
 ---
 authors: [Amir Chaudhry, Thomas Gazagnaire]
-categories: [News]
+category: Releases
 title: "MirageOS v2.5 with full TLS support"
 permalink: announcing-mirage-25-release
 layout: post
+tags: nqsb
 ---
 
 Today we're announcing the new release of MirageOS v2.5, which includes

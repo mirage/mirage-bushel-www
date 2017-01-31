@@ -1,9 +1,10 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
+category: General
 title: "Smash the Bitcoin Pinata for fun and profit!"
 permalink: announcing-bitcoin-pinata
 layout: post
+tags: nqsb
 ---
 
 <a href="http://ownme.ipredator.se/"><img src="http://amirchaudhry.com/images/btc-pinata/btc-pinata.png" style="float:right; padding: 10px" width="300px" /></a>

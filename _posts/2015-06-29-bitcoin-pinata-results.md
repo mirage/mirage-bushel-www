@@ -1,9 +1,10 @@
 ---
 authors: [Hannes Mehnert]
-categories: [News]
+category: General
 title: "Reviewing the Bitcoin Pinata"
 permalink: bitcoin-pinata-results
 layout: post
+tags: nqsb
 ---
 
 TL;DR: Nobody took our BTC.  Random people from the Internet even donated

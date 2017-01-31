@@ -1,9 +1,10 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
+category: Features
 title: "Why OCaml-TLS?"
 permalink: why-ocaml-tls
 layout: post
+tags: nqsb
 ---
 
 TLS implementations have a history of security flaws, which are often the

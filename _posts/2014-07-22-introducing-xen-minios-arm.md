@@ -1,9 +1,10 @@
 ---
 authors: [Thomas Leonard]
-categories: [News]
+category: Features
 title: "Building an ARMy of Xen unikernels"
 permalink: introducing-xen-minios-arm
 layout: post
+tags: arm
 ---
 
 Mirage has just gained the ability to compile unikernels for the Xen/arm32

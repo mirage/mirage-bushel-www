@@ -1,9 +1,10 @@
 ---
 authors: [Dave Scott]
-categories: [News]
+category: Features
 title: "Using Irmin to add fault-tolerance to the Xenstore database"
 permalink: introducing-irmin-in-xenstore
 layout: post
+tags: irmin
 ---
 
 *This is the second in a series of posts that introduces the [Irmin](https://github.com/mirage/irmin) distributed storage engine.

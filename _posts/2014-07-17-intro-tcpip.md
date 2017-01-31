@@ -1,9 +1,10 @@
 ---
 authors: [Mindy Preston]
-categories: [News]
+category: Libraries
 title: "Fitting the modular MirageOS TCP/IP stack together"
 permalink: intro-tcpip
 layout: post
+tags: tcpip
 ---
 
 A critical part of any unikernel is its network stack -- it's difficult to

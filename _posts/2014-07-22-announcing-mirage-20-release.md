@@ -1,6 +1,6 @@
 ---
 authors: [Anil Madhavapeddy]
-categories: [News]
+category: Releases
 title: "MirageOS v2.0: a recap of the new features"
 permalink: announcing-mirage-20-release
 layout: post

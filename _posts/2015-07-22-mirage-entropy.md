@@ -1,9 +1,10 @@
 ---
 authors: [David Kaloper]
-categories: [News]
+category: Features
 title: "Organized chaos: managing randomness"
 permalink: mirage-entropy
 layout: post
+tags: entropy nqsb
 ---
 
 This post gives a bit of background on the *Random Number Generator* (RNG) in

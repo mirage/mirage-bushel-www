@@ -4,8 +4,8 @@
 - name: Releases
   icon: cloud-upload
 
-- name: Projects
-  icon: tasks
+- name: Libraries
+  icon: code-fork
 
 - name: Events
   icon: meetup
@@ -13,3 +13,5 @@
 - name: Advisories
   icon: lock
 
+- name: Features
+  icon: gears

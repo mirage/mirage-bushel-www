@@ -5,7 +5,7 @@ bio: "Gemma is the Operations Director for the OCaml Labs group in the Cambridge
 homepage: "http://reynard.io"
 github: "GemmaG"
 twitter: "em3r4ld6"
-role: "core"
+role: "community"
 photo: "gemmag"
 posts:
  - title: MirageOS Fortnightly IRC Call Feedback

@@ -5,6 +5,6 @@ bio: "Amir was a founding member of the [Unikernel Systems](http://unikernel.com
 homepage: "http://amirchaudhry.com/"
 github: "amirmc"
 twitter: "amirmc"
-role: "core"
+role: "community"
 photo: "amirmc"
 ---

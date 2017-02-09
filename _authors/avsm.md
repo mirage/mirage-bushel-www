@@ -5,6 +5,6 @@ bio: "Anil is an engineer at [Docker](http://docker.com), and a University Lectu
 homepage: "http://anil.recoil.org"
 github: "avsm"
 twitter: "avsm"
-role: "core"
+role: "tools"
 photo: "avsm"
 ---

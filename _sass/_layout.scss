@@ -22,7 +22,7 @@ body {
   padding-bottom: 0rem;
   width:100%;
 
-  /* footer style */    
+  /* footer style */
   color: #99999a;
   background-color: #FAFAFB;
 
@@ -118,7 +118,7 @@ body {
       border-bottom:1px solid #ddd;
     }
   }
-  
+
   #menu-toggle:checked+.site-nav {
     opacity: 1;
     height: auto;
@@ -176,7 +176,7 @@ input#menu-toggle {
 }
 
 .intro_home {
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   line-height: 1.2em;
 }
 
@@ -200,7 +200,7 @@ input#menu-toggle {
 }
 
 .post_news_mini_header {
- font-size: 1.6rem; 
+ font-size: 1.6rem;
  font-style: italic;
 }
 
@@ -246,6 +246,70 @@ p.readmore {
 
 }
 
+.furore_entry {
+  padding-top: 5px;
+  line-height: 1.6rem;
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.7rem; }
+  h4 { font-size: 1.6rem; }
+  height: auto;
+  overflow: hidden;
+}
+
+.furore_author {
+  width: 60px;
+  font-size: 1.2rem;
+  font-style: italic;
+  float: left;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.furore_output {
+  width: auto;
+  overflow: hidden;
+}
+
+.furore_date {
+  margin-top: 5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform:lowercase;
+  font-variant:small-caps;
+  background: #eeeeee;
+  border-radius: 8px;
+  padding: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: inline;
+}
+
+.furore_week_links {
+  background: #eeeeee;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.furore_year_link {
+  font-weight: bold;
+}
+
+.archive_date_header {
+   .text {
+   font-size: 1.8rem;
+   font-weight: bold;
+   text-transform:lowercase;
+   font-variant:small-caps;
+   background: #ffddcc;
+   border-radius: 8px;
+   padding: 3px;
+   padding-left: 15px;
+   padding-right: 15px;
+   display: inline;
+  }
+ margin-bottom: 10px;
+ margin-top: 10px;
+}
 .article_meta {
 
 }
@@ -263,7 +327,7 @@ p.readmore {
 }
 
 .image_block {
-  text-align: justify; 
+  text-align: justify;
 }
 
 .image_block:after {
@@ -424,7 +488,7 @@ body.custom-background {
 
 /* Archive page */
 
-.archive_list { 
+.archive_list {
   width:90%;
   margin-bottom:3rem;
 }
@@ -461,7 +525,7 @@ div.post_title span.date {
 
 .pagination {
   width:50%;
-}  
+}
 
 .pagination.older-post{
   float: right;

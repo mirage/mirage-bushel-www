@@ -38,5 +38,26 @@
 </div>
 {% endfor %}
 {% endif %}
+{% for author in site.authors %}
+  {% for post in author.posts %}
+     {% if post.tags contains include.name %}
+       {% assign hasposts = 1 %}
+     {% endif %}
+  {% endfor %}
+{% endfor %}
+{% if hasposts %}
+<div class="post_news_mini_header">Blogs</div>
+{% for author in site.authors %}
+ {% for post in author.posts %}
+   {% if post.tags contains include.name %}
+   <div class="post_title_light">
+     <i class="fa fa-external-link"></i>
+     <span class="post_date">{{ post.date | date: "%-d %b, %Y" | reverse }}</span>:
+     <a href="{{ post.url }}">{{ post.title }}</a> by <a href="{{author.url}}">{{author.fullname}}</a>
+   </div>
+   {% endif %}
+ {% endfor %}
+{% endfor %}
+{% endif %}
 
 </div>

@@ -5,15 +5,15 @@ title: Posts
 
 <div>
 
-  <header class="category_list">
+  <!-- <header class="category_list">
     {% for category in site.categories %}
-      <a href="#{{category|first}}">{{category|first}}</a> 
+      <a href="#{{category|first}}">{{category|first}}</a>
       {% unless forloop.last %} ● {% endunless %}
     {% endfor %}
   </header>
 
   <br />
-  <br />
+  <br /> -->
 
   <div class="archive_intro">
   {% capture my_include %}{% include intro-news.md %}{% endcapture %}
@@ -21,19 +21,20 @@ title: Posts
   </div>
 
   <section class="archive_list">
-    {% for category in site.categories %}
-    <div class="category_name">
-      {% assign cat = category  | first %}
+    {% for post in site.posts %}
+    {% assign currentdate = post.date | date: "%Y %m" %}
+    {% if currentdate != date %}
+      <div class="archive_date_header"><span class="text">{{ post.date | date: "%B %Y" }}</span></div>
+      {% assign date = currentdate %}
+    {% endif %}
+
+      {% assign cat = post.category %}
       {% assign i = site.data.icons | where:"name",{{cat}} | first %}
-      <h2 id="{{cat}}"><i class="fa fa-{{i.icon}} fa-lg"></i> &nbsp; {{cat}}</h2>
-    </div>
-    {% for post in category.last %}
     <div class="post_title_light">
-       » <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
+      <i class="fa fa-{{i.icon}}"></i> &nbsp;
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
       <span class="post_date">{{ post.date | date: "%-d %b, %Y" }}</span>
     </div>
     {% endfor %}
-    {% endfor %}
   </section>
 </div>
-

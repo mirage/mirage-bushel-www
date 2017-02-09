@@ -4,9 +4,13 @@ permalink: /people/
 title: People
 ---
 
-{% include intro-people.html %}
+<div class="intro">
+  {% capture my_include %}{% include intro-people.md %}{% endcapture %}
+  {{ my_include | markdownify }}
+</div>
 
-{% for role in site.roles %}
+{% assign roles = site.roles | sort: 'order' %}
+{% for role in roles %}
 <div class="role-group">
   <div class="role-header">{{role.name}}</div>
   <p>{{role.descr}}</p>
@@ -18,7 +22,7 @@ title: People
     <div class="authorinfo box">
       <p><b><a href="{{author.homepage}}">{{author.fullname}}</a></b></p>
       <p class="bio">{{author.bio|markdownify}}</p>
-      {% if author.homepage %}<i class="fa fa-home"></i> <a href="{author.homepage}}">home</a>{% endif %}
+      {% if author.homepage %}<i class="fa fa-home"></i> <a href="{{author.homepage}}">home</a>{% endif %}
       {% if author.github %}<i class="fa fa-github"></i> <a href="https://github.com/{{author.github}}">{{author.github}}</a>{% endif %}
       {% if author.twitter %}<i class="fa fa-twitter"></i> <a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>{% endif %}
     </div>

@@ -1,0 +1,1 @@
+Mirage is an open-source project driven by its contributors, from a variety of backgrounds.  This page lists some of them and their roles in the project. If you'd like to be on here, please do [contribute]({% link _doc/contributing.md %}) a PR with your information to the [website repository](https://github.com/mirage/mirage-bushel-www/).

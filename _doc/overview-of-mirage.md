@@ -1,22 +1,20 @@
 ---
-authors: [Amir Chaudhry]
-title: "Overview of MirageOS"
+authors: [Amir Chaudhry, Anil Madhavapeddy]
+title: "Overview of Mirage"
 layout: page
 ---
 
 If you're familiar with the using the command line, The best way to
-learn about MirageOS is to try out the [installation
-instructions](http://openmirage.org/wiki/install) for yourself!
+learn about MirageOS is to try out the [installation instructions]({% link _doc/install.md %}) for yourself!
 
-### What is MirageOS and why is it important?
+### What is Mirage and why is it important?
 
-<a href="http://www.berndnaut.nl/images/NimbusNP3web.jpg"><img style="float:right; margin-left: 15px; margin-bottom: 15px;" src="/graphics/nimbus-np3-smilde.jpg"></img></a>
+{% include thumb.html name="nimbus-np3-smilde.jpg" %}
 
 Most applications that run in the cloud aren't optimised to do so.
 They inherently carry assumptions about the underlying operating
 system with them, including vulnerabilities and bloat.
-Compartmentalisation of large servers into smaller [virtual
-machines](http://en.wikipedia.org/wiki/Virtual_machine) has enabled
+Compartmentalisation of large servers into smaller [virtual machines](http://en.wikipedia.org/wiki/Virtual_machine) has enabled
 many new businesses to get started and achieve scale. This has been
 great for new services but many of those virtual machines are
 single-purpose and yet they contain largely complete operating systems
@@ -24,9 +22,9 @@ which themselves run applications like web-servers. This means a large
 part of the footprint is unused and unnecessary, which is both costly
 and a security risk (due to the larger attack surface).
 
-MirageOS represents a new approach where only the necessary components
+Mirage represents a new approach where only the necessary components
 of the OS are included and compiled along with the application into a
-[unikernel](http://queue.acm.org/detail.cfm?id=2566628). This
+[unikernel](https://en.wikipedia.org/wiki/Unikernel). This
 results in highly efficient and extremely lean
 [appliances](http://en.wikipedia.org/wiki/Virtual_appliance), with a
 much smaller attack surface.  These appliances can be deployed
@@ -35,12 +33,13 @@ reduced costs and increased security and scalability.
 
 ### How does MirageOS work?
 
-<a href="http://www.xenproject.org/developers/teams/hypervisor.html"><img style="float:left; margin-right: 15px;" src="/graphics/Xen-Panda-Ecosystem-1.png"></img></a>
+{% include thumb.html name="Xen-Panda-Ecosystem-1.png" pos="left" %}
 
-MirageOS is a 'library operating system' for constructing secure,
+Mirage is a 'library operating system' for constructing secure,
 high-performance network applications across a variety of cloud
-computing and mobile platforms. It works by treating the [Xen
-hypervisor](http://www.xenproject.org/developers/teams/hypervisor.html)
+computing and mobile platforms. It works by treating the deployment target
+(e.g. the [Xen](http://www.xenproject.org/developers/teams/hypervisor.html)
+or [KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) hypervisors)
 as a stable hardware platform, allowing us to focus on
 high-performance protocol implementations without worrying about
 having to support the thousands of device drivers found in a
@@ -49,13 +48,13 @@ traditional OS.
 Code can be developed in a high-level functional programming language
 (OCaml) on a desktop OS such as Linux or Mac OSX, and is then compiled
 into a fully-standalone, specialised unikernel. These unikernels run
-directly on Xen hypervisor APIs. Since the Xen powers most public
-clouds such as [Amazon EC2](http://aws.amazon.com/ec2), [Rackspace
-Cloud](http://www.rackspace.com/cloud/), and many others, MirageOS lets
+directly on Unix, or even more specialised on Xen or KVM hypervisor APIs.
+Since Xen or KVM powers most public clouds such as [Amazon EC2](http://aws.amazon.com/ec2),
+[Rackspace Cloud](http://www.rackspace.com/cloud/), and many others, Mirage lets
 your servers run more cheaply, securely and faster in any Xen based
 cloud or hosting service.
 
-MirageOS is based around the [OCaml language](http://ocaml.org), with
+MirageOS is based around the [OCaml language](https://ocaml.org), with
 syntax extensions and [50+ libraries](https://github.com/mirage) which
 map directly to operating system constructs when being compiled for
 production deployment. As such, MirageOS includes clean-slate functional
@@ -65,7 +64,7 @@ implementations of protocols ranging from TCP/IP, DNS, SSH, Openflow
 
 ### Where will MirageOS be useful?
 
-<a href="http://www.flickr.com/photos/radnezeoz/7343684238/"><img style="float:right; margin-left: 15px;" src="/graphics/cumulous-cruisin.jpg"></img></a>
+{% include thumb.html name="cumulous-cruisin.jpg" %}
 
 An example of a current MirageOS appliance is this website which is a
 completely self-hosted site, deployed on the public cloud and running
@@ -95,7 +94,7 @@ spending what we actually need when we really need it.
 
 #### Deployment to embedded devices
 
-<a href="http://www.flickr.com/photos/lukew/6171377827/"><img style="float:left; margin-right: 15px;" src="/graphics/device-love.jpg"></img></a>
+{% include thumb.html name="device-love.jpg" %}
 
 Using MirageOS, we can also create appliances that can run on embedded
 devices. Such appliances can be deployed into small devices that are

@@ -1,26 +1,24 @@
 ---
 authors: [Christine Koppelt]
 categories: [News]
-title: "Technical Background of MirageOS"
-permalink: /wiki/technical-background
+title: "Technical Background of Mirage"
 date: 2013-11-10
 layout: page
 ---
 
-(based on the [article](http://queue.acm.org/detail.cfm?id=2566628) by Anil Madhavapeddy and David J. Scott)
+*(based on the [article](http://queue.acm.org/detail.cfm?id=2566628) by Anil Madhavapeddy and David J. Scott)*
 
 Operating system virtualization such as Xen or VMWare allows to multiplex virtual machines (VMs) on a shared cluster of physical machines. Each VM presents as a self-contained computer, booting a standard OS kernel and running unmodified applications just as if it were executing on a physical machine.
 
 While this is useful in many situations, it adds yet another layer to an already highly-layered software stack now including: support for old physical protocols (e.g. disk standards developed in the 80s such as IDE); irrelevant optimisations (e.g. disk elevator algorithms on SSD drives); backward-compatible interfaces (e.g. POSIX); user-space processes and threads (in addition to VMs on a hypervisor); managed code runtimes (e.g. OCaml, .NET or Java) which all sit beneath your application code. Are we really doomed to adding new layers of indirection and abstraction every few years, leaving future generations of programmers to become virtual archeologists as they dig through hundreds of layers of software emulation to debug even the simplest applications?
 
-Our goal with MirageOS is to restructure entire VMs - including all kernel and userspace code - into more modular components that are flexible, secure and reusable in the style of a library operating system.
-
+Our goal with Mirage is to restructure entire VMs - including all kernel and userspace code - into more modular components that are flexible, secure and reusable in the style of a library operating system.
 
 ## Unikernels & Library operating system
 
 Our architecture is dubbed unikernels. Unikernels are specialised OS kernels written in a high-level language which act as individual software components. A full application (or appliance) consists of a set of running unikernels working together as a distributed system.
 
-<img src="/graphics/comparison-vm-unikernel.png" alt="Comparison between vm and unikernel" width="50%"/>
+{% include thumb.html name="comparison-vm-unikernel.png" alt="Comparison between vm and unikernel" %}
 
 They are based on a radical operating system architecture from the 1990s, called library operating system (or libOS). In a libOS, protection boundaries are pushed to the lowest hardware layers, resulting in: (i) a set of libraries that implement mechanisms, such as those needed to drive hardware or talk network protocols; and (ii) a set of policies that enforce access control and isolation in the application layer.
 
@@ -41,14 +39,14 @@ Modern kernels are all written in C, which excels at low-level programs such as 
 
 * Metaprogramming: if the run-time configuration of a system is partially understood at compile-time, then a compiler can optimise the program much more than it would normally be able to
 
-We chose OCaml as the sole base language for MirageOS. It is a full-fledged systems programming language with a flexible programming model that supports functional, imperative and object-oriented styles. It also features a portable single-threaded runtime that makes it ideal for porting to restricted environments such as a barebones Xen VM. The compiler heavily emphasises static type checking, and the resulting binaries are fast native code with no runtime type information and the module system is among the most powerful in a general-purpose programming language in terms of permitting flexible and safe code reuse and refactoring. Finally, we had several examples of large-scale uses of OCaml in industry at Jane Street and within Xen itself, and the positive results were encouraging before embarking on the large multi-year project that MirageOS turned out to be.
+We chose OCaml as the sole base language for Mirage. It is a full-fledged systems programming language with a flexible programming model that supports functional, imperative and object-oriented styles. It also features a portable single-threaded runtime that makes it ideal for porting to restricted environments such as a barebones Xen VM. The compiler heavily emphasises static type checking, and the resulting binaries are fast native code with no runtime type information and the module system is among the most powerful in a general-purpose programming language in terms of permitting flexible and safe code reuse and refactoring. Finally, we had several examples of large-scale uses of OCaml in industry at Jane Street and within Xen itself, and the positive results were encouraging before embarking on the large multi-year project that Mirage turned out to be.
 
 
 ## Modular OS Libraries
 
-MirageOS provides modular OS libraries, which can be switched when needed.
+Mirage provides modular OS libraries, which can be switched when needed.
 
-<img src="/graphics/mirage-sample-application.png" alt="example" width="50%"/>
+{% include thumb.html name="mirage-sample-application.png" alt="Example application" %}
 
 The application MyHomePage depends on an HTTP signature that is provided by the Cohttp library. A developer just starting out wants to explore their code interactively using a Unix-style development environment. The Cohttp library needs a TCP implementation to satisfy its module signature, which can be provided by the UnixSocket library. When development is finished, the on Unix is entirely dropped, and the application is recompiled using the MirNet module to directly link against a Xen network driver, which in turn pulls in all the dependencies it needs to boot on Xen.
 
@@ -66,9 +64,11 @@ the conventional virtualized equivalents, and are more  resource-efficient in te
 
 
 ## Other Unikernels
-MirageOS is certainly not the only unikernel for Xen that has emerged in the last few years:
+
+Mirage is certainly not the only unikernel that has emerged in the last few years:
 
 * Haskell: [HalVM](https://github.com/GaloisInc/HaLVM#readme)
 * Erlang: [ErlangOnXen](http://erlangonxen.org)
 * Java: [GuestVM](https://kenai.com/projects/guestvm) 
 
+You can find more resources about unikernels at <http://unikernel.org>.

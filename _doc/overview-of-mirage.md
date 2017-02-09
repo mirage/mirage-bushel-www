@@ -1,9 +1,6 @@
 ---
 authors: [Amir Chaudhry]
-categories: [News]
 title: "Overview of MirageOS"
-permalink: /wiki/overview-of-mirage
-date: 2013-10-15
 layout: page
 ---
 

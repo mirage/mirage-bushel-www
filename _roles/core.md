@@ -1,5 +1,5 @@
 ---
 uid: "core"
 name: "Core"
-descr: "Core committers to MirageOS"
+descr: "The core team is broadly responsible for the central Mirage organisation repositories on GitHub, and for the project infrastructure and release engineering."
 ---

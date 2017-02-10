@@ -16,7 +16,7 @@
 title: Mirage 
 email: anil@recoil.org
 description: > # this means to ignore newlines until "baseurl:"
-  Mirage is...FIXME
+  Mirage is an OCaml-based programming framework for building specialised unikernels.
 baseurl: ""
 url: "https://mirage.github.io/"
 

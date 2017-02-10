@@ -1,0 +1,37 @@
+---
+layout: default
+title: code
+---
+
+<div class="repo_list">
+
+  {% assign types = site.data.repotypes | sort: 'order' %}
+  {% for ty in types %}
+   <div class="repo_header">
+     <span class="repo_header_type">{{ ty.name }}</span>:
+     <span class="repo_header_descr">{{ ty.descr | markdownify}}</span>
+   <ul>
+     {% for repo in site.data.repos %}
+       {% if repo.type == ty.name %}
+         <li class="{% cycle 'repo_odd','repo_even' %}">
+          <span class="repo_link"><a href="https://github.com/{{repo.org}}/{{repo.repo}}">{{repo.org}}/{{repo.repo}}</a></span>: 
+          {% if repo.descr %}<div class="repo_descr">{{repo.descr | markdownify }}</div>{% endif %}
+          {% if repo.opam %}
+           <div class="repo_opam"><span class="repo_opam_header">opam:</span>
+             {% for p in repo.opam %}
+               <a href="https://opam.ocaml.org/packages/{{p}}">{{p}}</a>{% unless forloop.last %}, {% endunless %}
+             {% endfor %}
+             <br />
+             <span class="repo_opam_header">docs:</span>
+             {% for p in repo.opam %}
+             <a href="http://docs.mirage.io/{{p}}/index.html">{{p}}</a>{% unless forloop.last %}, {% endunless %}
+             {% endfor %}
+           </div>
+          {% endif %}
+         </li>
+       {% endif %}
+     {% endfor %}
+   </ul>
+  </div>
+  {% endfor %} 
+</div>

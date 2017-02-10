@@ -246,6 +246,20 @@ p.readmore {
 
 }
 
+.repo_list {
+  .repo_header_type { font-weight: bold; font-size: 1.7rem; }
+  .repo_header_descr { font-style: italic; line-height: 1.6rem; }
+  .repo_link { font-weight: bold; font-size: 1.6rem; }
+  .repo_opam_header { font-style: italic }
+  .repo_opam { font-size: 1.2rem; margin-bottom: 5px; }
+  .repo_odd { padding: 3px; background-color: #eeeeee; }
+  .repo_even { padding: 3px; background-color: #fafafa; }
+  p { margin-bottom: 0px; }
+  ul {
+   line-height: 1.7rem;
+  }
+}
+
 .furore_entry {
   padding-top: 5px;
   line-height: 1.6rem;
